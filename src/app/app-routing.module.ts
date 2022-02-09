@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./component/login/login.component";
-import {UpdateUserComponent} from "./module/user/update-user/update-user.component";
 import {RegisterComponent} from "./component/register/register.component";
-import {ListUserComponent} from "./module/admin/list-user/list-user.component";
+
 
 const routes: Routes = [
   {
@@ -16,12 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: ListUserComponent
+    loadChildren: () => import('./module/admin/admin.module').then(module => module.AdminModule)
   },
   {
-  path:'user',
-    loadChildren :() => import('./module/user/user.module').then(module => module.UserModule)
-  }
+    path: '',
+    loadChildren: () => import('./module/user/user.module').then(module => module.UserModule)
+  },
+
 ];
 
 @NgModule({

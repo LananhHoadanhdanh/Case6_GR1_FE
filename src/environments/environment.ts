@@ -5,6 +5,16 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
+  firebaseConfig : {
+    apiKey: "AIzaSyDUDllAd_xMSxmnoiHKxPoy1yjfmFsKU6A",
+    authDomain: "update-file-5d46f.firebaseapp.com",
+    databaseURL:"https://update-file-5d46f-default-rtdb.firebaseio.com/",
+    projectId: "update-file-5d46f",
+    storageBucket: "update-file-5d46f.appspot.com",
+    messagingSenderId: "136892079489",
+    appId: "1:136892079489:web:7970c16d490b8ce7e55c80",
+    measurementId: "G-YKZMNWG8X1"
+  }
 };
 
 /*

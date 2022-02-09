@@ -5,9 +5,10 @@ import {UpdateUserComponent} from "./update-user/update-user.component";
 
 const routes: Routes = [
   {
-    path:'',
+    path:'homepage',
     component:HomepageComponent
-  },{
+  },
+  {
     path:'update',
     component:UpdateUserComponent
   }

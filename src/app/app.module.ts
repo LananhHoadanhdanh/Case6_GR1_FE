@@ -11,13 +11,16 @@ import { FooterComponent } from './component/footer/footer.component';
 import { RegisterComponent } from './component/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AdminModule} from "./module/admin/admin.module";
+import {UserModule} from "./module/user/user.module";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListUserComponent,
     LoginComponent,
-    UpdateUserComponent,
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
@@ -27,6 +30,10 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AdminModule,
+    UserModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
   ],
   providers: [],
   bootstrap: [AppComponent]
