@@ -12,12 +12,12 @@ import { RegisterComponent } from './component/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminModule} from "./module/admin/admin.module";
+import {UserModule} from "./module/user/user.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UpdateUserComponent,
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
@@ -27,7 +27,8 @@ import {AdminModule} from "./module/admin/admin.module";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
