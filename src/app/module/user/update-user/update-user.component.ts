@@ -11,5 +11,11 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  updateFile(){
+    // @ts-ignore
+    document.getElementById("upfile").click();
+  }
+  // @ts-ignore
+  sub(obj) {
+  }
 }
