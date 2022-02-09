@@ -18,8 +18,14 @@ export class UpdateUserComponent implements OnInit {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
+  // thêm ảnh
+  public loading = false;
+  public loading1 = false;
+  public loading2 = false;
   avatar?:string
-  selectImage:any[]=[]
+  imgs: any[] = [];
+  selectedImages:any[]=[]
+
   userUpdate?:User
 
   idU = localStorage.getItem("USERID");
@@ -75,6 +81,7 @@ export class UpdateUserComponent implements OnInit {
   }
   // @ts-ignore
   onFile(event){
+    this.loading1 = true;
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -103,4 +110,42 @@ export class UpdateUserComponent implements OnInit {
 
   }
   // @ts-ignore
+  showPreview(event: any) {
+    console.log(event)
+    this.loading = true;
+    let newSelectedImages = [];
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      newSelectedImages = event.target.files;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.selectedImages.push(event.target.files[i]);
+      }
+    } else {
+      this.selectedImages = [];
+    }
+    if (newSelectedImages.length !== 0) {
+      for (let i = 0; i < newSelectedImages.length; i++) {
+        let selectedImage = newSelectedImages[i];
+        var n = Date.now();
+        const filePath = `RoomsImages/${n}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              this.imgs.push(url);
+              console.log(url)
+              if (this.imgs.length == newSelectedImages.length) {
+                this.loading = false;
+              }
+            }, error => {
+              console.log(error)
+            });
+          })
+        ).subscribe(() => {
+
+        });
+      }
+    }
+}
 }
