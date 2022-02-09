@@ -41,7 +41,7 @@
                 <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="password" class="form-control p-4" formControlName="password" placeholder="Your Password"/>
+                <input type="text" class="form-control p-4" formControlName="password" placeholder="Your Password"/>
                 <div *ngIf="password && password.invalid && password.touched">
                   <div *ngIf="password.errors?.['required']">
                     <p class="help-block text-danger text-center">Please enter your password</p>
@@ -56,7 +56,7 @@
                 <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="password" class="form-control p-4" formControlName="confirmPassword" placeholder="Your Confirm Password"/>
+                <input type="text" class="form-control p-4" formControlName="confirmPassword" placeholder="Your Confirm Password"/>
                 <div *ngIf="confirmPassword && confirmPassword.touched && (userForm.controls['confirmPassword'].value != userForm.controls['password'].value)">
                   <p class="help-block text-danger text-center">Please confirm the password again!</p>
                 </div>

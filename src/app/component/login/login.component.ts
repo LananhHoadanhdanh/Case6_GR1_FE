@@ -3,6 +3,8 @@ import {AuthenticationService} from "../../service/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {first} from "rxjs";
+import {User} from "../../model/user";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService
   ) {
-    console.log(this.authenticationService.currentUserValue);
+    // console.log(this.authenticationService.currentUserValue);
   }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          console.log(data)
           // @ts-ignore
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           // @ts-ignore
@@ -54,14 +57,19 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('USERID', data.id);
           // @ts-ignore
           if (data.roles.length > 2) {
-            alert("bạn là admin")
             this.router.navigate([this.adminUrl])
           } else {
-            alert("bạn là user")
             this.router.navigate([this.returnUrl, "homepage"]);
+            // @ts-ignore
+            // if (data.status?.id == 1 || data.status?.id == 3) {
+            //   alert("Your account is locked or not approved. Please use another account!")
+            // } else {
+            //   this.router.navigate([this.returnUrl, "homepage"]);
+            // }
           }
         },
         error => {
+          console.log(error)
           alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
           this.loading = false;
         });
