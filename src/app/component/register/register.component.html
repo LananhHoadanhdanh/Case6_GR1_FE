@@ -23,40 +23,72 @@
             <div class="form-row">
               <input type="hidden" formControlName="statusUserId" value="1">
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="username" placeholder="Your Username"
-                       required="required" data-validation-required-message="Please enter your username" />
-                <p class="help-block text-danger"></p>
+                <input type="text" class="form-control p-4" formControlName="username" placeholder="Your Username"/>
+                <div *ngIf="username && username.invalid && username.touched">
+                  <div *ngIf="username.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your username</p>
+                  </div>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="fullName" placeholder="Your Name"
-                       required="required" data-validation-required-message="Please enter your name" />
-                <p class="help-block text-danger"></p>
+                <input type="text" class="form-control p-4" formControlName="fullName" placeholder="Your Name"/>
+                <div *ngIf="fullName && fullName.invalid && fullName.touched">
+                  <div *ngIf="fullName.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your name</p>
+                  </div>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="password" placeholder="Your Password"
-                       required="required" data-validation-required-message="Please enter your password" />
-                <p class="help-block text-danger"></p>
+                <input type="password" class="form-control p-4" formControlName="password" placeholder="Your Password"/>
+                <div *ngIf="password && password.invalid && password.touched">
+                  <div *ngIf="password.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your password</p>
+                  </div>
+                  <div *ngIf="password.errors?.['minLength']">
+                    <p class="help-block text-danger text-center">Password is too short!</p>
+                  </div>
+                  <div *ngIf="password.errors?.['maxLength']">
+                    <p class="help-block text-danger text-center">Password is too long!</p>
+                  </div>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="confirmPassword" placeholder="Your Confirm Password"
-                       required="required" data-validation-required-message="Please enter your confirm Password" />
-                <p class="help-block text-danger"></p>
+                <input type="password" class="form-control p-4" formControlName="confirmPassword" placeholder="Your Confirm Password"/>
+                <div *ngIf="confirmPassword && confirmPassword.touched && (userForm.controls['confirmPassword'].value != userForm.controls['password'].value)">
+                  <p class="help-block text-danger text-center">Please confirm the password again!</p>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="email" class="form-control p-4" formControlName="email" placeholder="Your Email"
-                       required="required" data-validation-required-message="Please enter your email" />
-                <p class="help-block text-danger"></p>
+                <input type="text" class="form-control p-4" formControlName="email" placeholder="Your Email"/>
+                <div *ngIf="email && email.invalid && email.touched">
+                  <div *ngIf="email.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your email</p>
+                  </div>
+                  <div *ngIf="email.errors?.['email']">
+                    <p class="help-block text-danger text-center">Incorrect email format!</p>
+                  </div>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="phoneNumber" placeholder="Your Phone Number"
-                       required="required" data-validation-required-message="Please enter your phone Number" />
-                <p class="help-block text-danger"></p>
+                <input type="text" class="form-control p-4" formControlName="phoneNumber" placeholder="Your Phone Number"/>
+                <div *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">
+                  <div *ngIf="phoneNumber.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your phone number</p>
+                  </div>
+                </div>
+                <p class="help-block text-danger text-center"></p>
               </div>
             </div>
             <div class="form-row">
               <div class="col-sm-6 control-group">
                 <div>
-                  <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="register">Register</button>
+                  <button class="btn btn-primary btn-block py-3 px-5" type="submit"
+                          [disabled]="(!userForm.valid) || (userForm.controls['confirmPassword'].value != userForm.controls['password'].value)">Register</button>
                 </div>
               </div>
               <div class="col-sm-6 control-group">

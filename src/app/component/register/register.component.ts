@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
@@ -10,14 +10,13 @@ import {UserService} from "../../service/user.service";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   userForm = new FormGroup({
-    username: new FormControl(""),
-    password: new FormControl(""),
-    confirmPassword: new FormControl(""),
-    fullName: new FormControl(""),
-    email: new FormControl(""),
-    phoneNumber: new FormControl(""),
+    username: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
+    confirmPassword: new FormControl("", [Validators.required]),
+    fullName: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    phoneNumber: new FormControl("", [Validators.required]),
     statusUserId: new FormControl("1"),
   });
   constructor(private activatedRoute: ActivatedRoute,
@@ -44,11 +43,35 @@ export class RegisterComponent implements OnInit {
     console.log(user)
     // @ts-ignore
     this.userService.register(user).subscribe(() => {
-      alert("Tạo tài khoản thành công! Hãy đăng nhập !")
+      alert("Sign Up Success! Please login to continue!")
       this.router.navigate(["/"])
     },error => {
       console.log(error)
     })
+  }
+
+  get username() {
+    return this.userForm.get('username')
+  }
+
+  get password() {
+    return this.userForm.get('password')
+  }
+
+  get confirmPassword() {
+    return this.userForm.get('confirmPassword')
+  }
+
+  get fullName() {
+    return this.userForm.get('fullName')
+  }
+
+  get email() {
+    return this.userForm.get('email')
+  }
+
+  get phoneNumber() {
+    return this.userForm.get('phoneNumber')
   }
 
 }
