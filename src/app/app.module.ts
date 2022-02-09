@@ -11,13 +11,13 @@ import { FooterComponent } from './component/footer/footer.component';
 import { RegisterComponent } from './component/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AdminModule} from "./module/admin/admin.module";
+import {UserModule} from "./module/user/user.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListUserComponent,
     LoginComponent,
-    UpdateUserComponent,
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
@@ -27,6 +27,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AdminModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
