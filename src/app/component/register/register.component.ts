@@ -32,11 +32,11 @@ export class RegisterComponent implements OnInit {
   register(){
     const user = {
       username: this.userForm.value.username,
-      password: this.userForm.value.username,
-      confirmPassword: this.userForm.value.username,
-      fullName: this.userForm.value.username,
-      email: this.userForm.value.username,
-      phoneNumber: this.userForm.value.username,
+      password: this.userForm.value.password,
+      confirmPassword: this.userForm.value.confirmPassword,
+      fullName: this.userForm.value.fullName,
+      email: this.userForm.value.email,
+      phoneNumber: this.userForm.value.phoneNumber,
       status: {
         id: '1'
       }

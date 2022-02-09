@@ -54,8 +54,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('USERID', data.id);
           // @ts-ignore
           if (data.roles[0].authority == "ROLE_ADMIN") {
+            alert("bạn là admin")
             this.router.navigate([this.adminUrl])
           } else {
+            alert("bạn là user")
             this.router.navigate([this.returnUrl, "homepage"]);
           }
         },
