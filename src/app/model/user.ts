@@ -1,4 +1,5 @@
 import {Role} from "./role";
+import {StatusUser} from "./status-user";
 
 export interface User {
   id?: string,
@@ -22,7 +23,7 @@ export interface User {
   username?: string,
   view?: string,
   weight?: string,
-  status_user_id?: string,
+  status?: StatusUser,
   enabled?: boolean,
   full_name?: string,
   roles?: [Role];
