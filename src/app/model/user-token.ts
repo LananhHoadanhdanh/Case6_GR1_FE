@@ -1,11 +1,12 @@
-import {Role} from "./role";
+import {Role} from './role';
 
-export interface User {
+
+export interface UserToken {
   id?: string,
   avatar?: string,
-  birthday?: string,
   city?: string,
   confirm_password?: string,
+  accessToken?: string;
   description?: string,
   email?: string,
   facebook?: string,
@@ -23,7 +24,7 @@ export interface User {
   view?: string,
   weight?: string,
   status_user_id?: string,
-  enabled?: boolean,
+  enabled?: string,
   full_name?: string,
-  roles?: [Role];
+  roles: [Role];
 }
