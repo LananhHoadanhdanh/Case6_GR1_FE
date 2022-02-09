@@ -10,6 +10,7 @@ export class UpdateUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
   updateFile(){
     // @ts-ignore
@@ -17,5 +18,6 @@ export class UpdateUserComponent implements OnInit {
   }
   // @ts-ignore
   sub(obj) {
+
   }
 }
