@@ -40,7 +40,7 @@
 <div class="input-group mb-3">
   <div class="col-lg-4"></div>
   <div class="col-lg-4"><span class="input-group-text">Price</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="price">
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  value={{user?.price}} [(ngModel)]="price" >
   </div>
   <div class="col-lg-4"></div>
 </div>

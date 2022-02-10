@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./module/user/user.module').then(module => module.UserModule)
   },
   {
-    path: '123',
+    path: 'updatePrice',
     component: UpdatePriceUserComponent
   },
 
