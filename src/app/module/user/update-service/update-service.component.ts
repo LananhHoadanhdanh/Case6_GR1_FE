@@ -36,7 +36,7 @@ export class UpdateServiceComponent implements OnInit {
       this.serProvidedFree = res;
     })
     this.service.getAllExtend().subscribe(res => {
-        this.serProvidedExtend = res;
+      this.serProvidedExtend = res;
     })
     this.service.SerMinTime().subscribe(res => {
       this.serMinTime = res;
@@ -46,11 +46,20 @@ export class UpdateServiceComponent implements OnInit {
     this.checksTime = this.serMinTime
   }
 
-
   checkRadio() {
-    console.log(this.formService.value.minTime)
+    if (this.formService.value.minTime == 8) {
+      this.activeSer = {
+        // @ts-ignore
+        idUser: this.idU,
+        idService: this.formService.value.minTime
+      }
+      // @ts-ignore
+      this.activeServices.push(this.activeSer)
+    }
+    // @ts-ignore
+    this.service.save(this.activeServices).subscribe(res => {
+    })
   }
-
   // @ts-ignore
   saveUpdate(event) {
     if (event.target.checked) {

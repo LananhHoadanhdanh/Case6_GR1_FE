@@ -3,8 +3,9 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ServiceProvided} from "../model/service-provided";
+import {ActiveService} from "../model/active-service";
 
-const API_URL = environment.apiUrl;
+const API_URL = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,7 @@ export class SerProvidedService {
     return this.http.get<ServiceProvided[]>(API_URL + '/serviceFree')
   }
 
+  save(active: ActiveService[]): Observable<ActiveService[]> {
+    return this.http.post<ActiveService[]>(API_URL + '/actService', active)
+  }
 }
