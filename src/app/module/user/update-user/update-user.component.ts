@@ -6,6 +6,7 @@ import {finalize} from "rxjs";
 import {User} from "../../../model/user";
 import {ImageService} from "../../../service/image.service";
 import {Image} from "../../../model/image";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-update-user',
@@ -55,8 +56,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   saveAll() {
-    this.saveUser()
     this.saveImage()
+    this.saveUser()
+    swal("Good job!", "You clicked the button!", "success")
+
   }
 
   saveUser() {
@@ -77,7 +80,7 @@ export class UpdateUserComponent implements OnInit {
     this.userUpdate.avatar = this.avatar
     this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
-      alert("oke")
+
     })
   }
 
