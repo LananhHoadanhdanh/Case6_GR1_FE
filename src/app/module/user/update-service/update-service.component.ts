@@ -58,9 +58,7 @@ export class UpdateServiceComponent implements OnInit {
       this.activeServices.push(this.activeSer)
     }
     // @ts-ignore
-    this.service.delete(this.idU).subscribe(res => {
-      console.log(this.activeServices)
-    })
+
     if (this.activeServices.length != 0) {
       this.service.save(this.activeServices).subscribe(res => {
         swal("Update successful!", "You will be returned to the homepage", "success")
