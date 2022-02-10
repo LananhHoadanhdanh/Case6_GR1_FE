@@ -12,6 +12,9 @@ import {ActiveService} from "../../../model/active-service";
 })
 export class UpdateServiceComponent implements OnInit {
   serProvided: ServiceProvided[] = []
+  serProvidedFree: ServiceProvided[] = []
+  serProvidedExtend: ServiceProvided[] = []
+  SerMinTime: ServiceProvided[] = []
   activeServices: ActiveService[] = []
 
   constructor(private service: SerProvidedService, private activatedRoute: ActivatedRoute, private router: Router
@@ -21,8 +24,14 @@ export class UpdateServiceComponent implements OnInit {
   formService: FormGroup = this.form.group({})
 
   ngOnInit(): void {
-    this.service.getAll().subscribe(res => {
-      this.serProvided = res;
+    this.service.getAllFree().subscribe(res => {
+      this.serProvidedFree = res;
+    })
+    this.service.getAllExtend().subscribe(res => {
+      this.serProvidedExtend = res;
+    })
+    this.service.SerMinTime().subscribe(res => {
+      this.SerMinTime = res;
     })
   }
 

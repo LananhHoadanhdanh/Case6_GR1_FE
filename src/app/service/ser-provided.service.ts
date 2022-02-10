@@ -18,5 +18,16 @@ export class SerProvidedService {
     return this.http.get<ServiceProvided[]>(API_URL + '/service')
   }
 
+  SerMinTime(): Observable<ServiceProvided[]> {
+    return this.http.get<ServiceProvided[]>(API_URL + '/serviceMinTime')
+  }
+
+  getAllExtend(): Observable<ServiceProvided[]> {
+    return this.http.get<ServiceProvided[]>(API_URL + '/serviceExtend')
+  }
+
+  getAllFree(): Observable<ServiceProvided[]> {
+    return this.http.get<ServiceProvided[]>(API_URL + '/serviceFree')
+  }
 
 }
