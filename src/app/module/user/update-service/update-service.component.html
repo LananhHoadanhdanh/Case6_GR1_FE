@@ -22,6 +22,18 @@
           <form name="sentMessage" id="contactForm" novalidate="novalidate">
 
 
+            <div class="col-sm-12 control-group" *ngFor="let ser of serProvided">
+              <div class="row ">
+                <div class="col-6">
+                </div>
+                <div class="">
+                  <div class="row">
+                    <div class="col-3"><input id="1" type="checkbox" value="male">
+                      <label for="1">{{ser.name}}</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
             <div class="col-sm-12 control-group">
@@ -31,7 +43,7 @@
                 </div>
                 <div class="radio">
                   <div class="row">
-                    <div class="col-3"> <input id="male" type="radio" name="gender" value="male">
+                    <div class="col-3"><input id="male" type="radio" name="gender" value="male">
                       <label for="male">Male</label></div>
                     <div class="col-4"><input id="female" type="radio" name="gender" value="female">
                       <label for="female">Female</label></div>
