@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {User} from "../model/user";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
-import {User} from "../model/user";
 
 const API_URL = environment.apiUrl;
 @Injectable({
@@ -14,6 +14,10 @@ export class UserService {
 
   register(user: User): Observable<User> {
     return this.http.post<User>(API_URL + '/register', user);
+  }
+
+  getAllUser(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/users')
   }
 
   registerSuccess(token: string): Observable<any> {
@@ -36,12 +40,16 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  updateUserProfile(id: string|null, user: User): Observable<User> {
+  updateUserProfile(id: number, user: User): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
   list12NewServiceProvider():Observable<Iterable<User>>{
     return this.http.get<Iterable<User>>(API_URL+`/12newServiceProvider`)
   }
 
+  // @ts-ignore
+  updatePrice(id: number | null, price: string): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
+  }
 
 }

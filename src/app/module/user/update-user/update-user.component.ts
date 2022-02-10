@@ -102,6 +102,7 @@ export class UpdateUserComponent implements OnInit {
     }
     this.userUpdate = user;
     this.userUpdate.avatar = this.avatar
+    // @ts-ignore
     this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
       swal("Update successful!", "You will be returned to the homepage", "success")
@@ -166,10 +167,9 @@ export class UpdateUserComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
-              console.log(url)
             }
-            // this.avatar = this.fb
-            // console.log(this.avatar)
+            this.avatar = this.fb
+            console.log(this.avatar)
           });
         })
       )
