@@ -82,8 +82,6 @@ export class UpdateUserComponent implements OnInit {
   saveAll() {
     this.saveImage()
     this.saveUser()
-
-
   }
 
   saveUser() {

@@ -4,6 +4,7 @@ import {ServiceProvided} from "../../../model/service-provided";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveService} from "../../../model/active-service";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-update-service',
@@ -46,7 +47,7 @@ export class UpdateServiceComponent implements OnInit {
     this.checksTime = this.serMinTime
   }
 
-  checkRadio() {
+  saveUpdate() {
     if (this.formService.value.minTime == 8) {
       this.activeSer = {
         // @ts-ignore
@@ -57,11 +58,16 @@ export class UpdateServiceComponent implements OnInit {
       this.activeServices.push(this.activeSer)
     }
     // @ts-ignore
+    this.service.delete(this.idU).subscribe(res => {
+      console.log("delete")
+    })
     this.service.save(this.activeServices).subscribe(res => {
+      swal("Update successful!", "You will be returned to the homepage", "success")
     })
   }
+
   // @ts-ignore
-  saveUpdate(event) {
+  dataUpdate(event) {
     if (event.target.checked) {
       this.activeSer = {
         // @ts-ignore

@@ -19,8 +19,7 @@
       <div class="col-lg-9">
         <div class="contact-form bg-light rounded p-5">
           <div id="success"></div>
-          <form [formGroup]="formService" (ngSubmit)="checkRadio()"  id="contactForm" novalidate="novalidate">
-
+          <form [formGroup]="formService" (ngSubmit)="saveUpdate()"  >
 
             <div class="col-sm-12 control-group">
               <div class="row ">
@@ -59,7 +58,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="col-12">
-                        <input name="serFree" (change)="saveUpdate($event)" [value]="ser.id" type="checkbox" id="{{i+1}}">
+                        <input name="serFree" (change)="dataUpdate($event)" [value]="ser.id" type="checkbox" id="{{i+1}}">
                         <label for="{{i+1}}"><p>{{ser.name}}</p></label>
                       </div>
                     </div>
@@ -72,7 +71,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="col-12">
-                        <input  [value]="ser.id" (change)="saveUpdate($event)" type="checkbox" id="{{ser.id}}">
+                        <input  [value]="ser.id" (change)="dataUpdate($event)" type="checkbox" id="{{ser.id}}">
                         <label for="{{ser.id}}"><p>{{ser.name}}</p></label>
                       </div>
                     </div>
