@@ -59,11 +59,21 @@ export class UpdateServiceComponent implements OnInit {
     }
     // @ts-ignore
     this.service.delete(this.idU).subscribe(res => {
-      console.log("delete")
+      console.log(this.activeServices)
     })
-    this.service.save(this.activeServices).subscribe(res => {
+    if (this.activeServices.length != 0) {
+      this.service.save(this.activeServices).subscribe(res => {
+        swal("Update successful!", "You will be returned to the homepage", "success")
+        this.router.navigate(['/homepage'])
+      })
+    } else {
       swal("Update successful!", "You will be returned to the homepage", "success")
-    })
+      this.router.navigate(['/homepage'])
+    }
+  }
+
+  back() {
+    this.router.navigate(['/homepage'])
   }
 
   // @ts-ignore
@@ -76,16 +86,13 @@ export class UpdateServiceComponent implements OnInit {
       }
       // @ts-ignore
       this.activeServices.push(this.activeSer)
-      console.log(this.activeServices)
     } else {
       for (let j = 0; j < this.activeServices.length; j++) {
         if (this.activeServices[j].idService == event.target.value) {
           if (j == 0) {
             this.activeServices.splice(0, 1)
-            console.log(this.activeServices)
           }
           this.activeServices.splice(j, 1)
-          console.log(this.activeServices)
         }
       }
     }
