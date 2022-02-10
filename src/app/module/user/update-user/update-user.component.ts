@@ -8,6 +8,7 @@ import {ImageService} from "../../../service/image.service";
 import {Image} from "../../../model/image";
 import swal from "sweetalert";
 import {Router} from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-update-user',
@@ -16,7 +17,7 @@ import {Router} from "@angular/router";
 })
 export class UpdateUserComponent implements OnInit {
 
-  data?: string;
+  data: string="";
   title = "cloudsSorage";
   // @ts-ignore
   fb;
@@ -29,6 +30,8 @@ export class UpdateUserComponent implements OnInit {
   avatar?: string
   imgs: any[] = [];
   selectedImages: any[] = []
+  min:string=""
+  max?:string=""
 
   userUpdate?: User
 
@@ -50,7 +53,10 @@ export class UpdateUserComponent implements OnInit {
   constructor(private userService: UserService,
               private storage: AngularFireStorage,
               private imageService: ImageService,
-              private router:Router) {
+              private router:Router
+              ) {
+    this.min= moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
+    this.max= moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
   }
 
   ngOnInit(): void {

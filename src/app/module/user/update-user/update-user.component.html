@@ -55,7 +55,7 @@
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="date" class="form-control p-4" id="birthday" formControlName="birthday"
+                <input type="date" min="{{min}}" max="{{max}}" class="form-control p-4" id="birthday" formControlName="birthday"
                        placeholder="Your birthday"
                        required="required" data-validation-required-message="Please enter your birthday"/>
                 <div *ngIf="birthday && birthday.invalid && birthday.touched">
