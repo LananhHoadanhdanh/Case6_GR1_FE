@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../service/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
@@ -7,6 +7,7 @@ import {User} from "../../../model/user";
 import {ImageService} from "../../../service/image.service";
 import {Image} from "../../../model/image";
 import swal from "sweetalert";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-user',
@@ -24,7 +25,7 @@ export class UpdateUserComponent implements OnInit {
   // thêm ảnh
   public loading = false;
   public loading1 = false;
-  public loading2 = false;
+  time!: boolean;
   avatar?: string
   imgs: any[] = [];
   selectedImages: any[] = []
@@ -33,32 +34,55 @@ export class UpdateUserComponent implements OnInit {
 
   idU = localStorage.getItem("USERID");
   formUser = new FormGroup({
-    fullName: new FormControl(),
-    city: new FormControl(),
-    nationality: new FormControl(),
-    birthday: new FormControl(),
-    gender: new FormControl(),
-    height: new FormControl(),
-    weight: new FormControl(),
-    hobby: new FormControl(),
-    description: new FormControl(),
-    request: new FormControl(),
-    facebook: new FormControl(),
+    fullName: new FormControl('',[Validators.required]),
+    city: new FormControl('',[Validators.required]),
+    nationality: new FormControl('',[Validators.required]),
+    birthday: new FormControl('',[Validators.required]),
+    gender: new FormControl('',[Validators.required]),
+    height: new FormControl('',[Validators.required,Validators.min(150),Validators.max(200)]),
+    weight: new FormControl('',[Validators.required,Validators.min(40),Validators.max(100)]),
+    hobby: new FormControl('',[Validators.required]),
+    description: new FormControl('',[Validators.required]),
+    request: new FormControl('',[Validators.required]),
+    facebook: new FormControl('',[Validators.required]),
   })
 
   constructor(private userService: UserService,
               private storage: AngularFireStorage,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
 
   }
-
+ get fullName (){
+    return this.formUser.get('fullName')
+ } get city (){
+    return this.formUser.get('city')
+ } get nationality (){
+    return this.formUser.get('nationality')
+ } get birthday (){
+    return this.formUser.get('birthday')
+ } get gender (){
+    return this.formUser.get('gender')
+ } get height (){
+    return this.formUser.get('height')
+ } get weight (){
+    return this.formUser.get('weight')
+ } get hobby (){
+    return this.formUser.get('hobby')
+ } get description (){
+    return this.formUser.get('description')
+ }get request (){
+    return this.formUser.get('request')
+ }get facebook (){
+    return this.formUser.get('facebook')
+ }
   saveAll() {
     this.saveImage()
     this.saveUser()
-    swal("Good job!", "You clicked the button!", "success")
+
 
   }
 
@@ -80,6 +104,8 @@ export class UpdateUserComponent implements OnInit {
     this.userUpdate.avatar = this.avatar
     this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
+      swal("Update successful!", "You will be returned to the homepage", "success")
+      this.router.navigate(['/homepage'])
 
     })
   }
@@ -190,5 +216,6 @@ export class UpdateUserComponent implements OnInit {
         });
       }
     }
+
   }
 }
