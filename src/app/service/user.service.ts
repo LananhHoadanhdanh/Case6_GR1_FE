@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<User[]>(API_URL + '/users')
   }
 
+  getAllUserByStatus(statusId: number): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/usersByStatus?statusId=' + statusId)
+  }
+
   registerSuccess(token: string): Observable<any> {
     return this.http.get<any>(API_URL + '/confirm-account?token=' + token);
   }
@@ -43,6 +47,7 @@ export class UserService {
   updateUserProfile(id: number, user: User): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
+
   list12NewServiceProvider():Observable<Iterable<User>>{
     return this.http.get<Iterable<User>>(API_URL+`/12newServiceProvider`)
   }
