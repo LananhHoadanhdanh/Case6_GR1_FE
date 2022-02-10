@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../service/authentication.service";
 import {UserService} from "../../service/user.service";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-register',
@@ -43,9 +44,10 @@ export class RegisterComponent implements OnInit {
     console.log(user)
     // @ts-ignore
     this.userService.register(user).subscribe(() => {
-      alert("Sign Up Success! Please login to continue!")
+      swal("Sign Up Success!", "Please login to continue!", "success");
       this.router.navigate(["/"])
     },error => {
+      swal("Error!", "Username already exists, please try again!!!", "error");
       console.log(error)
     })
   }

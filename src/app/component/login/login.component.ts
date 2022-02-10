@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {first} from "rxjs";
 import {User} from "../../model/user";
 import {UserService} from "../../service/user.service";
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          console.log('đây là data')
           console.log(data)
           // @ts-ignore
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
@@ -59,18 +61,19 @@ export class LoginComponent implements OnInit {
           if (data.roles.length > 2) {
             this.router.navigate([this.adminUrl])
           } else {
-            this.router.navigate([this.returnUrl, "homepage"]);
+            // this.router.navigate([this.returnUrl, "homepage"]);
             // @ts-ignore
-            // if (data.status?.id == 1 || data.status?.id == 3) {
-            //   alert("Your account is locked or not approved. Please use another account!")
-            // } else {
-            //   this.router.navigate([this.returnUrl, "homepage"]);
-            // }
+            if (data.status?.id == 1 || data.status?.id == 3) {
+              swal("Error!", "Your account is locked or not approved. Please use another account!", "error");
+              // alert("Your account is locked or not approved. Please use another account!")
+            } else {
+              this.router.navigate([this.returnUrl, "homepage"]);
+            }
           }
         },
         error => {
           console.log(error)
-          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          swal("Error!", "Wrong username or password, please try again!", "error");
           this.loading = false;
         });
   }
