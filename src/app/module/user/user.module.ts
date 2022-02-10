@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import {UpdateUserComponent} from "./update-user/update-user.component";
 import { UpdateServiceComponent } from './update-service/update-service.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UpdateServiceComponent } from './update-service/update-service.componen
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

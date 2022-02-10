@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SerProvidedService} from "../../../service/ser-provided.service";
 import {ServiceProvided} from "../../../model/service-provided";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveService} from "../../../model/active-service";
 
@@ -14,25 +14,66 @@ export class UpdateServiceComponent implements OnInit {
   serProvided: ServiceProvided[] = []
   serProvidedFree: ServiceProvided[] = []
   serProvidedExtend: ServiceProvided[] = []
-  SerMinTime: ServiceProvided[] = []
+  serMinTime: ServiceProvided[] = []
   activeServices: ActiveService[] = []
+  activeSer?: ActiveService
+  time!: boolean;
+  idU = localStorage.getItem('USERID')
+  public checksFree: Array<ServiceProvided> = [];
+  public checksExtend: Array<ServiceProvided> = [];
+  public checksTime: Array<ServiceProvided> = [];
 
   constructor(private service: SerProvidedService, private activatedRoute: ActivatedRoute, private router: Router
     , private form: FormBuilder) {
   }
 
-  formService: FormGroup = this.form.group({})
+  formService: FormGroup = this.form.group({
+    minTime: new FormControl()
+  })
 
   ngOnInit(): void {
     this.service.getAllFree().subscribe(res => {
       this.serProvidedFree = res;
     })
     this.service.getAllExtend().subscribe(res => {
-      this.serProvidedExtend = res;
+        this.serProvidedExtend = res;
     })
     this.service.SerMinTime().subscribe(res => {
-      this.SerMinTime = res;
+      this.serMinTime = res;
     })
+    this.checksFree = this.serProvidedFree
+    this.checksExtend = this.serProvidedExtend
+    this.checksTime = this.serMinTime
   }
 
+
+  checkRadio() {
+    console.log(this.formService.value.minTime)
+  }
+
+  // @ts-ignore
+  saveUpdate(event) {
+    if (event.target.checked) {
+      this.activeSer = {
+        // @ts-ignore
+        idUser: this.idU,
+        idService: event.target.value
+      }
+      // @ts-ignore
+      this.activeServices.push(this.activeSer)
+      console.log(this.activeServices)
+    } else {
+      for (let j = 0; j < this.activeServices.length; j++) {
+        if (this.activeServices[j].idService == event.target.value) {
+          if (j == 0) {
+            this.activeServices.splice(0, 1)
+            console.log(this.activeServices)
+          }
+          this.activeServices.splice(j, 1)
+          console.log(this.activeServices)
+        }
+      }
+    }
+
+  }
 }

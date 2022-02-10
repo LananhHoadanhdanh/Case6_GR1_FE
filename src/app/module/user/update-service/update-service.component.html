@@ -19,52 +19,103 @@
       <div class="col-lg-9">
         <div class="contact-form bg-light rounded p-5">
           <div id="success"></div>
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <form [formGroup]="formService" (ngSubmit)="checkRadio()"  id="contactForm" novalidate="novalidate">
 
 
             <div class="col-sm-12 control-group">
               <div class="row ">
                 <div class="col-12">
-                  <h2>asd</h2>
+                  <h3>Service provided</h3>
                 </div>
-<!--                <div class="col-6" *ngFor="let ser of serProvided,index as i">-->
-<!--                  <div class="row" *ngIf="i<4 ; else no">-->
-<!--                    <ng-template #no>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="col-12">-->
-<!--                          <input type="checkbox" id="{{i+1}}" >-->
-<!--                          <label for="{{i+1}}"><p>{{ser.name}}</p></label>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </ng-template>-->
-<!--                  </div>-->
-<!--                </div>-->
+                <div class="col-12">
+                  Basic services (*) include:
+                  <ul>
+                    <li>- Launch of house people</li>
+                    <li> - Launching friends
+                    </li>
+                    <li>- Travel with your team
+                    </li>
+                    <li> - Shared out
+                    </li>
+                    <li>- Attend birthday
+                    </li>
+                    <li> - Chat offline
+                    </li>
+                    <li>- Online chat
+                    </li>
+                    <li> - Go in Tet holiday.
+                    </li>
+                    <li> - Going out holidays</li>
+                  </ul>
+                  <p style="color: #aa04c7">Note: Mounting items "*" are required</p>
+                </div>
+                <div class="col-12">
+                  <h5>Additional service options</h5>
+                </div>
+                <div class="col-12">
+                  <h6>Free additional service</h6>
+                </div>
+                <div class="col-4" *ngFor="let ser of serProvidedFree,index as i">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="col-12">
+                        <input name="serFree" formControlName="serFree" [value]="ser.id" type="checkbox" id="{{i+1}}">
+                        <label for="{{i+1}}"><p>{{ser.name}}</p></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <h6>Extended service (charged)</h6>
+                </div>
+                <div class="col-4" *ngFor="let ser of serProvidedExtend,index as i">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="col-12">
+                        <input formControlName="serExtend" [value]="ser.id" (change)="saveUpdate($event)" type="checkbox" id="{{ser.id}}">
+                        <label for="{{ser.id}}"><p>{{ser.name}}</p></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <h5>Minimum lease time (default is 1 hour)</h5>
+                </div>
+                <div class="col-4">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="col-12">
+                        <input formControlName="minTime" id="8" type="radio" name="gender" value="8">
+                        <label for="8">0.5 hour</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="col-12">
+                        <input id="female" type="radio" name="gender" value="female">
+                          <label for="female">1 hour</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
 
-
             <div class="col-sm-12 control-group">
-              <div class="row ">
-                <div class="col-6">
-                  <p style="margin-top: 15px; margin-left: 10px" class="help-block ">Giới Tính</p>
-                </div>
+              <div class="row">
                 <div class="radio">
                   <div class="row">
-                    <div class="col-3"><input id="male" type="radio" name="gender" value="male">
-                      <label for="male">Male</label></div>
-                    <div class="col-4"><input id="female" type="radio" name="gender" value="female">
-                      <label for="female">Female</label></div>
-                    <div class="col-3"><input id="other" type="radio" name="gender" value="other">
-                      <label for="other">Other</label></div>
-                  </div>
 
+
+                  </div>
 
                 </div>
               </div>
             </div>
 
             <div>
-              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Send Message
+              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Update service
               </button>
             </div>
           </form>
