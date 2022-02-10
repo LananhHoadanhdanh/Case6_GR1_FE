@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {User} from "../model/user";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
-import {User} from "../model/user";
 
 const API_URL = environment.apiUrl;
 @Injectable({
@@ -36,9 +36,13 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  updateUserProfile(id: string|null, user: User): Observable<User> {
+  updateUserProfile(id: number, user: User): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
+  // @ts-ignore
+  updatePrice(id: number | null, price: string): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
+  }
 
 }
