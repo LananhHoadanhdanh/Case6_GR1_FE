@@ -39,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
     nationality: new FormControl('',[Validators.required]),
     birthday: new FormControl('',[Validators.required]),
     gender: new FormControl('',[Validators.required]),
-    height: new FormControl('',[Validators.required,Validators.min(150),Validators.max(200)]),
+    height: new FormControl('',[Validators.required,Validators.min(140),Validators.max(200)]),
     weight: new FormControl('',[Validators.required,Validators.min(40),Validators.max(100)]),
     hobby: new FormControl('',[Validators.required]),
     description: new FormControl('',[Validators.required]),
