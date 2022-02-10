@@ -25,36 +25,78 @@
                 <input type="text" class="form-control p-4" id="fullName" formControlName="fullName"
                        placeholder="Your Name" required="required"
                        data-validation-required-message="Please enter your name"/>
+                <div *ngIf="fullName && fullName.invalid && fullName.touched">
+                  <div *ngIf="fullName.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your full name</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
                 <input type="text" class="form-control p-4" id="nationality" formControlName="nationality"
                        placeholder="Your Nationality"
                        required="required" data-validation-required-message="Please enter your nationality"/>
+                <div *ngIf="nationality && nationality.invalid && nationality.touched">
+                  <div *ngIf="nationality.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your nationality</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
                 <input type="text" class="form-control p-4" id="city" formControlName="city" placeholder="Your City"
                        required="required"
                        data-validation-required-message="Please enter your city"/>
+                <div *ngIf="city && city.invalid && city.touched">
+                  <div *ngIf="city.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your city</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
                 <input type="date" class="form-control p-4" id="birthday" formControlName="birthday"
                        placeholder="Your birthday"
                        required="required" data-validation-required-message="Please enter your birthday"/>
+                <div *ngIf="birthday && birthday.invalid && birthday.touched">
+                  <div *ngIf="birthday.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your city</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
                 <input type="number" class="form-control p-4" id="height" formControlName="height"
                        placeholder="Your height" required="required"
-                       data-validation-required-message="Please enter your height"/>
+                       data-validation-required-message="Please enter your height (Centimeter)"/>
+                <div *ngIf="height && height.invalid && height.touched">
+                  <div *ngIf="height.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your height (Centimeter)</p>
+                  </div>
+                  <div *ngIf="height.errors?.['min']">
+                    <p class="help-block text-danger text-center">Height must be greater than 140(Centimeter)</p>
+                  </div>
+                  <div *ngIf="height.errors?.['max']">
+                    <p class="help-block text-danger text-center">Height must be less than 200 (Centimeter)</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
                 <input type="number" class="form-control p-4" id="weight" formControlName="weight"
                        placeholder="Your weight" required="required"
-                       data-validation-required-message="Please enter your weight"/>
+                       data-validation-required-message="Please enter your weight (Kilogram)"/>
+                <div *ngIf="weight && weight.invalid && weight.touched">
+                  <div *ngIf="weight.errors?.['required']">
+                    <p class="help-block text-danger text-center">Please enter your weight (Kilogram)</p>
+                  </div>
+                  <div *ngIf="weight.errors?.['min']">
+                    <p class="help-block text-danger text-center">Weight must be greater than 40 (Kilogram)</p>
+                  </div>
+                  <div *ngIf="weight.errors?.['max']">
+                    <p class="help-block text-danger text-center">Weight must be less than 100 (Kilogram)</p>
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-12 control-group">
@@ -64,7 +106,8 @@
                   </div>
                   <div class="radio">
                     <div class="row">
-                      <div class="col-3"><input id="male" type="radio" name="gender" formControlName="gender"
+                      <div class="col-3">
+                        <input id="male" type="radio" name="gender" formControlName="gender"
                                                 value="male">
                         <label for="male">Male</label></div>
                       <div class="col-4"><input id="female" type="radio" name="gender" formControlName="gender"
@@ -73,6 +116,11 @@
                       <div class="col-3"><input id="other" type="radio" name="gender" formControlName="gender"
                                                 value="other">
                         <label for="other">Other</label></div>
+                      <div *ngIf="gender && gender.invalid && gender.touched">
+                        <div *ngIf="gender.errors?.['required']">
+                          <p class="help-block text-danger text-center">Please enter your gender</p>
+                        </div>
+                      </div>
                     </div>
 
 
@@ -84,24 +132,44 @@
               <input type="text" class="form-control p-4" id="hobby" formControlName="hobby" placeholder="Your hobby"
                      required="required"
                      data-validation-required-message="Please enter your hobby"/>
+              <div *ngIf="hobby && hobby.invalid && hobby.touched">
+                <div *ngIf="hobby.errors?.['required']">
+                  <p class="help-block text-danger text-center">Please enter your hobby</p>
+                </div>
+              </div>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
               <input type="text" class="form-control p-4" id="request" formControlName="request"
                      placeholder="Your request" required="required"
                      data-validation-required-message="Please enter your request"/>
+              <div *ngIf="request && request.invalid && request.touched">
+                <div *ngIf="request.errors?.['required']">
+                  <p class="help-block text-danger text-center">Please enter your request</p>
+                </div>
+              </div>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
               <input type="text" class="form-control p-4" id="facebook" formControlName="facebook"
                      placeholder="Your links facebook" required="required"
                      data-validation-required-message="Please enter your facebook"/>
+              <div *ngIf="facebook && facebook.invalid && facebook.touched">
+                <div *ngIf="facebook.errors?.['required']">
+                  <p class="help-block text-danger text-center">Please enter your facebook</p>
+                </div>
+              </div>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
               <textarea class="form-control p-4" rows="6" id="description" formControlName="description"
                         placeholder="Your description"
                         required="required" data-validation-required-message="Please enter your description"></textarea>
+              <div *ngIf="description && description.invalid && description.touched">
+                <div *ngIf="description.errors?.['required']">
+                  <p class="help-block text-danger text-center">Please enter your description</p>
+                </div>
+              </div>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group p-4">
@@ -122,7 +190,7 @@
                        autocomplete="off"/></div>
             </div>
             <div>
-              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Update Profile
+              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton" [disabled]="(!formUser.valid)">Update Profile
               </button>
             </div>
           </form>
