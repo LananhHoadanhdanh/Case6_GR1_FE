@@ -40,4 +40,9 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
+  // @ts-ignore
+  updatePrice(id: number | null, price: string): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
+  }
+
 }

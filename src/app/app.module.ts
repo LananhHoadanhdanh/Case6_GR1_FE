@@ -9,7 +9,7 @@ import { UpdateUserComponent } from './module/user/update-user/update-user.compo
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { RegisterComponent } from './component/register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminModule} from "./module/admin/admin.module";
 import {UserModule} from "./module/user/user.module";
@@ -28,7 +28,8 @@ import {UserModule} from "./module/user/user.module";
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    UserModule
+    UserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
