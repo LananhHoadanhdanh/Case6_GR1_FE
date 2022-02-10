@@ -152,7 +152,6 @@ export class UpdateUserComponent implements OnInit {
 
   // @ts-ignore
   updateAvatar(event) {
-    this.loading1 = true;
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -167,9 +166,10 @@ export class UpdateUserComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
+              console.log(url)
             }
-            this.avatar = this.fb
-            console.log(this.avatar)
+            // this.avatar = this.fb
+            // console.log(this.avatar)
           });
         })
       )
