@@ -104,17 +104,25 @@
                         required="required" data-validation-required-message="Please enter your description"></textarea>
               <p class="help-block text-danger"></p>
             </div>
-            <div class="control-group p-5">
-              <div id="yourBtn" (click)="updateFile()" style="color: white">click to upload a file</div>
+            <div class="control-group p-4">
+              <div id="yourBtn" (click)="updateFile()" style="color: white">Click to upload your avatar </div>
               <div style='height: 0px;width: 0px; overflow:hidden;'>
                 <input #userPhoto id="upfile"
+                       type="file" value="upload"
+                       (click)="updateAvatar($event)" name="avatar"
+                       autocomplete="off"/></div>
+            </div>
+            <div class="control-group p-4">
+              <div id="yourBt" (click)="updateFile3()" style="color: white">Click to upload 3 portrait photos</div>
+              <div style='height: 0px;width: 0px; overflow:hidden;'>
+                <input #userPhoto id="upfile3"
                        multiple
                        type="file" value="upload"
                        (change)="showPreview($event)" name="avatar"
                        autocomplete="off"/></div>
             </div>
             <div>
-              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Send Message
+              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Update Profile
               </button>
             </div>
           </form>

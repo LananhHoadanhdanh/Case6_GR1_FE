@@ -4,6 +4,8 @@ import {UserService} from "../../../service/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {User} from "../../../model/user";
+import {ImageService} from "../../../service/image.service";
+import {Image} from "../../../model/image";
 
 @Component({
   selector: 'app-update-user',
@@ -22,11 +24,11 @@ export class UpdateUserComponent implements OnInit {
   public loading = false;
   public loading1 = false;
   public loading2 = false;
-  avatar?:string
+  avatar?: string
   imgs: any[] = [];
-  selectedImages:any[]=[]
+  selectedImages: any[] = []
 
-  userUpdate?:User
+  userUpdate?: User
 
   idU = localStorage.getItem("USERID");
   formUser = new FormGroup({
@@ -43,18 +45,22 @@ export class UpdateUserComponent implements OnInit {
     facebook: new FormControl(),
   })
 
-  constructor( private userService :UserService,
-               private storage: AngularFireStorage) {
+  constructor(private userService: UserService,
+              private storage: AngularFireStorage,
+              private imageService: ImageService) {
   }
 
   ngOnInit(): void {
 
   }
-  saveAll(){
+
+  saveAll() {
     this.saveUser()
+    this.saveImage()
   }
-  saveUser(){
-    const user ={
+
+  saveUser() {
+    const user = {
       fullName: this.formUser.value.fullName,
       city: this.formUser.value.city,
       nationality: this.formUser.value.nationality,
@@ -67,20 +73,56 @@ export class UpdateUserComponent implements OnInit {
       request: this.formUser.value.request,
       facebook: this.formUser.value.facebook,
     }
-    this.userUpdate=user;
-    this.userUpdate.avatar=this.avatar
-    this.userService.updateUserProfile(this.idU,this.userUpdate).subscribe(()=>{
+    this.userUpdate = user;
+    this.userUpdate.avatar = this.avatar
+    this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
       alert("oke")
     })
+  }
+
+  saveImage() {
+    if (this.selectedImages.length !== 0) {
+      for (let i = 0; i < this.selectedImages.length; i++) {
+        let selectedImage = this.selectedImages[i];
+        var n = Date.now();
+        const filePath = `RoomsImages/${n}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              const image: Image = {
+                link: url,
+                user: {
+                  // @ts-ignore
+                  id: this.idU
+                }
+              };
+              console.log(url);
+              this.imageService.create(image).subscribe(() => {
+                console.log('thêm thành công 3 ảnh')
+              });
+            });
+          })
+        ).subscribe();
+      }
+    }
+
+
   }
 
   updateFile() {
     // @ts-ignore
     document.getElementById("upfile").click();
   }
+
+  updateFile3() {
+    // @ts-ignore
+    document.getElementById("upfile3").click();
+  }
+
   // @ts-ignore
-  onFile(event){
+  updateAvatar(event) {
     this.loading1 = true;
     const n = Date.now();
     const file = event.target.files[0];
@@ -96,11 +138,9 @@ export class UpdateUserComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
-
             }
-            this.avatar=this.fb
+            this.avatar = this.fb
             console.log(this.avatar)
-
           });
         })
       )
@@ -109,9 +149,9 @@ export class UpdateUserComponent implements OnInit {
       });
 
   }
+
   // @ts-ignore
   showPreview(event: any) {
-    console.log(event)
     this.loading = true;
     let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
@@ -147,5 +187,5 @@ export class UpdateUserComponent implements OnInit {
         });
       }
     }
-}
+  }
 }
