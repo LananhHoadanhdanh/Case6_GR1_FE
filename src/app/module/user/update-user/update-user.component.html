@@ -162,7 +162,7 @@
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <textarea class="form-control p-4" rows="6" id="description" formControlName="description"
+              <textarea class="form-control p-4 " rows="6" id="description" formControlName="description"
                         placeholder="Your description"
                         required="required" data-validation-required-message="Please enter your description"></textarea>
               <div *ngIf="description && description.invalid && description.touched">
@@ -172,22 +172,38 @@
               </div>
               <p class="help-block text-danger"></p>
             </div>
-            <div class="control-group p-4">
-              <div id="yourBtn" (click)="updateFile()" style="color: white">Click to upload your avatar </div>
-              <div style='height: 0px;width: 0px; overflow:hidden;'>
-                <input #userPhoto id="upfile"
-                       type="file" value="upload"
-                       (change)="updateAvatar($event)" name="avatar"
-                       autocomplete="off"/></div>
+            <div class="control-group p-5">
+              <div class="row">
+                <div class="col-6 mt-5">
+                  <div id="yourBtn" (click)="updateFile()" style="color: white">Click to upload your avatar </div>
+                  <div style='height: 0px;width: 0px; overflow:hidden;'>
+                    <input #userPhoto id="upfile"
+                           type="file" value="upload"
+                           (change)="updateAvatar($event)" name="avatar"
+                           autocomplete="off"/></div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-4"> <img class="box" src="{{userUpdate?.avatar}}"  style="object-fit: cover;"></div>
+              </div>
+
+
             </div>
-            <div class="control-group p-4">
-              <div id="yourBt" (click)="updateFile3()" style="color: white">Click to upload 3 portrait photos</div>
-              <div style='height: 0px;width: 0px; overflow:hidden;'>
-                <input #userPhoto id="upfile3"
-                       multiple
-                       type="file" value="upload"
-                       (change)="showPreview($event)" name="avatar"
-                       autocomplete="off"/></div>
+            <div class="control-group p-5">
+              <div class="row">
+                <div class="col-6 mt-5">
+                  <div id="yourBt" (click)="updateFile3()" style="color: white">Click to upload 3 portrait photos</div>
+                  <div style='height: 0px;width: 0px; overflow:hidden;'>
+                    <input #userPhoto id="upfile3"
+                           multiple
+                           type="file" value="upload"
+                           (change)="showPreview($event)" name="avatar"
+                           autocomplete="off"/></div>
+                </div>
+                <div class="col-6">
+                  <img  class="box1" src="https://phunugioi.com/wp-content/uploads/2020/04/anh-gai-xinh-2k-de-thuong-cute-1536x960.jpg">
+                </div>
+              </div>
+
             </div>
             <div>
               <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton" [disabled]="(!formUser.valid)">Update Profile

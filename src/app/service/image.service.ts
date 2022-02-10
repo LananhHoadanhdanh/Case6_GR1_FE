@@ -14,4 +14,7 @@ export class ImageService {
   create(image:Image) :Observable<Image>{
     return this.http.post<Image>(API_URL+'/loadImage',image)
   }
+  findAllImageByUser(id:string) :Observable<Iterable<Image>>{
+    return this.http.get<Iterable<Image>>(API_URL+`/findAllImageByUser/${id}`)
+  }
 }

@@ -128,7 +128,7 @@ export class UpdateUserComponent implements OnInit {
     this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
       swal("Update successful!", "You will be returned to the homepage", "success")
-      this.router.navigate(['/homepage'])
+      // this.router.navigate(['/homepage'])
 
     })
   }
@@ -192,6 +192,8 @@ export class UpdateUserComponent implements OnInit {
             }
             this.avatar = this.fb
             console.log(this.avatar)
+            // @ts-ignore
+            this.userUpdate?.avatar=this.avatar
           });
         })
       )
