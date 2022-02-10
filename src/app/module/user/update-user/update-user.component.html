@@ -24,7 +24,7 @@
               <div class="col-sm-6 control-group">
                 <input type="text" class="form-control p-4" id="fullName" formControlName="fullName"
                        placeholder="Your Name" required="required"
-                       data-validation-required-message="Please enter your name"/>
+                       data-validation-required-message="Please enter your name" />
                 <div *ngIf="fullName && fullName.invalid && fullName.touched">
                   <div *ngIf="fullName.errors?.['required']">
                     <p class="help-block text-danger text-center">Please enter your full name</p>

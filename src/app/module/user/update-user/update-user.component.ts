@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../service/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
@@ -60,7 +60,23 @@ export class UpdateUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // @ts-ignore
+    this.userService.getUserProfile(this.idU).subscribe( res=>{
+      this.userUpdate=res;
+      this.formUser=new FormGroup({
+        fullName: new FormControl(this.userUpdate.fullName,[Validators.required]),
+        city: new FormControl(this.userUpdate.city,[Validators.required]),
+        nationality: new FormControl(this.userUpdate.nationality,[Validators.required]),
+        birthday: new FormControl(this.userUpdate.birthday,[Validators.required]),
+        gender: new FormControl(this.userUpdate.gender,[Validators.required]),
+        height: new FormControl(this.userUpdate.height,[Validators.required,Validators.min(140),Validators.max(200)]),
+        weight: new FormControl(this.userUpdate.weight,[Validators.required,Validators.min(40),Validators.max(100)]),
+        hobby: new FormControl(this.userUpdate.hobby,[Validators.required]),
+        description: new FormControl(this.userUpdate.description,[Validators.required]),
+        request: new FormControl(this.userUpdate.request,[Validators.required]),
+        facebook: new FormControl(this.userUpdate.facebook,[Validators.required]),
+      })
+    })
   }
  get fullName (){
     return this.formUser.get('fullName')
