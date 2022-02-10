@@ -10,7 +10,7 @@ import {
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AuthenticationService} from "../services/authentication.service";
+import {AuthenticationService} from "../service/authentication.service";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

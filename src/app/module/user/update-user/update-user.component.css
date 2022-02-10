@@ -11,24 +11,35 @@ label:before {
   width: 20px;
   height: 20px;
   border-radius: 11px;
-  border: 2px solid orange;
+  border: 2px solid rgba(254,98,194,0.9);
   background-color: transparent;
 }
 
 input[type='radio']:checked+label:before {
   position: relative;
-  border: 2px solid orange;
+  border: 2px solid rgba(254,98,194,0.9);
   border-radius: 11px;
   width: 20px;
   height: 20px;
   top: 5px;
   content: " ";
   display: inline-block;
-  background-color: blue;
+  background-color: #00ffc3
 }
 #yourBtn {
   position: relative;
-  width: 300px;
+  width: 350px;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px dashed #BBB;
+  text-align: center;
+  background-color: #41c764;
+  cursor: pointer;
+}
+#yourBt {
+  position: relative;
+  width: 350px;
   padding: 10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
