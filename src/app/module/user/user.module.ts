@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import {UpdateUserComponent} from "./update-user/update-user.component";
+import { List12NewServiceProviderComponent } from './list12-new-service-provider/list12-new-service-provider.component';
 import { UpdatePriceUserComponent } from './update-price-user/update-price-user.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
@@ -12,13 +13,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   declarations: [
     HomepageComponent,
     UpdateUserComponent,
+    List12NewServiceProviderComponent,
     UpdatePriceUserComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
+
   ]
 })
 export class UserModule { }

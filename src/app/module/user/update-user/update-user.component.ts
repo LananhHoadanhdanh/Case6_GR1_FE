@@ -153,7 +153,6 @@ export class UpdateUserComponent implements OnInit {
 
   // @ts-ignore
   updateAvatar(event) {
-    this.loading1 = true;
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
