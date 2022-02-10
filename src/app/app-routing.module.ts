@@ -15,7 +15,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'admin',
+    path: '',
     loadChildren: () => import('./module/admin/admin.module').then(module => module.AdminModule)
   },
   {

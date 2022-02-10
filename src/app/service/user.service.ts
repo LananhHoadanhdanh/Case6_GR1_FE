@@ -16,6 +16,10 @@ export class UserService {
     return this.http.post<User>(API_URL + '/register', user);
   }
 
+  getAllUser(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/users')
+  }
+
   registerSuccess(token: string): Observable<any> {
     return this.http.get<any>(API_URL + '/confirm-account?token=' + token);
   }
