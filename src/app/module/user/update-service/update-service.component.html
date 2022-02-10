@@ -22,16 +22,23 @@
           <form name="sentMessage" id="contactForm" novalidate="novalidate">
 
 
-            <div class="col-sm-12 control-group" *ngFor="let ser of serProvided">
+            <div class="col-sm-12 control-group">
               <div class="row ">
-                <div class="col-6">
+                <div class="col-12">
+                  <h2>asd</h2>
                 </div>
-                <div class="">
-                  <div class="row">
-                    <div class="col-3"><input id="1" type="checkbox" value="male">
-                      <label for="1">{{ser.name}}</label></div>
-                  </div>
-                </div>
+<!--                <div class="col-6" *ngFor="let ser of serProvided,index as i">-->
+<!--                  <div class="row" *ngIf="i<4 ; else no">-->
+<!--                    <ng-template #no>-->
+<!--                      <div class="col-12">-->
+<!--                        <div class="col-12">-->
+<!--                          <input type="checkbox" id="{{i+1}}" >-->
+<!--                          <label for="{{i+1}}"><p>{{ser.name}}</p></label>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </ng-template>-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
             </div>
 

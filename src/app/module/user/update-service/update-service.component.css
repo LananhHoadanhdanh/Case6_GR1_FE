@@ -51,3 +51,11 @@ input[type='checkbox']:checked+label:before {
   background-color: #41c764;
   cursor: pointer;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto ;
+  padding: 0px;
+  align-items: center;
+  width: 100px;
+  margin-left: 50px;
+}
