@@ -21,16 +21,12 @@ export class UpdatePriceUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((paraMap: ParamMap) => {
+
       // @ts-ignore
-      let id = paraMap.get('id')
-      console.log(id)
-      // @ts-ignore
-      this.userService.getUserProfile(id).subscribe(result => {
+      this.userService.getUserProfile(this.iUser).subscribe(result => {
         this.user = result
         console.log(result)
       })
-    })
   }
 
   updatePrice() {
