@@ -279,7 +279,7 @@ export class UpdateUserComponent implements OnInit {
           // @ts-ignore
           clearInterval(this.times);
         }
-      }, 16000);
+      }, 5000);
 
       // @ts-ignore
       this.time = setInterval(() => {
@@ -294,12 +294,12 @@ export class UpdateUserComponent implements OnInit {
           // @ts-ignore
           clearInterval(this.time);
         }
-      }, 16000);
+      }, 20000);
 
     }
 
   }
-showLoadAvt(){
+  showLoadAvt(){
   // @ts-ignore
   document.getElementById("loading").style.visibility = "visible"
   // @ts-ignore
@@ -308,22 +308,22 @@ showLoadAvt(){
     document.getElementById("loading").style.visibility = "hidden"
     if (this.time1) {
       // @ts-ignore
-      clearInterval(this.time);
+      clearInterval(this.time1);
     }
   }, 5000);
 }
-showLoad() {
+  showLoad() {
     // @ts-ignore
     document.getElementById("loading").style.visibility = "visible"
     // @ts-ignore
-    this.time1 = setInterval(() => {
+    this.time = setInterval(() => {
       // @ts-ignore
       document.getElementById("loading").style.visibility = "hidden"
-      if (this.time1) {
+      if (this.time) {
         // @ts-ignore
         clearInterval(this.time);
       }
-    }, 26000);
+    }, 24000);
 
   }
 }
