@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../../../model/user";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: 'app-list6-user-vip',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class List6UserVipComponent implements OnInit {
 
-  constructor() { }
+  users:User[]=[]
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.list6UserVip().subscribe(res=>{
+      // @ts-ignore
+      this.users=res;
+      console.log(this.users)
+    })
   }
+
 
 }
