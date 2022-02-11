@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   currentUser?: any;
   username = localStorage.getItem("USERNAME")
+  idU = localStorage.getItem("USERID")
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router) {
@@ -26,6 +27,10 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("USERNAME");
     localStorage.removeItem("USERID");
     window.location.href = 'http://localhost:4200';
+  }
+
+  detail() {
+    this.router.navigate(["/detail/" + this.idU])
   }
 
 }
