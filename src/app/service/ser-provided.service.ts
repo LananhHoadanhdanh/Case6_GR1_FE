@@ -40,4 +40,7 @@ export class SerProvidedService {
     return this.http.delete<ActiveService[]>(API_URL + `/deleteService`, active)
   }
 
+  getAllActService(id:number): Observable<ActiveService[]> {
+    return this.http.get<ActiveService[]>(API_URL+`/servicePro/${id}`)
+  }
 }

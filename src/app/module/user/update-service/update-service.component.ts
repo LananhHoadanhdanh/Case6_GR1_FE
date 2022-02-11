@@ -14,11 +14,14 @@ import swal from "sweetalert";
 export class UpdateServiceComponent implements OnInit {
   serProvided: ServiceProvided[] = []
   serProvidedFree: ServiceProvided[] = []
+  freeCheckedServiceArr: any[] = []
   serProvidedExtend: ServiceProvided[] = []
   serMinTime: ServiceProvided[] = []
   activeServices: ActiveService[] = []
+  actSerData: ActiveService[] = []
   activeSer?: ActiveService
   time!: boolean;
+  check?: boolean;
   idU = localStorage.getItem('USERID')
   public checksFree: Array<ServiceProvided> = [];
   public checksExtend: Array<ServiceProvided> = [];
@@ -35,6 +38,32 @@ export class UpdateServiceComponent implements OnInit {
   ngOnInit(): void {
     this.service.getAllFree().subscribe(res => {
       this.serProvidedFree = res;
+      // @ts-ignore
+      this.service.getAllActService(this.idU).subscribe(data => {
+        for (let i = 0; i < this.serProvidedFree.length; i++) {
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].idService == this.serProvidedFree[i]?.id) {
+              this.freeCheckedServiceArr.push({
+                // @ts-ignore
+                id: this.serProvidedFree[i]?.id,
+                // @ts-ignore
+                name: this.serProvidedFree[i]?.name,
+                // @ts-ignore
+                status: true,
+              })
+            } else {
+              this.freeCheckedServiceArr.push({
+                // @ts-ignore
+                id: this.serProvidedFree[i]?.id,
+                // @ts-ignore
+                name: this.serProvidedFree[i]?.name,
+                // @ts-ignore
+                status: false,
+              })
+            }
+          }
+        }
+      })
     })
     this.service.getAllExtend().subscribe(res => {
       this.serProvidedExtend = res;
@@ -45,6 +74,13 @@ export class UpdateServiceComponent implements OnInit {
     this.checksFree = this.serProvidedFree
     this.checksExtend = this.serProvidedExtend
     this.checksTime = this.serMinTime
+    this.check = true
+  }
+
+  getAllServiceAct(id: number) {
+    this.service.getAllActService(id).subscribe(res => {
+      this.actSerData = res;
+    })
   }
 
   saveUpdate() {
