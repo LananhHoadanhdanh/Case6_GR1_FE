@@ -59,13 +59,10 @@ input[type='radio']:checked+label:before {
   -moz-box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
   box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
 }.box1{
-  height: 150px!important;
+  width: auto;
+  height: 160px!important;
   overflow: hidden;
 
-  animation-iteration-count: infinite;
-  -webkit-box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
-  -moz-box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
-  box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
 }
 .box1 img{
   width: 100%!important;

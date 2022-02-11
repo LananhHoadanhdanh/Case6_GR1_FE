@@ -189,8 +189,8 @@
 
             </div>
             <div class="control-group p-5">
-              <div class="row">
-                <div class="col-6 mt-5">
+              <div class="row ">
+                <div class="col-5 mt-5">
                   <div id="yourBt" (click)="updateFile3()" style="color: white">Click to upload 3 portrait photos</div>
                   <div style='height: 0px;width: 0px; overflow:hidden;'>
                     <input #userPhoto id="upfile3"
@@ -199,8 +199,9 @@
                            (change)="showPreview($event)" name="avatar"
                            autocomplete="off"/></div>
                 </div>
-                <div class="col-6">
-                  <img  class="box1" src="https://phunugioi.com/wp-content/uploads/2020/04/anh-gai-xinh-2k-de-thuong-cute-1536x960.jpg">
+                <div class="col-2"></div>
+                <div class="col-5 mt-3" *ngFor="let img of image">
+                  <img  class="box1" src="{{img.link}}">
                 </div>
               </div>
 
