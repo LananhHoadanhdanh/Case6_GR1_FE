@@ -46,19 +46,31 @@
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="collapse navbar-collapse justify-content-between text-center" id="navbarCollapse">
         <div class="navbar-nav ml-auto py-0">
-          <a href="" class="nav-item nav-link active">Home</a>
           <a routerLink="notification" class="nav-item nav-link">Notification</a>
           <a routerLink="users" class="nav-item nav-link">Members</a>
         </div>
-        <a routerLink="homepage" class="navbar-brand mx-5 d-none d-lg-block">
-          <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER</h1>
-        </a>
+        <div *ngIf="currentUser">
+          <a routerLink="homepage" class="navbar-brand mx-5 d-none d-lg-block">
+            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER</h1>
+          </a>
+        </div>
+        <div *ngIf="!currentUser">
+          <a routerLink="" class="navbar-brand mx-5 d-none d-lg-block">
+            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER</h1>
+          </a>
+        </div>
         <div class="navbar-nav mr-auto py-0">
-          <a routerLink="update" class="nav-item nav-link">Update</a>
-          <a routerLink="/updatePrice" class="nav-item nav-link" >update price</a>
-          <a routerLink="register" class="nav-item nav-link">Register</a>
+          <div *ngIf="currentUser">
+            <a routerLink="update" class="nav-item nav-link">Update</a>
+          </div>
+          <div *ngIf="currentUser">
+            <a routerLink="/updatePrice" class="nav-item nav-link" >{{username}}</a>
+          </div>
+          <div *ngIf="currentUser">
+            <a (click)="logout()" class="nav-item nav-link">Logout</a>
+          </div>
         </div>
       </div>
     </nav>

@@ -61,6 +61,10 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}/browseAccount`, id);
   }
 
+  getAllUserByView(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/usersByView')
+  }
+
   lockAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/lockAccount`, id);
   }

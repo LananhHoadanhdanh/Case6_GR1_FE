@@ -1,50 +1,44 @@
-<div class="input-group mb-3">
-
-</div>
-<div class="input-group mb-3">
-</div>
-<div>
-  <div class="row">
+<div class="container">
+  <div class="row mt-5">
     <div class="col-3">
-      <img  src="{{user?.avatar}}"  style="width: 300px;height: 300px">
+      <img src="{{user?.avatar}}" style="width: 100%;">
     </div>
-    <div class="col-6">
-      <tr>
-        <a class="nav-item nav-link active"><span><strong>username    :</strong></span> {{user?.username}}</a>
-      </tr>
-      <tr>
-      <tr>
-        <a class="nav-item nav-link active">><span><strong>phoneNumber    :</strong></span>{{user?.phoneNumber}}</a>
-      </tr>
-      <tr>
-        <a class="nav-item nav-link active">><span><strong>weight    :</strong></span>{{user?.weight}}</a>
-      </tr>
-      <tr>
-        <a class="nav-item nav-link active">><span><strong>height    :</strong></span>{{user?.height}}</a>
-      </tr>
-      <tr>
-        <a class="nav-item nav-link active">><span><strong>city    :</strong></span>{{user?.city}}</a>
-      </tr>
-      <tr>
-        <a class="nav-item nav-link active">><span><strong>email    :</strong></span> {{user?.email}}</a>
-      </tr>
+    <div class="col-7">
+      <table cellpadding="10">
+        <tr>
+          <td class="infor"><span><strong>Full name    :</strong></span></td>
+          <td class="infor">{{user?.fullName}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>PhoneNumber    :</strong></span></td>
+          <td class="infor">{{user?.phoneNumber}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Weight    :</strong></span></td>
+          <td class="infor">{{user?.weight}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Height    :</strong></span></td>
+          <td class="infor">{{user?.height}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>City    :</strong></span></td>
+          <td class="infor">{{user?.city}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Email    :</strong></span></td>
+          <td class="infor">{{user?.email}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><strong>Price :</strong></td>
+          <td class="infor"><input type="text" class="form-control p-4" value={{user?.price}} [(ngModel)]="price"/></td>
+          <td>
+            <button type="button" class="btn btn-primary btn-block" (click)="updatePrice()">save</button>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="col-3"></div>
+    <div class="col-2"></div>
   </div>
-</div>
-<div class="input-group mb-3">
-  <div class="col-lg-3"></div>
-  <div class="col-lg-6"><span class="input-group-text">Price</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value={{user?.price}}
-           [(ngModel)]="price" >
-  </div>
-  <div class="col-lg-3"></div>
-</div>
-<div class="input-group mb-3">
-  <div class="col-lg-4"></div>
-  <div class="col-lg-4">
-    <button type="button" class="btn btn-primary btn-block py-3 px-5" (click)="updatePrice()">save</button>
-  </div>
-  <div class="col-lg-4"></div>
 
 </div>

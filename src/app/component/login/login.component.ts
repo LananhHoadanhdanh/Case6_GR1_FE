@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
-    this.adminUrl = '/admin'
+    this.adminUrl = '/users'
   }
 
   login() {
@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
           // @ts-ignore
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           // @ts-ignore
+          localStorage.setItem('ROLES', data.roles);
+          // @ts-ignore
           localStorage.setItem('ROLE', data.roles[0].authority);
           // @ts-ignore
           localStorage.setItem('USERNAME', data.username);
@@ -61,6 +63,7 @@ export class LoginComponent implements OnInit {
           if (data.roles.length > 2) {
             swal("Logged in successfully!", "", "success");
             this.router.navigate([this.adminUrl])
+            // location.reload()
           } else {
             // this.router.navigate([this.returnUrl, "homepage"]);
             // @ts-ignore
@@ -70,6 +73,7 @@ export class LoginComponent implements OnInit {
             } else {
               swal("Logged in successfully!", "", "success");
               this.router.navigate([this.returnUrl, "homepage"]);
+              // location.reload()
             }
           }
         },
@@ -82,6 +86,10 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout()
+    localStorage.removeItem("ACCESS_TOKEN");
+    localStorage.removeItem("ROLE");
+    localStorage.removeItem("USERNAME");
+    localStorage.removeItem("USERID");
   }
 
 }
