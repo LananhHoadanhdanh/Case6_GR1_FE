@@ -51,6 +51,9 @@ export class UserService {
   list12NewServiceProvider():Observable<Iterable<User>>{
     return this.http.get<Iterable<User>>(API_URL+`/12newServiceProvider`)
   }
+  list6UserVip():Observable<Iterable<User>>{
+    return this.http.get<Iterable<User>>(API_URL+`/list6UserVip`)
+  }
 
   // @ts-ignore
   updatePrice(id: number | null, price: string): Observable<User> {
