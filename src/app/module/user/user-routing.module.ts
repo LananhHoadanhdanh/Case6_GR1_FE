@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomepageComponent} from "./homepage/homepage.component";
 import {UpdateUserComponent} from "./update-user/update-user.component";
 import {UpdateServiceComponent} from "./update-service/update-service.component";
+import {HighestViews6Component} from "./highest-views6/highest-views6.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },{
     path:'service',
     component:UpdateServiceComponent
+  },{
+    path:'123',
+    component:HighestViews6Component
   }
 ];
 
