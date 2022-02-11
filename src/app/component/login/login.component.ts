@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('USERID', data.id);
           // @ts-ignore
           if (data.roles.length > 2) {
+            swal("Logged in successfully!", "", "success");
             this.router.navigate([this.adminUrl])
           } else {
             // this.router.navigate([this.returnUrl, "homepage"]);
@@ -67,6 +68,7 @@ export class LoginComponent implements OnInit {
               swal("Error!", "Your account is locked or not approved. Please use another account!", "error");
               // alert("Your account is locked or not approved. Please use another account!")
             } else {
+              swal("Logged in successfully!", "", "success");
               this.router.navigate([this.returnUrl, "homepage"]);
             }
           }

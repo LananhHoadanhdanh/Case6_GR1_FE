@@ -57,4 +57,7 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
   }
 
+  browseAccounts(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/browseAccount`, id);
+  }
 }
