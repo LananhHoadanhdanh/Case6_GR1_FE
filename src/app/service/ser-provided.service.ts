@@ -35,9 +35,9 @@ export class SerProvidedService {
     return this.http.post<ActiveService[]>(API_URL + `/actService`, active)
   }
 
-  delete(active: ActiveService[]): Observable<ActiveService[]> {
+  delete(active: number): Observable<ActiveService[]> {
     // @ts-ignore
-    return this.http.delete<ActiveService[]>(API_URL + `/deleteService`, active)
+    return this.http.delete<ActiveService[]>(API_URL + `/deleteService/${active}` )
   }
 
   getAllActService(id:number): Observable<ActiveService[]> {
