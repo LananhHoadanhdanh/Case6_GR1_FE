@@ -6,10 +6,10 @@ import swal from "sweetalert";
 
 @Component({
   selector: 'app-user-detai',
-  templateUrl: './user-detai.component.html',
-  styleUrls: ['./user-detai.component.css']
+  templateUrl: './user-detail.component.html',
+  styleUrls: ['./user-detail.component.css']
 })
-export class UserDetaiComponent implements OnInit {
+export class UserDetailComponent implements OnInit {
 
   iUser = localStorage.getItem("USERID")
 
@@ -45,5 +45,4 @@ export class UserDetaiComponent implements OnInit {
       window.location.href = 'http://localhost:4200/detail/' + this.iUser;
     })
   }
-
 }

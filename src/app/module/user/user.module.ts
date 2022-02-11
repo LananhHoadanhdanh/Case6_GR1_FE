@@ -9,7 +9,7 @@ import { UpdatePriceUserComponent } from './update-price-user/update-price-user.
 import { UpdateServiceComponent } from './update-service/update-service.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HighestViews6Component } from './highest-views6/highest-views6.component';
-import { UserDetaiComponent } from './user-detai/user-detai.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component';
 
 
@@ -21,7 +21,7 @@ import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component
     UpdateUserComponent,
     UpdateServiceComponent,
     HighestViews6Component,
-    UserDetaiComponent,
+    UserDetailComponent,
     List6UserVipComponent
   ],
   imports: [
