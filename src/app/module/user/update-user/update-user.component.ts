@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../service/user.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
@@ -17,7 +17,7 @@ import * as moment from 'moment';
 })
 export class UpdateUserComponent implements OnInit {
 
-  data: string="";
+  data: string = "";
   title = "cloudsSorage";
   // @ts-ignore
   fb;
@@ -27,88 +27,111 @@ export class UpdateUserComponent implements OnInit {
   public loading = false;
   public loading1 = false;
   time!: boolean;
+  times!: boolean;
+  time1!: boolean;
   avatar?: string
   imgs: any[] = [];
   selectedImages: any[] = []
-  min:string=""
-  max?:string=""
-  image:Image[]=[];
+  min: string = ""
+  max?: string = ""
+  image: Image[] = [];
 
   userUpdate?: User
 
   idU = localStorage.getItem("USERID");
   formUser = new FormGroup({
-    fullName: new FormControl('',[Validators.required]),
-    city: new FormControl('',[Validators.required]),
-    nationality: new FormControl('',[Validators.required]),
-    birthday: new FormControl('',[Validators.required]),
-    gender: new FormControl('',[Validators.required]),
-    height: new FormControl('',[Validators.required,Validators.min(140),Validators.max(200)]),
-    weight: new FormControl('',[Validators.required,Validators.min(40),Validators.max(100)]),
-    hobby: new FormControl('',[Validators.required]),
-    description: new FormControl('',[Validators.required]),
-    request: new FormControl('',[Validators.required]),
-    facebook: new FormControl('',[Validators.required]),
+    fullName: new FormControl('', [Validators.required]),
+    city: new FormControl('', [Validators.required]),
+    nationality: new FormControl('', [Validators.required]),
+    birthday: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    height: new FormControl('', [Validators.required, Validators.min(140), Validators.max(200)]),
+    weight: new FormControl('', [Validators.required, Validators.min(40), Validators.max(100)]),
+    hobby: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    request: new FormControl('', [Validators.required]),
+    facebook: new FormControl('', [Validators.required]),
   })
 
   constructor(private userService: UserService,
               private storage: AngularFireStorage,
               private imageService: ImageService,
-              private router:Router
-              ) {
-    this.min= moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
-    this.max= moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
+              private router: Router
+  ) {
+    this.min = moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
+    this.max = moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
     // @ts-ignore
-    imageService.findAllImageByUser(this.idU).subscribe( res=>{
+    imageService.findAllImageByUser(this.idU).subscribe(res => {
       // @ts-ignore
-      this.image=res;
+      this.image = res;
     })
   }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.userService.getUserProfile(this.idU).subscribe( res=>{
-      this.userUpdate=res;
-      this.formUser=new FormGroup({
-        fullName: new FormControl(this.userUpdate.fullName,[Validators.required]),
-        city: new FormControl(this.userUpdate.city,[Validators.required]),
-        nationality: new FormControl(this.userUpdate.nationality,[Validators.required]),
-        birthday: new FormControl(this.userUpdate.birthday,[Validators.required]),
-        gender: new FormControl(this.userUpdate.gender,[Validators.required]),
-        height: new FormControl(this.userUpdate.height,[Validators.required,Validators.min(140),Validators.max(200)]),
-        weight: new FormControl(this.userUpdate.weight,[Validators.required,Validators.min(40),Validators.max(100)]),
-        hobby: new FormControl(this.userUpdate.hobby,[Validators.required]),
-        description: new FormControl(this.userUpdate.description,[Validators.required]),
-        request: new FormControl(this.userUpdate.request,[Validators.required]),
-        facebook: new FormControl(this.userUpdate.facebook,[Validators.required]),
+    this.userService.getUserProfile(this.idU).subscribe(res => {
+      this.userUpdate = res;
+      this.formUser = new FormGroup({
+        fullName: new FormControl(this.userUpdate.fullName, [Validators.required]),
+        city: new FormControl(this.userUpdate.city, [Validators.required]),
+        nationality: new FormControl(this.userUpdate.nationality, [Validators.required]),
+        birthday: new FormControl(this.userUpdate.birthday, [Validators.required]),
+        gender: new FormControl(this.userUpdate.gender, [Validators.required]),
+        height: new FormControl(this.userUpdate.height, [Validators.required, Validators.min(140), Validators.max(200)]),
+        weight: new FormControl(this.userUpdate.weight, [Validators.required, Validators.min(40), Validators.max(100)]),
+        hobby: new FormControl(this.userUpdate.hobby, [Validators.required]),
+        description: new FormControl(this.userUpdate.description, [Validators.required]),
+        request: new FormControl(this.userUpdate.request, [Validators.required]),
+        facebook: new FormControl(this.userUpdate.facebook, [Validators.required]),
       })
     })
   }
- get fullName (){
+
+  get fullName() {
     return this.formUser.get('fullName')
- } get city (){
+  }
+
+  get city() {
     return this.formUser.get('city')
- } get nationality (){
+  }
+
+  get nationality() {
     return this.formUser.get('nationality')
- } get birthday (){
+  }
+
+  get birthday() {
     return this.formUser.get('birthday')
- } get gender (){
+  }
+
+  get gender() {
     return this.formUser.get('gender')
- } get height (){
+  }
+
+  get height() {
     return this.formUser.get('height')
- } get weight (){
+  }
+
+  get weight() {
     return this.formUser.get('weight')
- } get hobby (){
+  }
+
+  get hobby() {
     return this.formUser.get('hobby')
- } get description (){
+  }
+
+  get description() {
     return this.formUser.get('description')
- }get request (){
+  }
+
+  get request() {
     return this.formUser.get('request')
- }get facebook (){
+  }
+
+  get facebook() {
     return this.formUser.get('facebook')
- }
+  }
+
   saveAll() {
-    this.saveImage()
     this.saveUser()
 
 
@@ -177,10 +200,12 @@ export class UpdateUserComponent implements OnInit {
   updateFile3() {
     // @ts-ignore
     document.getElementById("upfile3").click();
+
   }
 
   // @ts-ignore
   updateAvatar(event) {
+    this.showLoadAvt()
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -199,7 +224,7 @@ export class UpdateUserComponent implements OnInit {
             this.avatar = this.fb
             console.log(this.avatar)
             // @ts-ignore
-            this.userUpdate?.avatar=this.avatar
+            this.userUpdate?.avatar = this.avatar
           });
         })
       )
@@ -211,6 +236,7 @@ export class UpdateUserComponent implements OnInit {
 
   // @ts-ignore
   showPreview(event: any) {
+    this.showLoad()
     this.loading = true;
     let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
@@ -245,8 +271,59 @@ export class UpdateUserComponent implements OnInit {
 
         });
       }
+      // @ts-ignore
+      this.times = setInterval(() => {
+        // @ts-ignore
+        this.saveImage()
+        if (this.times) {
+          // @ts-ignore
+          clearInterval(this.times);
+        }
+      }, 10000);
+
+      // @ts-ignore
+      this.time = setInterval(() => {
+        // @ts-ignore
+        this.imageService.findAllImageByUser(this.idU).subscribe(res => {
+          // @ts-ignore
+          this.image = res;
+          console.log("load ảnh")
+          console.log(res)
+        })
+        if (this.time) {
+          // @ts-ignore
+          clearInterval(this.time);
+        }
+      }, 16000);
 
     }
+
+  }
+showLoadAvt(){
+  // @ts-ignore
+  document.getElementById("loading").style.visibility = "visible"
+  // @ts-ignore
+  this.time1 = setInterval(() => {
+    // @ts-ignore
+    document.getElementById("loading").style.visibility = "hidden"
+    if (this.time1) {
+      // @ts-ignore
+      clearInterval(this.time);
+    }
+  }, 5000);
+}
+  showLoad() {
+    // @ts-ignore
+    document.getElementById("loading").style.visibility = "visible"
+    // @ts-ignore
+    this.time1 = setInterval(() => {
+      // @ts-ignore
+      document.getElementById("loading").style.visibility = "hidden"
+      if (this.time1) {
+        // @ts-ignore
+        clearInterval(this.time);
+      }
+    }, 20000);
 
   }
 }

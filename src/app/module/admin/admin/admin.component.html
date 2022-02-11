@@ -10,17 +10,19 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
-
           <div class="service-item col-4" *ngFor="let user of users">
             <div class="service-img mx-auto">
-              <img class="rounded-circle w-100 h-100 bg-light p-3" src="assets/img/service-1.jpg" style="object-fit: cover;">
+              <img class="rounded-circle w-100 h-100 bg-light p-3" src="{{user?.avatar}}"
+                   style="object-fit: cover;">
             </div>
             <div class="position-relative text-center bg-light rounded p-4 pb-5" style="margin-top: -75px;">
               <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5">{{user.fullName}}</h5>
-              <a (click)="browseAccounts(user?.id)" class="border-bottom border-secondary text-decoration-none text-secondary">Approve</a>
+              <div *ngIf=" (userAdmin?.roles!.length) > 2">
+                <a (click)="browseAccounts(user?.id)"
+                   class="border-bottom border-secondary text-decoration-none text-secondary">Approve</a>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

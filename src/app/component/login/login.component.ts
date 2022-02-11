@@ -13,8 +13,7 @@ import swal from 'sweetalert';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  currentUser = localStorage.getItem("currentUser");
+  currentUser?: any;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
@@ -37,7 +36,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
-    this.adminUrl = '/admin'
+    this.adminUrl = '/users'
+    this.currentUser = localStorage.getItem("currentUser");
   }
 
   login() {
@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
           // @ts-ignore
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           // @ts-ignore
+          localStorage.setItem('ROLES', data.roles);
+          // @ts-ignore
           localStorage.setItem('ROLE', data.roles[0].authority);
           // @ts-ignore
           localStorage.setItem('USERNAME', data.username);
@@ -60,7 +62,10 @@ export class LoginComponent implements OnInit {
           // @ts-ignore
           if (data.roles.length > 2) {
             swal("Logged in successfully!", "", "success");
-            this.router.navigate([this.adminUrl])
+            // this.router.navigate([this.returnUrl, "homepage"]);
+            setTimeout(()=> {
+              window.location.href = 'http://localhost:4200/users';
+            }, 1000)
           } else {
             // this.router.navigate([this.returnUrl, "homepage"]);
             // @ts-ignore
@@ -69,7 +74,10 @@ export class LoginComponent implements OnInit {
               // alert("Your account is locked or not approved. Please use another account!")
             } else {
               swal("Logged in successfully!", "", "success");
-              this.router.navigate([this.returnUrl, "homepage"]);
+              // this.router.navigate([this.returnUrl, "homepage"]);
+              setTimeout(()=> {
+                window.location.href = 'http://localhost:4200/homepage';
+              }, 1000)
             }
           }
         },
@@ -78,10 +86,15 @@ export class LoginComponent implements OnInit {
           swal("Error!", "Wrong username or password, please try again!", "error");
           this.loading = false;
         });
+
   }
 
   logout() {
     this.authenticationService.logout()
+    localStorage.removeItem("ACCESS_TOKEN");
+    localStorage.removeItem("ROLE");
+    localStorage.removeItem("USERNAME");
+    localStorage.removeItem("USERID");
   }
 
 }
