@@ -11,13 +11,13 @@ label:before {
   width: 20px;
   height: 20px;
   border-radius: 11px;
-  border: 2px solid rgba(254,98,194,0.9);
+  border: 2px solid rgba(254, 98, 194, 0.9);
   background-color: transparent;
 }
 
-input[type='radio']:checked+label:before {
+input[type='radio']:checked + label:before {
   position: relative;
-  border: 2px solid rgba(254,98,194,0.9);
+  border: 2px solid rgba(254, 98, 194, 0.9);
   border-radius: 11px;
   width: 20px;
   height: 20px;
@@ -26,6 +26,7 @@ input[type='radio']:checked+label:before {
   display: inline-block;
   background-color: #00ffc3
 }
+
 #yourBtn {
   position: relative;
   width: 300px;
@@ -37,6 +38,7 @@ input[type='radio']:checked+label:before {
   background-color: #41c764;
   cursor: pointer;
 }
+
 #yourBt {
   position: relative;
   width: 320px;
@@ -48,27 +50,45 @@ input[type='radio']:checked+label:before {
   background-color: #41c764;
   cursor: pointer;
 }
-.box{
-  width: 150px!important;
-  height: 150px!important;
+
+.box {
+  width: 150px !important;
+  height: 150px !important;
   overflow: hidden;
   border-radius: 50%;
-  perspective: 1000px!important;
+  perspective: 1000px !important;
   animation-iteration-count: infinite;
-  -webkit-box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
-  -moz-box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
-  box-shadow: -1px -7px 54px -6px rgba(224,13,157,1);
-}.box1{
+  -webkit-box-shadow: -1px -7px 54px -6px rgba(224, 13, 157, 1);
+  -moz-box-shadow: -1px -7px 54px -6px rgba(224, 13, 157, 1);
+  box-shadow: -1px -7px 54px -6px rgba(224, 13, 157, 1);
+}
+
+.box1 {
   width: auto;
-  height: 160px!important;
+  height: 160px !important;
   overflow: hidden;
 
 }
-.box1 img{
-  width: 100%!important;
-  transform: translateX(-50%)!important;
-  margin-left: 50%!important;}
-.box img{
-  width: 100%!important;
-  transform: translateX(-50%)!important;
-  margin-left: 50%!important;}
+
+.box1 img {
+  width: 100% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 50% !important;
+}
+
+.box img {
+  width: 100% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 50% !important;
+}
+
+#loading {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(229, 225, 225, 0.9);
+  z-index: 100;
+}
