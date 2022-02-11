@@ -32,6 +32,7 @@ export class UpdateUserComponent implements OnInit {
   selectedImages: any[] = []
   min:string=""
   max?:string=""
+  image:Image[]=[];
 
   userUpdate?: User
 
@@ -57,6 +58,11 @@ export class UpdateUserComponent implements OnInit {
               ) {
     this.min= moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
     this.max= moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
+    // @ts-ignore
+    imageService.findAllImageByUser(this.idU).subscribe( res=>{
+      // @ts-ignore
+      this.image=res;
+    })
   }
 
   ngOnInit(): void {
@@ -192,6 +198,8 @@ export class UpdateUserComponent implements OnInit {
             }
             this.avatar = this.fb
             console.log(this.avatar)
+            // @ts-ignore
+            this.userUpdate?.avatar=this.avatar
           });
         })
       )
@@ -237,6 +245,7 @@ export class UpdateUserComponent implements OnInit {
 
         });
       }
+
     }
 
   }
