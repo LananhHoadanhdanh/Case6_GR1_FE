@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../model/user";
-import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {UserService} from "../../../service/user.service";
 
@@ -13,7 +12,7 @@ export class UpdatePriceUserComponent implements OnInit {
   iUser = localStorage.getItem("USERID")
 
   // @ts-ignore
-  user: User;
+  user?: User
   price?: string;
 
 
@@ -22,6 +21,12 @@ export class UpdatePriceUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+      // @ts-ignore
+      this.userService.getUserProfile(this.iUser).subscribe(result => {
+        this.user = result
+        console.log(result)
+      })
   }
 
   updatePrice() {
@@ -30,5 +35,4 @@ export class UpdatePriceUserComponent implements OnInit {
       alert("Cập nhật thành công!")
     })
   }
-
 }
