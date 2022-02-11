@@ -10,10 +10,9 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
-
           <div class="service-item col-4" *ngFor="let user of users">
             <div class="service-img mx-auto">
-              <img class="rounded-circle w-100 h-100 bg-light p-3" src="assets/img/service-1.jpg"
+              <img class="rounded-circle w-100 h-100 bg-light p-3" src="{{user?.avatar}}"
                    style="object-fit: cover;">
             </div>
             <div class="position-relative text-center bg-light rounded p-4 pb-5" style="margin-top: -75px;">
@@ -24,7 +23,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
