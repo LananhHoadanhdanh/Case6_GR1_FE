@@ -5,50 +5,45 @@
 </div>
 <div>
   <div class="row">
-    <div class="col-4"></div>
+    <div class="col-3">
+      <img  src="{{user?.avatar}}"  style="width: 300px;height: 300px">
+    </div>
     <div class="col-6">
-      <table>
-        <tr>
-          <td> username:</td>
-          <td>{{user?.username}}</td>
-        </tr>
-        <tr>
-        <tr>
-          <td> phoneNumber:</td>
-          <td>{{user?.phoneNumber}}</td>
-        </tr>
-        <tr>
-          <td> weight:</td>
-          <td>{{user?.weight}}</td>
-        </tr>
-        <tr>
-          <td> height:</td>
-          <td>{{user?.height}}</td>
-        </tr>
-        <tr>
-          <td> city:</td>
-          <td>{{user?.city}}</td>
-        </tr>
-        <tr>
-          <td> email:</td>
-          <td>{{user?.email}}</td>
-        </tr>
-      </table>
+      <tr>
+        <a class="nav-item nav-link active"><span><strong>username    :</strong></span> {{user?.username}}</a>
+      </tr>
+      <tr>
+      <tr>
+        <a class="nav-item nav-link active">><span><strong>phoneNumber    :</strong></span>{{user?.phoneNumber}}</a>
+      </tr>
+      <tr>
+        <a class="nav-item nav-link active">><span><strong>weight    :</strong></span>{{user?.weight}}</a>
+      </tr>
+      <tr>
+        <a class="nav-item nav-link active">><span><strong>height    :</strong></span>{{user?.height}}</a>
+      </tr>
+      <tr>
+        <a class="nav-item nav-link active">><span><strong>city    :</strong></span>{{user?.city}}</a>
+      </tr>
+      <tr>
+        <a class="nav-item nav-link active">><span><strong>email    :</strong></span> {{user?.email}}</a>
+      </tr>
     </div>
     <div class="col-3"></div>
   </div>
 </div>
 <div class="input-group mb-3">
-  <div class="col-lg-4"></div>
-  <div class="col-lg-4"><span class="input-group-text">Price</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  value={{user?.price}} [(ngModel)]="price" >
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6"><span class="input-group-text">Price</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value={{user?.price}}
+           [(ngModel)]="price" >
   </div>
-  <div class="col-lg-4"></div>
+  <div class="col-lg-3"></div>
 </div>
 <div class="input-group mb-3">
   <div class="col-lg-4"></div>
   <div class="col-lg-4">
-    <button type="button" class="btn btn-outline-danger" (click)="updatePrice()">save</button>
+    <button type="button" class="btn btn-primary btn-block py-3 px-5" (click)="updatePrice()">save</button>
   </div>
   <div class="col-lg-4"></div>
 
