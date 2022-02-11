@@ -279,7 +279,7 @@ export class UpdateUserComponent implements OnInit {
           // @ts-ignore
           clearInterval(this.times);
         }
-      }, 10000);
+      }, 16000);
 
       // @ts-ignore
       this.time = setInterval(() => {
@@ -312,7 +312,7 @@ showLoadAvt(){
     }
   }, 5000);
 }
-  showLoad() {
+showLoad() {
     // @ts-ignore
     document.getElementById("loading").style.visibility = "visible"
     // @ts-ignore
@@ -323,7 +323,7 @@ showLoadAvt(){
         // @ts-ignore
         clearInterval(this.time);
       }
-    }, 20000);
+    }, 26000);
 
   }
 }
