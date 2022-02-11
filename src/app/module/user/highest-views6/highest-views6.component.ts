@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from "firebase/compat";
-import User = firebase.User;
-import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../service/user.service";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'app-highest-views6',
@@ -23,7 +21,6 @@ export class HighestViews6Component implements OnInit {
     this.userService.getAllUserByView().subscribe(res => {
       // @ts-ignore
       this.users = res;
-      console.log("6 high")
       console.log(res)
     })
   }
