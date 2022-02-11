@@ -48,8 +48,12 @@
       </button>
       <div class="collapse navbar-collapse justify-content-between text-center" id="navbarCollapse">
         <div class="navbar-nav ml-auto py-0">
-          <a routerLink="notification" class="nav-item nav-link">Notification</a>
-          <a routerLink="users" class="nav-item nav-link">Members</a>
+          <div *ngIf="currentUser">
+            <a routerLink="notification" class="nav-item nav-link">Notification</a>
+          </div>
+          <div *ngIf="currentUser">
+            <a routerLink="users" class="nav-item nav-link">Members</a>
+          </div>
         </div>
         <div *ngIf="currentUser">
           <a routerLink="homepage" class="navbar-brand mx-5 d-none d-lg-block">
