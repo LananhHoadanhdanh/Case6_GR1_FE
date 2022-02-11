@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser = localStorage.getItem("currentUser")
+  currentUser?: any;
   username = localStorage.getItem("USERNAME")
 
   constructor(private authenticationService: AuthenticationService,
@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser = localStorage.getItem("currentUser")
   }
 
   logout() {
@@ -24,8 +25,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("ROLE");
     localStorage.removeItem("USERNAME");
     localStorage.removeItem("USERID");
-    this.router.navigate([""])
-    // location.reload()
+    window.location.href = 'http://localhost:4200';
   }
 
 }
