@@ -40,7 +40,7 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  getUserProfile(id: string): Observable<User> {
+  getUserProfile(id: string | null): Observable<User> {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
@@ -57,7 +57,15 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
   }
 
-  browseAccounts(id: string | undefined): Observable<User> {
+  browseAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/browseAccount`, id);
+  }
+
+  lockAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/lockAccount`, id);
+  }
+
+  updateVipAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/updateVipAccount`, id);
   }
 }

@@ -10,9 +10,9 @@ import swal from "sweetalert";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  idU = localStorage.getItem("USERNAME")
-
+  idU = localStorage.getItem("USERID")
   users: User[] = [];
+  userAdmin?: User;
 
   constructor(private userService: UserService,
               private router: Router) { }
@@ -26,11 +26,16 @@ export class AdminComponent implements OnInit {
       this.users = res
       console.log(res)
     })
+    this.userService.getUserProfile(this.idU).subscribe(res => {
+      console.log("user")
+      console.log(res)
+      this.userAdmin = res
+    })
   }
 
   browseAccounts(id: string | undefined) {
-    this.userService.browseAccounts(id).subscribe(() => {
-      swal("Done!", "", "success");
+    this.userService.browseAccount(id).subscribe(() => {
+      swal("Approved!", "", "success");
       this.loadAll();
     })
   }
