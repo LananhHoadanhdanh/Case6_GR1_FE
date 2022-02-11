@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-3">
+      <img src="{{user?.avatar}}" style="width: 100%; border-radius: 50%">
+    </div>
+    <div class="col-7">
+      <table cellpadding="10">
+        <tr>
+          <td class="infor"><span><strong>Full name    :</strong></span></td>
+          <td class="infor" colspan="2">{{user?.fullName}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>PhoneNumber:</strong></span></td>
+          <td class="infor" colspan="2">{{user?.phoneNumber}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Weight:</strong></span></td>
+          <td class="infor" colspan="2">{{user?.weight}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Height:</strong></span></td>
+          <td class="infor" colspan="2">{{user?.height}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>City:</strong></span></td>
+          <td class="infor" colspan="2">{{user?.city}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><span><strong>Email:</strong></span></td>
+          <td class="infor" colspan="2">{{user?.email}}</td>
+        </tr>
+        <tr>
+          <td class="infor"><strong>Price :</strong></td>
+          <td class="infor">{{user?.price}}</td>
+          <td>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i></button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title infor" id="exampleModalLabel">Update price</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" class="form-control p-4" value={{user?.price}} [(ngModel)]="price"/>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="updatePrice()">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!--            <button type="button" class="btn btn-primary btn-block" (click)="updatePrice()">save</button>-->
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

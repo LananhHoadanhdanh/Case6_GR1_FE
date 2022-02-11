@@ -5,6 +5,7 @@ import {UpdateUserComponent} from "./update-user/update-user.component";
 import {UpdateServiceComponent} from "./update-service/update-service.component";
 import {HighestViews6Component} from "./highest-views6/highest-views6.component";
 import {UpdatePriceUserComponent} from "./update-price-user/update-price-user.component";
+import {UserDetaiComponent} from "./user-detai/user-detai.component";
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path:'detail/:id',
-    component: UpdatePriceUserComponent
+    component: UserDetaiComponent
   },
   {
     path:'update',

@@ -9,8 +9,9 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   currentUser?: any;
-  username = localStorage.getItem("USERNAME")
-  idU = localStorage.getItem("USERID")
+  username?: any;
+  idU?: any;
+  roles?: any;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router) {
@@ -18,12 +19,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem("currentUser")
+    this.username = localStorage.getItem("USERNAME")
+    this.idU = localStorage.getItem("USERID")
+    this.roles = localStorage.getItem("ROLES")
   }
 
   logout() {
     this.authenticationService.logout()
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("ROLE");
+    localStorage.removeItem("ROLES");
     localStorage.removeItem("USERNAME");
     localStorage.removeItem("USERID");
     window.location.href = 'http://localhost:4200';
