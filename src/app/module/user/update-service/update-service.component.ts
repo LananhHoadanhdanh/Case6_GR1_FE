@@ -42,55 +42,54 @@ export class UpdateServiceComponent implements OnInit {
     this.service.getAllFree().subscribe(res => {
       this.serProvidedFree = res;
       // @ts-ignore
-      this.service.getAllActService(this.idU).subscribe(data => {
-        for (let i = 0; i < this.serProvidedFree.length; i++) {
-          this.freeCheckedServiceArr.push({
-            // @ts-ignore
-            id: this.serProvidedFree[i]?.id,
-            // @ts-ignore
-            name: this.serProvidedFree[i]?.name,
-            // @ts-ignore
-            status: false,
-          })
-        }
-        for (let i = 0; i < this.freeCheckedServiceArr.length; i++) {
-          for (let j = 0; j < data.length; j++) {
-            if (data[j].idService == this.freeCheckedServiceArr[i]?.id) {
-              this.freeCheckedServiceArr[i].status = true;
-            }
-          }
-        }
-      })
+      // this.service.getAllActService(this.idU).subscribe(data => {
+      //   for (let i = 0; i < this.serProvidedFree.length; i++) {
+      //     this.freeCheckedServiceArr.push({
+      //       // @ts-ignore
+      //       id: this.serProvidedFree[i]?.id,
+      //       // @ts-ignore
+      //       name: this.serProvidedFree[i]?.name,
+      //       // @ts-ignore
+      //       status: false,
+      //     })
+      //   }
+      //   for (let i = 0; i < this.freeCheckedServiceArr.length; i++) {
+      //     for (let j = 0; j < data.length; j++) {
+      //       if (data[j].idService == this.freeCheckedServiceArr[i]?.id) {
+      //         this.freeCheckedServiceArr[i].status = true;
+      //       }
+      //     }
+      //   }
+      // })
     })
     this.service.getAllExtend().subscribe(res => {
       this.serProvidedExtend = res;
       // @ts-ignore
-      this.service.getAllActService(this.idU).subscribe(data => {
-        for (let i = 0; i < this.serProvidedExtend.length; i++) {
-          this.extendCheckedServiceArr.push({
-            // @ts-ignore
-            id: this.serProvidedExtend[i]?.id,
-            // @ts-ignore
-            name: this.serProvidedExtend[i]?.name,
-            // @ts-ignore
-            status: false,
-          })
-        }
-        for (let i = 0; i < this.extendCheckedServiceArr.length; i++) {
-          for (let j = 0; j < data.length; j++) {
-            if (data[j].idService == this.extendCheckedServiceArr[i]?.id) {
-              this.extendCheckedServiceArr[i].status = true;
-            }
-          }
-        }
-      })
+      // this.service.getAllActService(this.idU).subscribe(data => {
+      //   for (let i = 0; i < this.serProvidedExtend.length; i++) {
+      //     this.extendCheckedServiceArr.push({
+      //       // @ts-ignore
+      //       id: this.serProvidedExtend[i]?.id,
+      //       // @ts-ignore
+      //       name: this.serProvidedExtend[i]?.name,
+      //       // @ts-ignore
+      //       status: false,
+      //     })
+      //   }
+      //   for (let i = 0; i < this.extendCheckedServiceArr.length; i++) {
+      //     for (let j = 0; j < data.length; j++) {
+      //       if (data[j].idService == this.extendCheckedServiceArr[i]?.id) {
+      //         this.extendCheckedServiceArr[i].status = true;
+      //       }
+      //     }
+      //   }
+      // })
     })
     this.service.SerMinTime().subscribe(res => {
       this.serMinTime = res;
       // @ts-ignore
       this.service.getAllActService(this.idU).subscribe(data => {
         for (let i = 0; i < this.serMinTime.length; i++) {
-
           this.minTimeServiceArr.push({
             id: this.serMinTime[i]?.id
           })
