@@ -1,5 +1,5 @@
 <div id="loading" class="d-flex justify-content-center align-items-center">
-  <div  class="spinner-border" role="status" style="font-size: 40px; width: 100px; height: 100px; color: #1e7e34">
+  <div class="spinner-border" role="status" style="font-size: 40px; width: 100px; height: 100px; color: #1e7e34">
     <span class="sr-only">Loading...</span>
   </div>
 </div>
@@ -25,11 +25,31 @@
         <div class="contact-form bg-light rounded p-5">
           <div id="success"></div>
           <form name="sentMessage" id="contactForm" novalidate="novalidate" [formGroup]="formUser" (submit)="saveAll()">
+
+            <div class="control-group p-2">
+              <div class="row">
+                <div class="col-12 mt-1">
+                  <div class="box">
+                    <img class="" src="{{userUpdate?.avatar}}" style="width: 100%;">
+                    <div id="yourBtn" (click)="updateFile()" style="color: white; margin-top: -43px; height: 50px">Upload your avatar</div>
+                    <div style='height: 0px;width: 0px; overflow:hidden;'>
+                      <input #userPhoto id="upfile"
+                             type="file" value="upload"
+                             (change)="updateAvatar($event)" name="avatar"
+                             autocomplete="off"/>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
             <div class="form-row">
               <div class="col-sm-6 control-group">
                 <input type="text" class="form-control p-4" id="fullName" formControlName="fullName"
                        placeholder="Your Name" required="required"
-                       data-validation-required-message="Please enter your name" />
+                       data-validation-required-message="Please enter your name"/>
                 <div *ngIf="fullName && fullName.invalid && fullName.touched">
                   <div *ngIf="fullName.errors?.['required']">
                     <p class="help-block text-danger text-center">Please enter your full name</p>
@@ -60,7 +80,8 @@
                 <p class="help-block text-danger"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="date" min="{{min}}" max="{{max}}" class="form-control p-4" id="birthday" formControlName="birthday"
+                <input type="date" min="{{min}}" max="{{max}}" class="form-control p-4" id="birthday"
+                       formControlName="birthday"
                        placeholder="Your birthday"
                        required="required" data-validation-required-message="Please enter your birthday"/>
                 <div *ngIf="birthday && birthday.invalid && birthday.touched">
@@ -113,7 +134,7 @@
                     <div class="row">
                       <div class="col-3">
                         <input id="male" type="radio" name="gender" formControlName="gender"
-                                                value="male">
+                               value="male">
                         <label for="male">Male</label></div>
                       <div class="col-4"><input id="female" type="radio" name="gender" formControlName="gender"
                                                 value="female">
@@ -178,25 +199,9 @@
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group p-5">
-              <div class="row">
-                <div class="col-6 mt-5">
-                  <div id="yourBtn" (click)="updateFile()" style="color: white">Click to upload your avatar </div>
-                  <div style='height: 0px;width: 0px; overflow:hidden;'>
-                    <input #userPhoto id="upfile"
-                           type="file" value="upload"
-                           (change)="updateAvatar($event)" name="avatar"
-                           autocomplete="off"/></div>
-                </div>
-                <div class="col-2"></div>
-                <div class="col-4"> <img class="box" src="{{userUpdate?.avatar}}"  style="object-fit: cover;"></div>
-              </div>
-
-
-            </div>
-            <div class="control-group p-5">
               <div class="row ">
-                <div class="col-5 mt-5">
-                  <div id="yourBt" (click)="updateFile3()" style="color: white">Click to upload 3 portrait photos</div>
+                <div class="col-12 mt-5 ">
+                  <div id="yourBt" (click)="updateFile3()" style="color: white">Upload 3 portrait photos</div>
                   <div style='height: 0px;width: 0px; overflow:hidden;'>
                     <input #userPhoto id="upfile3"
                            multiple
@@ -205,10 +210,10 @@
                            autocomplete="off"/></div>
                 </div>
               </div>
-              <div class="control-group p-5">
+              <div class="control-group p-2">
                 <div class="row">
-                  <div class="col-4 mt-3" *ngFor="let img of image">
-                    <img  class="box1" src="{{img.link}}">
+                  <div class="col-4 mt-3" *ngFor="let img of image" style="padding: 5px !important;">
+                    <img class="box1" src="{{img.link}}">
                   </div>
                 </div>
               </div>
@@ -216,7 +221,8 @@
             </div>
 
             <div>
-              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton" [disabled]="(!formUser.valid)">Update Profile
+              <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton"
+                      [disabled]="(!formUser.valid)">Update Profile
               </button>
             </div>
           </form>
