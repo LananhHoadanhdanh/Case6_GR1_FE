@@ -10,8 +10,6 @@ import {ServiceProvided} from "../../../model/service-provided";
 })
 export class HighestViews6Component implements OnInit {
   users: User[] = []
-  service0 : ServiceProvided[]= []
-  service1 : ServiceProvided[]= []
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -24,17 +22,15 @@ export class HighestViews6Component implements OnInit {
       this.users = res;
       console.log(res)
       // @ts-ignore
-      this.userService.getAllUserBySerProvided(this.users[0].id).subscribe(r=>{
+      for (let i=0; i<this.users.length;i++){
         // @ts-ignore
-        this.users[0].sss=r
-        console.log("test")
-        console.log(this.users[0].sss)
-      })  // @ts-ignore
-      this.userService.getAllUserBySerProvided(this.users[1].id).subscribe(r=>{
-        // @ts-ignore
+        this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
+          // @ts-ignore
+          this.users[i].myService=r
+          console.log(this.users[i].myService)
+        })
+      }
 
-        this.users[1].sss=r
-      })
     })
   }
 

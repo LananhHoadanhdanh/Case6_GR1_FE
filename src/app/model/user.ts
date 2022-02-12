@@ -28,5 +28,5 @@ export interface User {
   enabled?: boolean,
   fullName?: string,
   roles?: [Role];
-  sss?:[ServiceProvided]
+  myService?:[ServiceProvided]
 }
