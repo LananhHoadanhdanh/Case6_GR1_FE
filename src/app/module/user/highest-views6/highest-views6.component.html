@@ -15,28 +15,25 @@
                    style="object-fit: cover;">
             </div>
             <div class="position-relative text-center bg-light rounded p-4 pb-5" style="margin-top: -75px;">
-              <h5 class="font-weight-semi-bold mt-5  pt-5">{{user?.fullName}}</h5>
-              <h5 class="font-weight-semi-bold mt-1 mb-3 pt-lg-3">{{user?.description}} </h5>
+              <h3 class="font-weight-semi-bold mt-5  pt-5">{{user?.fullName}}</h3>
+              <h6 class="font-weight-semi-bold mt-1 mb-3 pt-lg-3">{{user?.description}} </h6>
               <div>
                 <div class="position-relative text-center bg-light rounded"
                      *ngFor="let s of user?.myService; let i = index">
-                  <!--                  <div>-->
-                  <!--                    <p>{{user?.myService?.length}}</p>-->
-                  <!--                  </div>-->
-                  <p>{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>
+                  <p >{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>
                 </div>
-                  <div *ngIf=" user?.myService!.length > 1 && user?.myService!.length <3 ">
-                    <p><i class="fas fa-heart service"></i></p>
-                  </div>
-                  <div *ngIf=" user?.myService!.length > 0 && user?.myService!.length <2">
-                    <p><i class="fas fa-heart service"></i></p>
-                    <p><i class="fas fa-heart service"></i></p>
-                  </div>
-                  <div *ngIf="  user?.myService!.length <1">
-                    <p><i class="fas fa-heart service"></i></p>
-                    <p><i class="fas fa-heart service"></i></p>
-                    <p><i class="fas fa-heart service"></i></p>
-                  </div>
+                <div *ngIf=" user?.myService!.length > 1 && user?.myService!.length <3 ">
+                  <p><i class="fas fa-heart service"></i></p>
+                </div>
+                <div *ngIf=" user?.myService!.length > 0 && user?.myService!.length <2">
+                  <p><i class="fas fa-heart service"></i></p>
+                  <p><i class="fas fa-heart service"></i></p>
+                </div>
+                <div *ngIf="  user?.myService!.length <1">
+                  <p><i class="fas fa-heart service"></i></p>
+                  <p><i class="fas fa-heart service"></i></p>
+                  <p><i class="fas fa-heart service"></i></p>
+                </div>
               </div>
               <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3">Giá :{{user?.price}} </h5>
             </div>

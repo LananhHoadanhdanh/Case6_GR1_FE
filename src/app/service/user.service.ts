@@ -48,11 +48,11 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
-  list12NewServiceProvider():Observable<Iterable<User>>{
-    return this.http.get<Iterable<User>>(API_URL+`/12newServiceProvider`)
+  list12NewServiceProvider():Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/12newServiceProvider`)
   }
-  list6UserVip():Observable<Iterable<User>>{
-    return this.http.get<Iterable<User>>(API_URL+`/list6UserVip`)
+  list6UserVip():Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/list6UserVip`)
   }
 
   // @ts-ignore

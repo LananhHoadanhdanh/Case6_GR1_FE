@@ -10,17 +10,23 @@ import {User} from "../../../model/user";
 export class List12UserSuitableForGenderComponent implements OnInit {
   idU = localStorage.getItem("USERID");
   user?: User;
+  users:User[]=[]
 
   constructor(private userService: UserService) {
-
   }
-
   ngOnInit(): void {
     this.userService.getUserProfile(this.idU).subscribe(res => {
       this.user = res;
       this.userService.getShowList12UserSuitableForGender(this.user?.gender).subscribe(res => {
-        console.log(this.user?.gender)
-        console.log(res)
+        this.users=res
+        for (let i=0; i<this.users.length;i++){
+          // @ts-ignore
+          this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
+            // @ts-ignore
+            this.users[i].myService=r
+          })
+        }
+
       })
     })
 

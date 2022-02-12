@@ -6,7 +6,6 @@ import {UpdateServiceComponent} from "./update-service/update-service.component"
 import {HighestViews6Component} from "./highest-views6/highest-views6.component";
 import {UpdatePriceUserComponent} from "./update-price-user/update-price-user.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
-import {List12UserSuitableForGenderComponent} from "./list12-user-suitable-for-gender/list12-user-suitable-for-gender.component";
 
 const routes: Routes = [
   {
@@ -28,11 +27,7 @@ const routes: Routes = [
   {
     path: 'updatePrice',
     component: UpdatePriceUserComponent
-  },{
-    path:"suitableForGender",
-    component:List12UserSuitableForGenderComponent
-  }
-
+  },
 ];
 
 @NgModule({

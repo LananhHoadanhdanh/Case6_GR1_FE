@@ -14,9 +14,14 @@ export class List6UserVipComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.list6UserVip().subscribe(res=>{
-      // @ts-ignore
       this.users=res;
-      console.log(this.users)
+      for (let i=0; i<this.users.length;i++){
+        // @ts-ignore
+        this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
+          // @ts-ignore
+          this.users[i].myService=r
+        })
+      }
     })
   }
 
