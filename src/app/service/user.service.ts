@@ -72,4 +72,8 @@ export class UserService {
   updateVipAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/updateVipAccount`, id);
   }
+
+  getAllUserBySerProvided(id: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
+  }
 }

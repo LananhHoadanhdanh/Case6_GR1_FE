@@ -12,6 +12,10 @@ const routes: Routes = [
     component:HomepageComponent
   },
   {
+    path:'detail/:id',
+    component: UpdatePriceUserComponent
+  },
+  {
     path:'update',
     component:UpdateUserComponent
   },{
