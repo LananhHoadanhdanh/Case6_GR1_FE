@@ -54,11 +54,11 @@
                 <div class="col-12">
                   <h6>Free additional service</h6>
                 </div>
-                <div class="col-4" *ngFor="let ser of serProvidedFree,index as i">
+                <div class="col-4" *ngFor="let ser of freeCheckedServiceArr,index as i">
                   <div class="row">
                     <div class="col-12">
                       <div class="col-12">
-                        <input name="serFree" (change)="dataUpdate($event)" [value]="ser.id" type="checkbox" id="{{i+1}}" >
+                        <input name="serFree" (change)="dataUpdate($event)" [value]="ser.id" type="checkbox" id="{{i+1}}" [checked]="ser.status">
                         <label for="{{i+1}}"><p>{{ser.name}}</p></label>
                       </div>
                     </div>
@@ -67,11 +67,11 @@
                 <div class="col-12">
                   <h6>Extended service (charged)</h6>
                 </div>
-                <div class="col-4" *ngFor="let ser of serProvidedExtend,index as i">
+                <div class="col-4" *ngFor="let ser of extendCheckedServiceArr,index as i">
                   <div class="row">
                     <div class="col-12">
                       <div class="col-12">
-                        <input  [value]="ser.id" (change)="dataUpdate($event)" type="checkbox" id="{{ser.id}}" >
+                        <input  [value]="ser.id" (change)="dataUpdate($event)" type="checkbox" id="{{ser.id}}" [checked]="ser.status">
                         <label for="{{ser.id}}"><p>{{ser.name}}</p></label>
                       </div>
                     </div>
@@ -91,7 +91,7 @@
                     <div class="col-12">
                       <div class="col-12">
                         <input formControlName="minTime" id="9" type="radio" name="minTime" value="9">
-                          <label for="9">1 hour</label>
+                        <label for="9">1 hour</label>
                       </div>
                     </div>
                   </div>

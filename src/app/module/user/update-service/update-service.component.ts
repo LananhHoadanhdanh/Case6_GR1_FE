@@ -42,48 +42,62 @@ export class UpdateServiceComponent implements OnInit {
     this.service.getAllFree().subscribe(res => {
       this.serProvidedFree = res;
       // @ts-ignore
-      // this.service.getAllActService(this.idU).subscribe(data => {
-      //   for (let i = 0; i < this.serProvidedFree.length; i++) {
-      //     this.freeCheckedServiceArr.push({
-      //       // @ts-ignore
-      //       id: this.serProvidedFree[i]?.id,
-      //       // @ts-ignore
-      //       name: this.serProvidedFree[i]?.name,
-      //       // @ts-ignore
-      //       status: false,
-      //     })
-      //   }
-      //   for (let i = 0; i < this.freeCheckedServiceArr.length; i++) {
-      //     for (let j = 0; j < data.length; j++) {
-      //       if (data[j].idService == this.freeCheckedServiceArr[i]?.id) {
-      //         this.freeCheckedServiceArr[i].status = true;
-      //       }
-      //     }
-      //   }
-      // })
+      this.service.getAllActService(this.idU).subscribe(data => {
+        for (let i = 0; i < this.serProvidedFree.length; i++) {
+          this.freeCheckedServiceArr.push({
+            // @ts-ignore
+            id: this.serProvidedFree[i]?.id,
+            // @ts-ignore
+            name: this.serProvidedFree[i]?.name,
+            // @ts-ignore
+            status: false,
+          })
+        }
+        for (let i = 0; i < this.freeCheckedServiceArr.length; i++) {
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].idService == this.freeCheckedServiceArr[i]?.id) {
+              this.freeCheckedServiceArr[i].status = true;
+              this.activeSer = {
+                // @ts-ignore
+                idUser: this.idU,
+                idService: data[j].idService
+              }
+              // @ts-ignore
+              this.activeServices.push(this.activeSer)
+            }
+          }
+        }
+      })
     })
     this.service.getAllExtend().subscribe(res => {
       this.serProvidedExtend = res;
       // @ts-ignore
-      // this.service.getAllActService(this.idU).subscribe(data => {
-      //   for (let i = 0; i < this.serProvidedExtend.length; i++) {
-      //     this.extendCheckedServiceArr.push({
-      //       // @ts-ignore
-      //       id: this.serProvidedExtend[i]?.id,
-      //       // @ts-ignore
-      //       name: this.serProvidedExtend[i]?.name,
-      //       // @ts-ignore
-      //       status: false,
-      //     })
-      //   }
-      //   for (let i = 0; i < this.extendCheckedServiceArr.length; i++) {
-      //     for (let j = 0; j < data.length; j++) {
-      //       if (data[j].idService == this.extendCheckedServiceArr[i]?.id) {
-      //         this.extendCheckedServiceArr[i].status = true;
-      //       }
-      //     }
-      //   }
-      // })
+      this.service.getAllActService(this.idU).subscribe(data => {
+        for (let i = 0; i < this.serProvidedExtend.length; i++) {
+          this.extendCheckedServiceArr.push({
+            // @ts-ignore
+            id: this.serProvidedExtend[i]?.id,
+            // @ts-ignore
+            name: this.serProvidedExtend[i]?.name,
+            // @ts-ignore
+            status: false,
+          })
+        }
+        for (let i = 0; i < this.extendCheckedServiceArr.length; i++) {
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].idService == this.extendCheckedServiceArr[i]?.id) {
+              this.extendCheckedServiceArr[i].status = true;
+              this.activeSer = {
+                // @ts-ignore
+                idUser: this.idU,
+                idService: data[j].idService
+              }
+              // @ts-ignore
+              this.activeServices.push(this.activeSer)
+            }
+          }
+        }
+      })
     })
     this.service.SerMinTime().subscribe(res => {
       this.serMinTime = res;
@@ -130,12 +144,13 @@ export class UpdateServiceComponent implements OnInit {
     if (this.activeServices.length != 0) {
       // @ts-ignore
       this.service.delete(this.idU).subscribe(next => {
+        console.log("delete")
+        this.service.save(this.activeServices).subscribe(res => {
+          swal("Update successful!", "You will be returned to the homepage", "success")
+          this.router.navigate(['/homepage'])
+        })
+      })
 
-      })
-      this.service.save(this.activeServices).subscribe(res => {
-        swal("Update successful!", "You will be returned to the homepage", "success")
-        this.router.navigate(['/homepage'])
-      })
     } else {
       swal("Update successful!", "You will be returned to the homepage", "success")
       this.router.navigate(['/homepage'])
@@ -148,7 +163,6 @@ export class UpdateServiceComponent implements OnInit {
 
   // @ts-ignore
   dataUpdate(event) {
-    console.log(event)
     if (event.target.checked) {
       this.activeSer = {
         // @ts-ignore
@@ -159,17 +173,16 @@ export class UpdateServiceComponent implements OnInit {
       this.activeServices.push(this.activeSer)
     } else {
       for (let j = 0; j < this.activeServices.length; j++) {
-        console.log(this.activeServices)
         if (this.activeServices[j].idService == event.target.value) {
           if (j == 0) {
             this.activeServices.splice(0, 1)
-            console.log(event.target.value)
-          }
-          this.activeServices.splice(j, 1)
-          console.log(event.target.value)
+            console.log(0)
+          }else {
+            this.activeServices.splice(j, 1)
+            console.log(j)}
         }
       }
     }
-
+    console.log(this.activeServices)
   }
 }
