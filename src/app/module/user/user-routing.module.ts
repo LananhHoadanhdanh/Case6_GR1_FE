@@ -11,12 +11,10 @@ const routes: Routes = [
   {
     path:'homepage',
     component:HomepageComponent
-  },
-  {
+  },{
     path:'detail/:id',
     component: UserDetailComponent
-  },
-  {
+  },{
     path:'update',
     component:UpdateUserComponent
   },{
