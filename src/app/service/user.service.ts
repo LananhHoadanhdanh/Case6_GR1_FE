@@ -83,4 +83,7 @@ export class UserService {
   getAllUserBySerProvided(id: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
   }
+  getShowList12UserSuitableForGender(gender :string |undefined ) :Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/list12UserSuitableForGender/${gender}`)
+  }
 }
