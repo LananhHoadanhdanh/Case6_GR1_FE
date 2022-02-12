@@ -25,22 +25,18 @@ export class HighestViews6Component implements OnInit {
       console.log(res)
       // @ts-ignore
       this.userService.getAllUserBySerProvided(this.users[0].id).subscribe(r=>{
-        this.service0= r;
-        console.log(r)
+        // @ts-ignore
+        this.users[0].sss=r
+        console.log("test")
+        console.log(this.users[0].sss)
       })  // @ts-ignore
       this.userService.getAllUserBySerProvided(this.users[1].id).subscribe(r=>{
-        this.service1= r;
-        console.log(r)
+        // @ts-ignore
+
+        this.users[1].sss=r
       })
     })
   }
 
   // @ts-ignore
-  SerProvided(event){
-    // @ts-ignore
-    this.userService.getAllUserBySerProvided(event).subscribe(r=>{
-      this.service0= r;
-      console.log(r)
-    })
-  }
 }
