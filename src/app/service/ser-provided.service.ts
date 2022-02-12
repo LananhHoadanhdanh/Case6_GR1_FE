@@ -16,22 +16,31 @@ export class SerProvidedService {
   }
 
   getAll(): Observable<ServiceProvided[]> {
-    return this.http.get<ServiceProvided[]>(API_URL + '/service')
+    return this.http.get<ServiceProvided[]>(API_URL + `/service`)
   }
 
   SerMinTime(): Observable<ServiceProvided[]> {
-    return this.http.get<ServiceProvided[]>(API_URL + '/serviceMinTime')
+    return this.http.get<ServiceProvided[]>(API_URL + `/serviceMinTime`)
   }
 
   getAllExtend(): Observable<ServiceProvided[]> {
-    return this.http.get<ServiceProvided[]>(API_URL + '/serviceExtend')
+    return this.http.get<ServiceProvided[]>(API_URL + `/serviceExtend`)
   }
 
   getAllFree(): Observable<ServiceProvided[]> {
-    return this.http.get<ServiceProvided[]>(API_URL + '/serviceFree')
+    return this.http.get<ServiceProvided[]>(API_URL + `/serviceFree`)
   }
 
   save(active: ActiveService[]): Observable<ActiveService[]> {
-    return this.http.post<ActiveService[]>(API_URL + '/actService', active)
+    return this.http.post<ActiveService[]>(API_URL + `/actService`, active)
+  }
+
+  delete(active: number): Observable<ActiveService[]> {
+    // @ts-ignore
+    return this.http.delete<ActiveService[]>(API_URL + `/deleteService/${active}` )
+  }
+
+  getAllActService(id:number): Observable<ActiveService[]> {
+    return this.http.get<ActiveService[]>(API_URL+`/servicePro/${id}`)
   }
 }
