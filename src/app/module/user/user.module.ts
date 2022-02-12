@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HighestViews6Component } from './highest-views6/highest-views6.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component';
+import { ImageComponent } from './image/image.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component
     UpdateServiceComponent,
     HighestViews6Component,
     UserDetailComponent,
-    List6UserVipComponent
+    List6UserVipComponent,
+    ImageComponent
   ],
   imports: [
     CommonModule,

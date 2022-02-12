@@ -1,0 +1,22 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let img of images">
+      <a class="w3-hover-opacity" (click)="openImg(img?.id);">
+        <img src="{{img?.link}}" alt="{{img?.id}}" style="width:100%">
+      </a>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div id="{{img.id}}" class="picture w3-display-container" style="display:none" *ngFor="let img of images">
+      <img src="{{img?.link}}" alt="Nature" style="width:100%">
+    </div>
+  </div>
+</div>
+
+
+

@@ -83,4 +83,8 @@ export class UserService {
   getAllUserBySerProvided(id: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
   }
+
+  increaseViews(id: number | null): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/increaseViews`, id);
+  }
 }
