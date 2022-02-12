@@ -79,4 +79,8 @@ export class UserService {
   pauseAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/pauseAccount`, id);
   }
+
+  getAllUserBySerProvided(id: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
+  }
 }

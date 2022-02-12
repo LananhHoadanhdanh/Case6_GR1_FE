@@ -23,7 +23,12 @@ const routes: Routes = [
   },{
     path:'123',
     component:HighestViews6Component
-  }
+  },
+  {
+    path: 'updatePrice',
+    component: UpdatePriceUserComponent
+  },
+
 ];
 
 @NgModule({

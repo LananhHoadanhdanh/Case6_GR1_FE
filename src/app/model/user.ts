@@ -1,5 +1,6 @@
 import {Role} from "./role";
 import {StatusUser} from "./status-user";
+import {ServiceProvided} from "./service-provided";
 
 export interface User {
   id?: string,
@@ -27,4 +28,5 @@ export interface User {
   enabled?: boolean,
   fullName?: string,
   roles?: [Role];
+  sss?:[ServiceProvided]
 }
