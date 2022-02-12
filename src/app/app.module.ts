@@ -34,7 +34,7 @@ import {environment} from "../environments/environment";
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     UserModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

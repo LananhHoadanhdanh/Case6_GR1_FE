@@ -22,11 +22,6 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./module/user/user.module').then(module => module.UserModule)
   },
-  {
-    path: '123',
-    component: UpdatePriceUserComponent
-  },
-
 ];
 
 @NgModule({

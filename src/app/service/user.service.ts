@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<User[]>(API_URL + '/users')
   }
 
+  getAllUserByStatus(statusId: number): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/usersByStatus?statusId=' + statusId)
+  }
+
   registerSuccess(token: string): Observable<any> {
     return this.http.get<any>(API_URL + '/confirm-account?token=' + token);
   }
@@ -36,15 +40,19 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  getUserProfile(id: string): Observable<User> {
+  getUserProfile(id: string | null): Observable<User> {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
   updateUserProfile(id: number, user: User): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
+
   list12NewServiceProvider():Observable<Iterable<User>>{
     return this.http.get<Iterable<User>>(API_URL+`/12newServiceProvider`)
+  }
+  list6UserVip():Observable<Iterable<User>>{
+    return this.http.get<Iterable<User>>(API_URL+`/list6UserVip`)
   }
 
   // @ts-ignore
@@ -52,4 +60,27 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}/uploadPrice?price=` + price, price);
   }
 
+  browseAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/browseAccount`, id);
+  }
+
+  getAllUserByView(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/usersByView')
+  }
+
+  lockAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/lockAccount`, id);
+  }
+
+  updateVipAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/updateVipAccount`, id);
+  }
+
+  pauseAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/pauseAccount`, id);
+  }
+
+  getAllUserBySerProvided(id: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
+  }
 }
