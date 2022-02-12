@@ -23,11 +23,11 @@
         <div *ngIf="(user?.id == iUser) && (currentUser?.roles!.length < 2)">
           <div *ngIf="(user?.status?.id != '5')">
             <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)">
-              <i class="fas fa-play"></i></a>
+              <i class="fas fa-pause"></i></a>
           </div>
           <div *ngIf="(user?.status?.id == '5')">
             <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)">
-              <i class="fas fa-pause"></i></a>
+              <i class="fas fa-play"></i></a>
           </div>
         </div>
         <div *ngIf="(currentUser?.roles!.length > 2)">
