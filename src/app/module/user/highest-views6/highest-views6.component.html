@@ -9,21 +9,36 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class="service-item col-4" *ngFor="let user of users" >
+          <div class="service-item col-4 mt-5" *ngFor="let user of users">
             <div class="service-img mx-auto">
               <img class="rounded-circle w-100 h-100 bg-light p-3" src="{{user?.avatar}}"
                    style="object-fit: cover;">
             </div>
             <div class="position-relative text-center bg-light rounded p-4 pb-5" style="margin-top: -75px;">
-              <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5"> name: {{user?.fullName}}</h5>
-              <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5">Mô tả: {{user?.description}} </h5>
+              <h5 class="font-weight-semi-bold mt-5  pt-5">{{user?.fullName}}</h5>
+              <h5 class="font-weight-semi-bold mt-1 mb-3 pt-lg-3">{{user?.description}} </h5>
               <div>
-                <div class="service-item col-4" *ngFor="let s of user?.sss" >
-                  <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5">dịch vụ: {{s.name}} </h5>
+                <div class="position-relative text-center bg-light rounded"
+                     *ngFor="let s of user?.myService; let i = index">
+                  <!--                  <div>-->
+                  <!--                    <p>{{user?.myService?.length}}</p>-->
+                  <!--                  </div>-->
+                  <p>{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>
                 </div>
-
+                  <div *ngIf=" user?.myService!.length > 1 && user?.myService!.length <3 ">
+                    <p><i class="fas fa-heart service"></i></p>
+                  </div>
+                  <div *ngIf=" user?.myService!.length > 0 && user?.myService!.length <2">
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
+                  </div>
+                  <div *ngIf="  user?.myService!.length <1">
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
+                  </div>
               </div>
-              <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5">Giá :{{user?.price}} </h5>
+              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3">Giá :{{user?.price}} </h5>
             </div>
           </div>
         </div>
