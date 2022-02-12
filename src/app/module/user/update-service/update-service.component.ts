@@ -176,11 +176,13 @@ export class UpdateServiceComponent implements OnInit {
         if (this.activeServices[j].idService == event.target.value) {
           if (j == 0) {
             this.activeServices.splice(0, 1)
+            console.log(0)
           }else {
-          this.activeServices.splice(j, 1)
-          }
+            this.activeServices.splice(j, 1)
+            console.log(j)}
         }
       }
     }
+    console.log(this.activeServices)
   }
 }
