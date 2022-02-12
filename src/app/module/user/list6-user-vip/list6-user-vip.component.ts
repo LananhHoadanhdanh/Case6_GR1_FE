@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../model/user";
 import {UserService} from "../../../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list6-user-vip',
@@ -10,7 +11,8 @@ import {UserService} from "../../../service/user.service";
 export class List6UserVipComponent implements OnInit {
 
   users:User[]=[]
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.userService.list6UserVip().subscribe(res=>{
@@ -22,6 +24,12 @@ export class List6UserVipComponent implements OnInit {
           this.users[i].myService=r
         })
       }
+    })
+  }
+
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
     })
   }
 

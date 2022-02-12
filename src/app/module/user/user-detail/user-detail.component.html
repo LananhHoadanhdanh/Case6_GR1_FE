@@ -18,46 +18,46 @@
         <button type="button" class="btn btn-dark">Pause member</button>
       </div>
       <br>
-
-      <div *ngIf="(user?.roles!.length < 3)">
-        <div *ngIf="(user?.id == iUser) && (currentUser?.roles!.length < 2)">
-          <div *ngIf="(user?.status?.id != '5')">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)">
-              <i class="fas fa-pause"></i></a>
-          </div>
-          <div *ngIf="(user?.status?.id == '5')">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)">
-              <i class="fas fa-play"></i></a>
-          </div>
+      <div *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">
+        <div *ngIf="(user?.status?.id != '5')">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)">
+            <i class="fas fa-pause"></i></a>
         </div>
-        <div *ngIf="(currentUser?.roles!.length > 2)">
-          <div *ngIf="user?.status?.id == '1'">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
-              class="fas fa-user-plus"></i></a>
-          </div>
-          <div *ngIf="user?.status?.id == '2'">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
-              class="fas fa-lock"></i></a>
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)"><i
-              class="fas fa-star"></i></a>
-          </div>
-          <div *ngIf="user?.status?.id == '3'">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
-              class="fas fa-unlock"></i></a>
-          </div>
-          <div *ngIf="user?.status?.id == '4'">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
-              class="fas fa-lock"></i></a>
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
-              class="fas fa-star-half-alt"></i></a>
-          </div>
-          <div *ngIf="user?.status?.id == '5'">
-            <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
-              class="fas fa-lock"></i></a>
-          </div>
+        <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length < 3)">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)">
+            <i class="fas fa-play"></i></a>
+        </div>
+        <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length > 2)">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)">
+            <i class="fas fa-play"></i></a>
         </div>
       </div>
-
+      <div *ngIf="(currentUser?.roles!.length > 2) && (user?.roles!.length < 3)">
+        <div *ngIf="user?.status?.id == '1'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-user-plus"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '2'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+            class="fas fa-lock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)"><i
+            class="fas fa-star"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '3'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-unlock"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '4'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+            class="fas fa-lock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-star-half-alt"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '5'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+            class="fas fa-lock"></i></a>
+        </div>
+      </div>
     </div>
     <div class="col-7">
       <table cellpadding="10">
@@ -120,6 +120,8 @@
           </td>
         </tr>
       </table>
+      <br>
+      <app-image [userId]="user?.id"></app-image>
     </div>
     <div class="col-2"></div>
   </div>

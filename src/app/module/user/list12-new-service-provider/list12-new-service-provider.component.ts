@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list12-new-service-provider',
@@ -9,7 +10,8 @@ import {User} from "../../../model/user";
 })
 export class List12NewServiceProviderComponent implements OnInit {
   users:User[]=[]
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.userService.list12NewServiceProvider().subscribe(res=>{
@@ -21,6 +23,12 @@ export class List12NewServiceProviderComponent implements OnInit {
           this.users[i].myService=r
         })
       }
+    })
+  }
+
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
     })
   }
 

@@ -12,6 +12,7 @@ import { HighestViews6Component } from './highest-views6/highest-views6.componen
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component';
 import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for-gender/list12-user-suitable-for-gender.component';
+import { ImageComponent } from './image/image.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for
     HighestViews6Component,
     UserDetailComponent,
     List6UserVipComponent,
+    ImageComponent,
     List12UserSuitableForGenderComponent
   ],
   imports: [

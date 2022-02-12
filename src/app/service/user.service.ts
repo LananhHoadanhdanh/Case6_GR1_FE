@@ -86,4 +86,8 @@ export class UserService {
   getShowList12UserSuitableForGender(gender :string |undefined ) :Observable<User[]>{
     return this.http.get<User[]>(API_URL+`/list12UserSuitableForGender/${gender}`)
   }
+
+  increaseViews(id: number | null): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/increaseViews`, id);
+  }
 }
