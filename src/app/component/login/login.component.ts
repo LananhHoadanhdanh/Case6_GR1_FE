@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
             // @ts-ignore
             if (data.status?.id == 1 || data.status?.id == 3) {
               swal("Error!", "Your account is locked or not approved. Please use another account!", "error");
+              this.logout()
               // alert("Your account is locked or not approved. Please use another account!")
             } else {
               swal("Logged in successfully!", "", "success");

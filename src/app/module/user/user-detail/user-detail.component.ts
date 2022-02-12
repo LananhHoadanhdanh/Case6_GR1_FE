@@ -10,10 +10,9 @@ import swal from "sweetalert";
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-
   iUser = localStorage.getItem("USERID");
+  currentUser?: User;
 
-  userAcc?: User;
   user?: User;
   price?: string;
 
@@ -38,7 +37,7 @@ export class UserDetailComponent implements OnInit {
     })
 
     this.userService.getUserProfile(this.iUser).subscribe(res => {
-      this.userAcc = res
+      this.currentUser = res
     })
   }
 
