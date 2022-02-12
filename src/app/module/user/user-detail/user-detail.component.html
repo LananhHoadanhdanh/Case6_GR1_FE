@@ -1,12 +1,54 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-3">
-      <img src="{{user?.avatar}}" style="width: 100%; border-radius: 50%">
+    <div class="col-3 text-center">
+      <img src="{{user?.avatar}}" style="width: 100%; border-radius: 50%; margin-bottom: 30px">
+      <div *ngIf="user?.status?.id == '1'">
+        <button type="button" class="btn btn-secondary">Register member</button>
+      </div>
+      <div *ngIf="user?.status?.id == '2'">
+        <button type="button" class="btn btn-secondary">Active member</button>
+      </div>
+      <div *ngIf="user?.status?.id == '3'">
+        <button type="button" class="btn btn-secondary">Lock member</button>
+      </div>
+      <div *ngIf="user?.status?.id == '4'">
+        <button type="button" class="btn btn-secondary">Vip member</button>
+      </div>
+      <div *ngIf="user?.status?.id == '5'">
+        <button type="button" class="btn btn-secondary">Pause member</button>
+      </div>
+
+      <div *ngIf="(user?.roles!.length < 3) && (userAcc?.roles!.length > 2)">
+        <div *ngIf="user?.status?.id == '1'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-user-plus"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '2'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+            class="fas fa-lock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)"><i
+            class="fas fa-star"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '3'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-unlock"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '4'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+            class="fas fa-lock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+            class="fas fa-star-half-alt"></i></a>
+        </div>
+        <div *ngIf="user?.status?.id == '5'">
+          <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)"><i class="fas fa-play"></i></a>
+        </div>
+      </div>
+
     </div>
     <div class="col-7">
       <table cellpadding="10">
         <tr>
-          <td class="infor"><span><strong>Full name    :</strong></span></td>
+          <td class="infor"><span><strong>Full name:</strong></span></td>
           <td class="infor" colspan="2">{{user?.fullName}}</td>
         </tr>
         <tr>

@@ -75,4 +75,8 @@ export class UserService {
   updateVipAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/updateVipAccount`, id);
   }
+
+  pauseAccount(id: string | undefined): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/pauseAccount`, id);
+  }
 }
