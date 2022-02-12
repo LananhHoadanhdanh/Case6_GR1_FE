@@ -68,6 +68,10 @@ export class UserService {
     return this.http.get<User[]>(API_URL + '/usersByView')
   }
 
+  getActiveAndVipUsers(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/activeAndVipUsers')
+  }
+
   lockAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/lockAccount`, id);
   }

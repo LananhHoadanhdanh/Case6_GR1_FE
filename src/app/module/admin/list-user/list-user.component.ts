@@ -12,7 +12,7 @@ import swal from "sweetalert";
 export class ListUserComponent implements OnInit {
   idU = localStorage.getItem("USERID")
   users: User[] = [];
-  userAdmin?: User;
+  currentAcc?: User;
 
   constructor(private userService: UserService,
               private router: Router) { }
@@ -22,11 +22,11 @@ export class ListUserComponent implements OnInit {
   }
 
   loadAll() {
-    this.userService.getAllUser().subscribe(res => {
+    this.userService.getActiveAndVipUsers().subscribe(res => {
       this.users = res
     })
     this.userService.getUserProfile(this.idU).subscribe(res => {
-      this.userAdmin = res
+      this.currentAcc = res
     })
   }
 
@@ -48,6 +48,12 @@ export class ListUserComponent implements OnInit {
     this.userService.updateVipAccount(id).subscribe(() => {
       swal("VIP!", "", "success");
       this.loadAll();
+    })
+  }
+
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
     })
   }
 }

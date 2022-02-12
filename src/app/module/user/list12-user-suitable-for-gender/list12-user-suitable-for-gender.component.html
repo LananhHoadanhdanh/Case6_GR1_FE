@@ -15,7 +15,7 @@
             </div>
             <div class="position-relative text-center bg-light rounded px-4 py-5" style="margin-top: -100px;">
               <h3 class="font-weight-bold mt-5 mb-3 pt-5">{{user?.fullName}}</h3>
-              <h6 class="text-uppercase text-muted mb-4">{{user?.description}}</h6>
+              <h6 class="text-uppercase text-muted mb-4">{{user?.description}} <i class="fas fa-pen"></i></h6>
               <div>
                 <div class="position-relative text-center bg-light rounded"
                      *ngFor="let s of user?.myService; let i = index">
@@ -36,7 +36,7 @@
               </div>
               <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3">{{user?.price}}/Hour </h5>
               <div class="d-flex justify-content-center pt-1">
-                <a href="" class="btn btn-sm btn-secondary">Order Now</a>
+                <a (click)="showDetail(user?.id)" class="btn btn-sm btn-secondary">Order Now</a>
               </div>
             </div>
           </div>
