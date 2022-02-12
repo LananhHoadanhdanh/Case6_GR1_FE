@@ -54,6 +54,9 @@
           <div *ngIf="currentUser">
             <a routerLink="users" class="nav-item nav-link">Members</a>
           </div>
+          <div *ngIf="currentUser">
+            <a routerLink="update" class="nav-item nav-link">Update</a>
+          </div>
         </div>
         <div *ngIf="currentUser">
           <a routerLink="homepage" class="navbar-brand mx-5 d-none d-lg-block">
@@ -67,7 +70,7 @@
         </div>
         <div class="navbar-nav mr-auto py-0">
           <div *ngIf="currentUser">
-            <a routerLink="update" class="nav-item nav-link">Update</a>
+            <a routerLink="service" class="nav-item nav-link">Update Service</a>
           </div>
           <div *ngIf="currentUser">
             <a (click)="detail()" class="nav-item nav-link" >{{username}}</a>
