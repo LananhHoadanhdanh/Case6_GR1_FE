@@ -9,6 +9,7 @@ import {Image} from "../../../model/image";
 import swal from "sweetalert";
 import {Router} from "@angular/router";
 import * as moment from 'moment';
+import {collection} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-update-user',
@@ -234,6 +235,8 @@ export class UpdateUserComponent implements OnInit {
 
   // @ts-ignore
   showPreview(event: any) {
+    console.log(event)
+    console.log("nè nè")
     this.showLoad()
     this.loading = true;
     let newSelectedImages = [];
@@ -256,7 +259,7 @@ export class UpdateUserComponent implements OnInit {
         this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
-              this.imgs.push(url);
+              this.imgs.push(url)
               console.log(url)
               if (this.imgs.length == newSelectedImages.length) {
                 this.loading = false;
