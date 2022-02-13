@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HighestViews6Component } from './highest-views6/highest-views6.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component';
+import { List8FemaleAnd4MaleComponent } from './list8-female-and4-male/list8-female-and4-male.component';
 import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for-gender/list12-user-suitable-for-gender.component';
 import { ImageComponent } from './image/image.component';
 
@@ -26,7 +27,8 @@ import { ImageComponent } from './image/image.component';
     UserDetailComponent,
     List6UserVipComponent,
     ImageComponent,
-    List12UserSuitableForGenderComponent
+    List12UserSuitableForGenderComponent,
+    List8FemaleAnd4MaleComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../model/user";
 import {Observable} from "rxjs";
@@ -51,6 +51,7 @@ export class UserService {
   list12NewServiceProvider():Observable<User[]>{
     return this.http.get<User[]>(API_URL+`/12newServiceProvider`)
   }
+
   list6UserVip():Observable<User[]>{
     return this.http.get<User[]>(API_URL+`/list6UserVip`)
   }
@@ -72,6 +73,14 @@ export class UserService {
     return this.http.get<User[]>(API_URL + '/activeAndVipUsers')
   }
 
+  rent8Female(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/rent8Female')
+  }
+
+  rent4Male(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/rent4Male')
+  }
+
   lockAccount(id: string | undefined): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/lockAccount`, id);
   }
@@ -87,6 +96,7 @@ export class UserService {
   getAllUserBySerProvided(id: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
   }
+
   getShowList12UserSuitableForGender(gender :string |undefined ) :Observable<User[]>{
     return this.http.get<User[]>(API_URL+`/list12UserSuitableForGender/${gender}`)
   }
