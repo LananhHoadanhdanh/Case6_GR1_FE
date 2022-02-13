@@ -68,13 +68,13 @@
 
 
           <div class="service-item col-4 mt-5" *ngFor="let user of users" >
-            <div class="service-img mx-auto">
+            <div class="service-img mx-auto ">
               <img class="rounded-circle w-100 h-100 bg-light p-3" src="{{user?.avatar}}"
                    style="object-fit: cover;">
             </div>
             <div class="position-relative text-center bg-light rounded p-2 pb-3" style="margin-top: -75px;">
               <div class="col-12"><h3 class="font-weight-semi-bold mt-5  pt-5">{{user?.fullName}}</h3>
-                <p class="font-weight-semi-bold mt-1 mb-3 pt-lg-3 " style="height: 46px ;text-overflow: ellipsis;
+                <p class="font-weight-semi-bold mt-1 mb-3 pt-lg-3 "  style="height: 46px ;text-overflow: ellipsis;
   max-width: 300px;white-space: nowrap;
   overflow: hidden;">{{user?.description}} </p></div>
               <div>
@@ -98,7 +98,7 @@
                   <p><i class="fas fa-heart service"></i></p>
                 </div>
               </div>
-              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3">Giá :{{user?.price}} </h5>
+              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3">Price : {{user?.price}}/h </h5>
             </div>
           </div>
 
