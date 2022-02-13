@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
       this.approveUsers = res
       console.log(res)
     })
-    this.userService.getAllUserByStatus(4).subscribe(res => {
+    this.userService.getAllUserByStatus(3).subscribe(res => {
       this.lockUsers = res
       console.log(res)
     })
