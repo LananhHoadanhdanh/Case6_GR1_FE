@@ -86,13 +86,13 @@
           <td class="infor" colspan="2">{{user?.email}}</td>
         </tr>
         <tr>
-          <td class="infor"><strong>Price :</strong></td>
-          <td class="infor">{{user?.price}}</td>
+          <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)"><strong>Price :</strong></td>
+          <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">{{user?.price}}</td>
           <td>
-            <div *ngIf="user?.id == iUser">
+            <div *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
-                class="fas fa-cog"></i></button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-cog"></i></button>
 
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
