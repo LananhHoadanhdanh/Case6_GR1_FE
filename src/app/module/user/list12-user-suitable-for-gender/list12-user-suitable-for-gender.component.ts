@@ -19,7 +19,9 @@ export class List12UserSuitableForGenderComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserProfile(this.idU).subscribe(res => {
       this.user = res;
+      console.log(this.user?.gender)
       this.userService.getShowList12UserSuitableForGender(this.user?.gender).subscribe(res => {
+        console.log("phù hợp giới tính")
         this.users=res
         for (let i=0; i<this.users.length;i++){
           // @ts-ignore

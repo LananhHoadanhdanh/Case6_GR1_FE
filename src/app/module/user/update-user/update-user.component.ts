@@ -133,6 +133,7 @@ export class UpdateUserComponent implements OnInit {
 
   saveAll() {
     this.saveUser()
+    this.saveImage()
   }
 
   saveUser() {
@@ -234,7 +235,7 @@ export class UpdateUserComponent implements OnInit {
 
   // @ts-ignore
   showPreview(event: any) {
-    this.showLoad()
+    // this.showLoad()
     this.loading = true;
     let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
@@ -270,29 +271,29 @@ export class UpdateUserComponent implements OnInit {
         });
       }
       // @ts-ignore
-      this.times = setInterval(() => {
-        // @ts-ignore
-        this.saveImage()
-        if (this.times) {
-          // @ts-ignore
-          clearInterval(this.times);
-        }
-      }, 5000);
+      // this.times = setInterval(() => {
+      //   // @ts-ignore
+      //   // this.saveImage()
+      //   if (this.times) {
+      //     // @ts-ignore
+      //     clearInterval(this.times);
+      //   }
+      // }, 5000);
 
       // @ts-ignore
-      this.time = setInterval(() => {
-        // @ts-ignore
-        this.imageService.findAllImageByUser(this.idU).subscribe(res => {
-          // @ts-ignore
-          this.image = res;
-          console.log("load ảnh")
-          console.log(res)
-        })
-        if (this.time) {
-          // @ts-ignore
-          clearInterval(this.time);
-        }
-      }, 20000);
+      // this.time = setInterval(() => {
+      //   // @ts-ignore
+      //   this.imageService.findAllImageByUser(this.idU).subscribe(res => {
+      //     // @ts-ignore
+      //     this.image = res;
+      //     console.log("load ảnh")
+      //     console.log(res)
+      //   })
+      //   if (this.time) {
+      //     // @ts-ignore
+      //     clearInterval(this.time);
+      //   }
+      // }, 20000);
 
     }
 
