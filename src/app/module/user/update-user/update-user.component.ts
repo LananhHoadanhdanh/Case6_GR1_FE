@@ -9,7 +9,6 @@ import {Image} from "../../../model/image";
 import swal from "sweetalert";
 import {Router} from "@angular/router";
 import * as moment from 'moment';
-import {collection} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-update-user',
@@ -36,8 +35,8 @@ export class UpdateUserComponent implements OnInit {
   min: string = ""
   max?: string = ""
   image: Image[] = [];
-
-  userUpdate?: User
+  userUpdate?: User;
+  age: string = "";
 
   idU = localStorage.getItem("USERID");
   formUser = new FormGroup({
@@ -61,6 +60,7 @@ export class UpdateUserComponent implements OnInit {
   ) {
     this.min = moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
     this.max = moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
+
     // @ts-ignore
     imageService.findAllImageByUser(this.idU).subscribe(res => {
       // @ts-ignore
@@ -72,6 +72,8 @@ export class UpdateUserComponent implements OnInit {
     // @ts-ignore
     this.userService.getUserProfile(this.idU).subscribe(res => {
       this.userUpdate = res;
+      // @ts-ignore
+
       this.formUser = new FormGroup({
         fullName: new FormControl(this.userUpdate.fullName, [Validators.required]),
         city: new FormControl(this.userUpdate.city, [Validators.required]),
@@ -86,6 +88,7 @@ export class UpdateUserComponent implements OnInit {
         facebook: new FormControl(this.userUpdate.facebook, [Validators.required]),
       })
     })
+
   }
 
   get fullName() {
@@ -150,9 +153,14 @@ export class UpdateUserComponent implements OnInit {
       request: this.formUser.value.request,
       facebook: this.formUser.value.facebook,
     }
+
     this.userUpdate = user;
-    this.userUpdate.avatar = this.avatar
     // @ts-ignore
+    this.age =2022-moment(this.userUpdate?.birthday).year();
+    this.userUpdate.avatar = this.avatar
+    this.userUpdate.age =""+this.age
+    console.log(this.userUpdate)
+    //@ts-ignore
     this.userService.updateUserProfile(this.idU, this.userUpdate).subscribe(() => {
       console.log(this.userUpdate)
       swal("Update successful!", "You will be returned to the homepage", "success")
@@ -300,19 +308,21 @@ export class UpdateUserComponent implements OnInit {
     }
 
   }
-  showLoadAvt(){
-  // @ts-ignore
-  document.getElementById("loading").style.visibility = "visible"
-  // @ts-ignore
-  this.time1 = setInterval(() => {
+
+  showLoadAvt() {
     // @ts-ignore
-    document.getElementById("loading").style.visibility = "hidden"
-    if (this.time1) {
+    document.getElementById("loading").style.visibility = "visible"
+    // @ts-ignore
+    this.time1 = setInterval(() => {
       // @ts-ignore
-      clearInterval(this.time1);
-    }
-  }, 5000);
-}
+      document.getElementById("loading").style.visibility = "hidden"
+      if (this.time1) {
+        // @ts-ignore
+        clearInterval(this.time1);
+      }
+    }, 5000);
+  }
+
   showLoad() {
     // @ts-ignore
     document.getElementById("loading").style.visibility = "visible"
