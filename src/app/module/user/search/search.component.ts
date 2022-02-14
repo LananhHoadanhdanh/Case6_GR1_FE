@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../model/user";
 import {UserService} from "../../../service/user.service";
 import {Router} from "@angular/router";
@@ -13,15 +13,16 @@ import {Options} from "@angular-slider/ngx-slider";
 export class SearchComponent implements OnInit {
   idU = localStorage.getItem("USERID");
   user?: User;
-  users:User[]=[]
+  users: User[] = []
   currentIndex = -1;
   page = 1;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
-  formSearch=new FormGroup({
-    name:new FormControl("")
+  formSearch = new FormGroup({
+    name: new FormControl(""),
+    gender: new FormControl("")
   })
 
   minValue: number = 16;
@@ -33,13 +34,15 @@ export class SearchComponent implements OnInit {
     ceil: 80,
     showTicks: true
   };
+
   constructor(private userService: UserService,
               private router: Router) {
   }
+
   ngOnInit(): void {
   }
 
-  getRequestParams( page: number, pageSize: number): any {
+  getRequestParams(page: number, pageSize: number): any {
     let params: any = {};
 
     if (page) {
@@ -63,37 +66,60 @@ export class SearchComponent implements OnInit {
     this.page = 1;
     this.searchAll();
   }
+
   showDetail(id: any) {
     this.userService.increaseViews(id).subscribe(() => {
       this.router.navigate(["detail/" + id])
     })
   }
-  searchAll(){
 
-    console.log(this.minValue)
-    console.log(this.maxValue)
-
-    let name=this.formSearch?.value.name
-    console.log(name)
+  searchAll() {
+    let gender=this.formSearch?.value.gender
+    let name = this.formSearch?.value.name
     const params = this.getRequestParams(this.page, this.pageSize);
-    this.userService.findAllByAgeAndName(params,""+this.minValue,""+this.maxValue,name)
-      .subscribe({
-        next: (data) => {
-          this.users = data;
-          for (let i=0; i<this.users.length;i++){
-            // @ts-ignore
-            this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
-              // @ts-ignore
-              this.users[i].myService=r
-            })
-          }
-          console.log(this.users);
-          console.log("ak88")
+    if(gender==""){
 
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      this.userService.findAllByAgeAndName(params, "" + this.minValue, "" + this.maxValue, name)
+        .subscribe({
+          next: (data) => {
+            this.users = data;
+            for (let i = 0; i < this.users.length; i++) {
+              // @ts-ignore
+              this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                // @ts-ignore
+                this.users[i].myService = r
+              })
+            }
+            console.log(this.users);
+            console.log("ak88")
+
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+    }
+    else {
+      this.userService.findAllByAgeAndNameAndGender(params, "" + this.minValue, "" + this.maxValue, name,gender)
+        .subscribe({
+          next: (data) => {
+            this.users = data;
+            for (let i = 0; i < this.users.length; i++) {
+              // @ts-ignore
+              this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                // @ts-ignore
+                this.users[i].myService = r
+              })
+            }
+            console.log(this.users);
+            console.log("ak88")
+
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+    }
+
   }
 }

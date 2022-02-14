@@ -2,7 +2,21 @@
   <div class="container-fluid py-5">
     <div class="container">
       <div class="row ">
-        <div class="col-3">
+        <div class="col-3 ">
+            <div class="radio justify-content-xl-between">
+              <div class="col-12">
+                <input id="male" type="radio" name="gender" formControlName="gender"
+                       value="male">
+                <label for="male">Male</label>
+              </div>
+
+              <input id="female" type="radio" name="gender" formControlName="gender"
+                     value="female">
+              <label for="female">Female</label>
+              <input id="other" type="radio" name="gender" formControlName="gender"
+                     value="other">
+              <label for="other">Other</label>
+            </div>
         </div>
         <div class="col-3">
           <div class="custom-slider text-center">

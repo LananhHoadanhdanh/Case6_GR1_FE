@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 
 const API_URL = environment.apiUrl;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,12 +49,12 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
-  list12NewServiceProvider():Observable<User[]>{
-    return this.http.get<User[]>(API_URL+`/12newServiceProvider`)
+  list12NewServiceProvider(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/12newServiceProvider`)
   }
 
-  list6UserVip():Observable<User[]>{
-    return this.http.get<User[]>(API_URL+`/list6UserVip`)
+  list6UserVip(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/list6UserVip`)
   }
 
   // @ts-ignore
@@ -97,17 +98,23 @@ export class UserService {
     return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
   }
 
-  getShowList12UserSuitableForGender(gender :string |undefined ) :Observable<User[]>{
-    return this.http.get<User[]>(API_URL+`/list12UserSuitableForGender/${gender}`)
+  getShowList12UserSuitableForGender(gender: string | undefined): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/list12UserSuitableForGender/${gender}`)
   }
 
   increaseViews(id: number | null): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/increaseViews`, id);
   }
-  findUserAllByFullName(params: any,queryName :string): Observable<User[]> {
-    return this.http.get<User[]>(API_URL+'/findUserAllByFullName?queryName='+queryName, { params });
+
+  findUserAllByFullName(params: any, queryName: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/findUserAllByFullName?queryName=' + queryName, {params});
   }
-  findAllByAgeAndName(params: any,fromAge :string,toAge:string,name:string) :Observable<User[]>{
-    return this.http.get<User[]>(API_URL+`/findAllByAgeAndName/${fromAge}/${toAge}/${name}`,{params})
+
+  findAllByAgeAndName(params: any, fromAge: string, toAge: string, name: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndName/${fromAge}/${toAge}?name=` + name, {params})
+  }
+
+  findAllByAgeAndNameAndGender(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGender/${fromAge}/${toAge}/${gender}?name=` + name, {params})
   }
 }
