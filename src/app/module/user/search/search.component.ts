@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit {
     let name=this.formSearch?.value.name
     console.log(name)
     const params = this.getRequestParams(this.page, this.pageSize);
-    this.userService.findUserAllByFullName(params,name)
+    this.userService.findAllByAgeAndName(params,""+this.minValue,""+this.maxValue,name)
       .subscribe({
         next: (data) => {
           this.users = data;

@@ -107,4 +107,7 @@ export class UserService {
   findUserAllByFullName(params: any,queryName :string): Observable<User[]> {
     return this.http.get<User[]>(API_URL+'/findUserAllByFullName?queryName='+queryName, { params });
   }
+  findAllByAgeAndName(params: any,fromAge :string,toAge:string,name:string) :Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/findAllByAgeAndName/${fromAge}/${toAge}/${name}`,{params})
+  }
 }
