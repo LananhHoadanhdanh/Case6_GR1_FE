@@ -49,55 +49,55 @@
         </select>
       </div>
     </div>
+
     <div class="container-fluid py-5">
       <div class="container py-5">
         <div class="row">
           <div class="col-lg-6">
-            <h1 class="section-title position-relative mb-5">Top who suits your gender</h1>
+            <h1 class="section-title position-relative mb-5">Top 12 latest service providers</h1>
           </div>
           <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
         </div>
         <div class="row">
           <div class="col-12">
             <div class="row">
-              <div class="team-item col-4" *ngFor="let user of users">
-                <div class="team-img mx-auto">
-                  <img class="rounded-circle w-100 h-100" src="{{user?.avatar}}" style="object-fit: cover;">
+              <div *ngFor="let user of users" class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3 col-3">
+                <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                  <h4 class="font-weight-bold text-white mb-0"><i class="fa-solid fa-dong-sign"></i><br>{{user?.price}}.000</h4>
                 </div>
-                <div class="position-relative text-center bg-light rounded px-4 py-5" style="margin-top: -100px;">
-                  <h3 class="font-weight-bold mt-5 mb-3 pt-5" style="height: 109px ;
-  max-width: 300px;
-  overflow: hidden;">{{user?.fullName}}</h3>
-                  <h6 class="text-uppercase text-muted mb-4" style="height: 46px ;text-overflow: ellipsis;
-  max-width: 300px;white-space: nowrap;
+                <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                  <img class="rounded-circle w-100 h-100" src="{{user.avatar}}" style="object-fit: cover;">
+                </div>
+                <h3 class="font-weight-bold mb-4" style="height: 59px ;
+  max-width: 170px;
+  overflow: hidden;">{{user.fullName}}</h3>
+                <h6 class="text-uppercase text-muted mb-4" style="height: 46px ;text-overflow: ellipsis;
+  max-width: 170px;white-space: nowrap;
   overflow: hidden;">{{user?.description}} <i class="fas fa-pen"></i></h6>
-                  <div>
-                    <div class="position-relative text-center bg-light rounded"
-                         *ngFor="let s of user?.myService; let i = index">
-                      <p>{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>
-                    </div>
-                    <div *ngIf=" user?.myService!.length > 1 && user?.myService!.length <3 ">
-                      <p><i class="fas fa-heart service"></i></p>
-                    </div>
-                    <div *ngIf=" user?.myService!.length > 0 && user?.myService!.length <2">
-                      <p><i class="fas fa-heart service"></i></p>
-                      <p><i class="fas fa-heart service"></i></p>
-                    </div>
-                    <div *ngIf="  user?.myService!.length <1">
-                      <p><i class="fas fa-heart service"></i></p>
-                      <p><i class="fas fa-heart service"></i></p>
-                      <p><i class="fas fa-heart service"></i></p>
-                    </div>
+                <div>
+                  <div class="position-relative text-center bg-light rounded"
+                       *ngFor="let s of user?.myService; let i = index">
+                    <p>{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>
                   </div>
-                  <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3 " style="color: #f1606e" >{{user?.price}}.000/Hour </h5>
-                  <div class="d-flex justify-content-center pt-1">
-                    <a (click)="showDetail(user?.id)" class="btn btn-sm btn-secondary">Order Now</a>
+                  <div *ngIf=" user?.myService!.length > 1 && user?.myService!.length <3 ">
+                    <p><i class="fas fa-heart service"></i></p>
+                  </div>
+                  <div *ngIf=" user?.myService!.length > 0 && user?.myService!.length <2">
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
+                  </div>
+                  <div *ngIf="  user?.myService!.length <1">
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
+                    <p><i class="fas fa-heart service"></i></p>
                   </div>
                 </div>
+                <a class="btn btn-sm btn-secondary" (click)="showDetail(user?.id)">Order Now</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 

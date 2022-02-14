@@ -17,6 +17,7 @@ import { ImageComponent } from './image/image.component';
 import { FindByNameComponent } from './find-by-name/find-by-name.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component
     List12UserSuitableForGenderComponent,
     List8FemaleAnd4MaleComponent,
     MyListOrdersComponent,
-    FindByNameComponent
+    FindByNameComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
