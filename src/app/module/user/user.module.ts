@@ -18,6 +18,7 @@ import { FindByNameComponent } from './find-by-name/find-by-name.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
 import { SearchComponent } from './search/search.component';
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SearchComponent } from './search/search.component';
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSliderModule
   ]
 })
 export class UserModule { }

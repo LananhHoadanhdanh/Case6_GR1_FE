@@ -3,6 +3,7 @@ import {User} from "../../../model/user";
 import {UserService} from "../../../service/user.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Options} from "@angular-slider/ngx-slider";
 
 @Component({
   selector: 'app-search',
@@ -22,6 +23,16 @@ export class SearchComponent implements OnInit {
   formSearch=new FormGroup({
     name:new FormControl("")
   })
+
+  minValue: number = 16;
+  maxValue: number = 80;
+
+  options: Options = {
+    floor: 16,
+    step: 1,
+    ceil: 80,
+    showTicks: true
+  };
   constructor(private userService: UserService,
               private router: Router) {
   }
@@ -58,6 +69,10 @@ export class SearchComponent implements OnInit {
     })
   }
   searchAll(){
+
+    console.log(this.minValue)
+    console.log(this.maxValue)
+
     let name=this.formSearch?.value.name
     console.log(name)
     const params = this.getRequestParams(this.page, this.pageSize);

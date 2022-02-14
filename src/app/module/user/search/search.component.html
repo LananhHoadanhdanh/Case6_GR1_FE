@@ -1,27 +1,32 @@
-<div class="container-fluid py-5">
-  <div class="container">
-    <div class="row ">
-      <div class="col-3">
-      </div>
-      <div class="col-3">
-      </div>
-      <div class="col-6">
-        <nav class="navbar navbar-light bg-light">
-          <form class="form-inline" [formGroup]="formSearch" (submit)=searchAll()>
+<form class="form-inline" [formGroup]="formSearch" (submit)=searchAll()>
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="row ">
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+          <div class="custom-slider text-center">
+            Khoảng tuổi
+            <ngx-slider [options]="options" [(value)]="minValue" [(highValue)]="maxValue"></ngx-slider>
+          </div>
+        </div>
+        <div class="col-6">
+          <nav class="navbar navbar-light bg-light">
             <input class="form-control mr-sm-2" type="search"
                    placeholder="Search" aria-label="Search" formControlName="name">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Search</button>
-          </form>
-        </nav>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 <div class="container-fluid ">
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-6">
-        <h1 class="section-title position-relative mb-5">Top who suits your gender</h1>
+        <h1 class="section-title position-relative mb-5">
+          Search results </h1>
       </div>
       <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
     </div>
