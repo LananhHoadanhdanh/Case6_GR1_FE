@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import firebase from "firebase/compat";
 import {User} from "../../../model/user";
 import {UserService} from "../../../service/user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class FindByNameComponent implements OnInit {
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveTutorials();
@@ -48,7 +49,6 @@ export class FindByNameComponent implements OnInit {
     this.userService.findUserAllByFullName(params,'a')
       .subscribe({
         next: (data) => {
-
           this.users = data;
           console.log(this.users);
           console.log("dũng")
@@ -59,7 +59,6 @@ export class FindByNameComponent implements OnInit {
         }
       });
   }
-
   handlePageChange(event: number): void {
     this.page = event;
     this.retrieveTutorials();
@@ -81,6 +80,10 @@ export class FindByNameComponent implements OnInit {
     this.currentTutorial = tutorial;
     this.currentIndex = index;
   }
-
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
+    })
+  }
 
 }
