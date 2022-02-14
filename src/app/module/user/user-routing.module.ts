@@ -29,7 +29,7 @@ const routes: Routes = [
     path: 'updatePrice',
     component: UpdatePriceUserComponent
   }, {
-    path: 'searchProfile',
+    path: 'search',
     component: FindByNameComponent
   }, {
     path: 'myListOrders',
