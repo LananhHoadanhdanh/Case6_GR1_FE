@@ -16,6 +16,7 @@ import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for
 import { ImageComponent } from './image/image.component';
 import { FindByNameComponent } from './find-by-name/find-by-name.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     ImageComponent,
     List12UserSuitableForGenderComponent,
     List8FemaleAnd4MaleComponent,
+    MyListOrdersComponent,
     FindByNameComponent
   ],
   imports: [
