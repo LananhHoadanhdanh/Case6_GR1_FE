@@ -140,6 +140,15 @@ export class UpdateServiceComponent implements OnInit {
       }
       // @ts-ignore
       this.activeServices.push(this.activeSer)
+    }else {
+      this.activeSer = {
+        // @ts-ignore
+        idUser: this.idU,
+        // @ts-ignore
+        idService: 9
+      }
+      // @ts-ignore
+      this.activeServices.push(this.activeSer)
     }
     if (this.activeServices.length != 0) {
       // @ts-ignore
