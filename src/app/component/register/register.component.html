@@ -80,6 +80,9 @@
                   <div *ngIf="phoneNumber.errors?.['required']">
                     <p class="help-block text-danger text-center">Please enter your phone number</p>
                   </div>
+                  <div *ngIf="phoneNumber.errors?.['pattern']">
+                    <p class="help-block text-danger text-center">Incorrect phone number format!</p>
+                  </div>
                 </div>
                 <p class="help-block text-danger text-center"></p>
               </div>

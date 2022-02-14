@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import firebase from "firebase/compat";
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list8-female-and4-male',
@@ -13,7 +14,8 @@ export class List8FemaleAnd4MaleComponent implements OnInit {
   usersFe: User[] = []
   usersMa: User[] = []
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -37,6 +39,12 @@ export class List8FemaleAnd4MaleComponent implements OnInit {
           })
         }
       })
+    })
+  }
+
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
     })
   }
 

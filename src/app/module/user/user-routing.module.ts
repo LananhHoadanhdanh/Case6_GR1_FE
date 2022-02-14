@@ -21,7 +21,7 @@ const routes: Routes = [
     path:'service',
     component:UpdateServiceComponent
   },{
-    path:'123',
+    path:"highestViews",
     component:HighestViews6Component
   },
   {

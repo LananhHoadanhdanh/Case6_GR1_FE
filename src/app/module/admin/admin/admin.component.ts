@@ -11,8 +11,9 @@ import swal from "sweetalert";
 })
 export class AdminComponent implements OnInit {
   idU = localStorage.getItem("USERID")
-  users: User[] = [];
-  userAdmin?: User;
+  approveUsers: User[] = [];
+  lockUsers: User[] = [];
+  currentAcc?: User;
 
   constructor(private userService: UserService,
               private router: Router) { }
@@ -23,20 +24,30 @@ export class AdminComponent implements OnInit {
 
   loadAll() {
     this.userService.getAllUserByStatus(1).subscribe(res => {
-      this.users = res
+      this.approveUsers = res
+      console.log(res)
+    })
+    this.userService.getAllUserByStatus(3).subscribe(res => {
+      this.lockUsers = res
       console.log(res)
     })
     this.userService.getUserProfile(this.idU).subscribe(res => {
       console.log("user")
       console.log(res)
-      this.userAdmin = res
+      this.currentAcc = res
     })
   }
 
   browseAccounts(id: string | undefined) {
     this.userService.browseAccount(id).subscribe(() => {
-      swal("Approved!", "", "success");
+      swal("Done!", "", "success");
       this.loadAll();
+    })
+  }
+
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
     })
   }
 

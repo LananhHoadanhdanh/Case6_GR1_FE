@@ -5,7 +5,6 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 
 const API_URL = environment.apiUrl;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -49,12 +48,12 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
-  list12NewServiceProvider(): Observable<Iterable<User>> {
-    return this.http.get<Iterable<User>>(API_URL + `/12newServiceProvider`)
+  list12NewServiceProvider():Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/12newServiceProvider`)
   }
 
-  list6UserVip(): Observable<Iterable<User>> {
-    return this.http.get<Iterable<User>>(API_URL + `/list6UserVip`)
+  list6UserVip():Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/list6UserVip`)
   }
 
   // @ts-ignore
@@ -68,6 +67,10 @@ export class UserService {
 
   getAllUserByView(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + '/usersByView')
+  }
+
+  getActiveAndVipUsers(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + '/activeAndVipUsers')
   }
 
   rent8Female(): Observable<User[]> {
@@ -92,5 +95,13 @@ export class UserService {
 
   getAllUserBySerProvided(id: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + '/serProvidedByUser?userId=' + id)
+  }
+
+  getShowList12UserSuitableForGender(gender :string |undefined ) :Observable<User[]>{
+    return this.http.get<User[]>(API_URL+`/list12UserSuitableForGender/${gender}`)
+  }
+
+  increaseViews(id: number | null): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}/increaseViews`, id);
   }
 }

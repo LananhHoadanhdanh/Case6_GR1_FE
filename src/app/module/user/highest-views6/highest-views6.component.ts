@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
 import {ServiceProvided} from "../../../model/service-provided";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-highest-views6',
@@ -10,7 +11,8 @@ import {ServiceProvided} from "../../../model/service-provided";
 })
 export class HighestViews6Component implements OnInit {
   users: User[] = []
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.loadAll()
@@ -18,21 +20,22 @@ export class HighestViews6Component implements OnInit {
 
   loadAll() {
     this.userService.getAllUserByView().subscribe(res => {
-      // @ts-ignore
       this.users = res;
-      console.log(res)
-      // @ts-ignore
+
       for (let i=0; i<this.users.length;i++){
         // @ts-ignore
         this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
           // @ts-ignore
           this.users[i].myService=r
-          console.log(this.users[i].myService)
         })
       }
 
     })
   }
 
-  // @ts-ignore
+  showDetail(id: any) {
+    this.userService.increaseViews(id).subscribe(() => {
+      this.router.navigate(["detail/" + id])
+    })
+  }
 }
