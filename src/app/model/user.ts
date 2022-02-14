@@ -29,4 +29,5 @@ export interface User {
   fullName?: string,
   roles?: [Role];
   myService?:[ServiceProvided]
+  age?:string;
 }
