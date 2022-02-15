@@ -122,6 +122,12 @@ export class UserService {
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCity/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
   }
 
+  findAllByAgeAndNameAndGenderAnd2City(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string, city2: string): Observable<User[]> {
+    let str = API_URL + `/findAllByAgeAndNameAndGenderAnd2City/${fromAge}/${toAge}/${gender}/${city}/${city2}?name=` + name;
+    console.log(str)
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAnd2City/${fromAge}/${toAge}/${gender}/${city}/${city2}?name=` + name, {params})
+  }
+
   serviceProvider12(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/12serviceProvider`)
   }

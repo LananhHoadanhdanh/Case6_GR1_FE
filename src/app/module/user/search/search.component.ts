@@ -79,6 +79,7 @@ export class SearchComponent implements OnInit {
     let gender = this.formSearch?.value.gender
     let name = this.formSearch?.value.name
     const params = this.getRequestParams(this.page, this.pageSize);
+    console.log(this.activeServices.length)
     switch (this.activeServices.length){
       case 3 :
       case 0 :
@@ -170,6 +171,49 @@ export class SearchComponent implements OnInit {
         }
         break
       case 2:
+        console.log(this.activeServices[0].idService)
+        console.log(this.activeServices[1].idService)
+        if (gender == "") {
+
+          this.userService.findAllByAgeAndName(params, "" + this.minValue, "" + this.maxValue, name)
+            .subscribe({
+              next: (data) => {
+                this.users = data;
+                for (let i = 0; i < this.users.length; i++) {
+                  // @ts-ignore
+                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                    // @ts-ignore
+                    this.users[i].myService = r
+                  })
+                }
+                console.log(this.users);
+                console.log("ak88")
+
+              },
+              error: (err) => {
+                console.log(err);
+              }
+            });
+        } else {
+          this.userService.findAllByAgeAndNameAndGenderAnd2City(params, "" + this.minValue, "" + this.maxValue, name, gender,""+this.activeServices[0].idService,""+this.activeServices[1].idService)
+            .subscribe({
+              next: (data) => {
+                this.users = data;
+                for (let i = 0; i < this.users.length; i++) {
+                  // @ts-ignore
+                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                    // @ts-ignore
+                    this.users[i].myService = r
+                  })
+                }
+                console.log(this.users);
+                console.log("ak88")
+
+              },
+              error: (err) => {
+              }
+            });
+        }
         break
 
     }
