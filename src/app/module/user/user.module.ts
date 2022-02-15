@@ -19,6 +19,7 @@ import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component
 import { OrderComponent } from './order/order.component';
 import { SearchComponent } from './search/search.component';
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
+import { ServiceProvider12Component } from './service-provider12/service-provider12.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     MyListOrdersComponent,
     SearchComponent,
     OrderComponent,
+    ServiceProvider12Component
   ],
   imports: [
     CommonModule,
