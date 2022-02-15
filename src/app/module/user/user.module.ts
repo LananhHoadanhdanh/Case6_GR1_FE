@@ -16,6 +16,9 @@ import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for
 import { ImageComponent } from './image/image.component';
 import { FindByNameComponent } from './find-by-name/find-by-name.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
+import { SearchComponent } from './search/search.component';
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import { ServiceProvider12Component } from './service-provider12/service-provider12.component';
 
 
@@ -32,6 +35,9 @@ import { ServiceProvider12Component } from './service-provider12/service-provide
     ImageComponent,
     List12UserSuitableForGenderComponent,
     List8FemaleAnd4MaleComponent,
+    MyListOrdersComponent,
+    FindByNameComponent,
+    SearchComponent,
     FindByNameComponent,
     ServiceProvider12Component
   ],
@@ -40,7 +46,8 @@ import { ServiceProvider12Component } from './service-provider12/service-provide
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSliderModule
   ]
 })
 export class UserModule { }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FindByNameComponent } from './find-by-name.component';
+import { AllOrderListComponent } from './all-order-list.component';
 
-describe('FindByNameComponent', () => {
-  let component: FindByNameComponent;
-  let fixture: ComponentFixture<FindByNameComponent>;
+describe('AllOrderListComponent', () => {
+  let component: AllOrderListComponent;
+  let fixture: ComponentFixture<AllOrderListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FindByNameComponent ]
+      declarations: [ AllOrderListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FindByNameComponent);
+    fixture = TestBed.createComponent(AllOrderListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

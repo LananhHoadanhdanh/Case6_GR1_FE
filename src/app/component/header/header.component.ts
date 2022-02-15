@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../service/authentication.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-header',
@@ -14,16 +15,22 @@ export class HeaderComponent implements OnInit {
   roles?: any;
 
   constructor(private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.loadAll()
+  }
+
+  loadAll() {
     this.currentUser = localStorage.getItem("currentUser")
     this.username = localStorage.getItem("USERNAME")
     this.idU = localStorage.getItem("USERID")
-    this.roles = localStorage.getItem("ROLES")
+    this.userService.getUserProfile(this.idU).subscribe(res => {
+      this.roles = res.roles
+    })
   }
-
   logout() {
     this.authenticationService.logout()
     localStorage.removeItem("ACCESS_TOKEN");

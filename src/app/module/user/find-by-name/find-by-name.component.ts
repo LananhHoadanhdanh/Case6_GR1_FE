@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from "firebase/compat";
 import {User} from "../../../model/user";
 import {UserService} from "../../../service/user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,7 +10,7 @@ import {UserService} from "../../../service/user.service";
   styleUrls: ['./find-by-name.component.css']
 })
 export class FindByNameComponent implements OnInit {
-  users: User[] = [];
+  tutorials: User[] = [];
   currentTutorial: User = {};
   currentIndex = -1;
   title = '';
@@ -19,7 +19,7 @@ export class FindByNameComponent implements OnInit {
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
-  constructor(private userService:UserService) { }
+  constructor(private tutorialService:UserService,private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveTutorials();
@@ -45,12 +45,14 @@ export class FindByNameComponent implements OnInit {
   retrieveTutorials(): void {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
 
-    this.userService.findUserAllByFullName(params,'a')
+    this.tutorialService.getAllUser()
       .subscribe({
         next: (data) => {
-
-          this.users = data;
-          console.log(this.users);
+          // @ts-ignore
+          const { tutorials, totalItems } = data;
+          this.tutorials = data;
+          this.count = totalItems;
+          console.log(this.tutorials);
           console.log("dũng")
 
         },
@@ -77,10 +79,9 @@ export class FindByNameComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  setActiveTutorial(tutorial: User , index: number): void {
-    this.currentTutorial = tutorial;
-    this.currentIndex = index;
+
+  searchTitle(): void {
+    this.page = 1;
+    this.retrieveTutorials();
   }
-
-
 }
