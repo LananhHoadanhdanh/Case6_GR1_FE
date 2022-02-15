@@ -17,7 +17,7 @@ export class ServiceProvider12Component implements OnInit {
   page = 1;
   count = 0;
   pageSize = 12;
-  // pageSizes = [3, 6, 9];
+  pageSizes = [3, 6, 9];
   constructor(private userService:UserService) { }
   ngOnInit(): void {
     this.userService.serviceProvider12().subscribe(res=>{
@@ -26,6 +26,7 @@ export class ServiceProvider12Component implements OnInit {
         // @ts-ignore
         this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r=>{
           // @ts-ignore
+
           this.users[i].myService=r
         })
       }
@@ -49,38 +50,15 @@ export class ServiceProvider12Component implements OnInit {
     return params;
   }
 
-  retrieveTutorials(): void {
-
-    this.userService.getAllUser().subscribe({
-        next: (data) => {
-
-          this.users = data;
-          console.log(this.users);
-
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-  }
 
   handlePageChange(event: number): void {
     this.page = event;
-    this.retrieveTutorials();
   }
 
 
 
   refreshList(): void {
-    this.retrieveTutorials();
     this.currentTutorial = {};
     this.currentIndex = -1;
   }
-
-  setActiveTutorial(tutorial: User , index: number): void {
-    this.currentTutorial = tutorial;
-    console.log(this.currentTutorial)
-    this.currentIndex = index;
-  }
-
 }

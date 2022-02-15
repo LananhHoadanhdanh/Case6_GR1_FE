@@ -4,18 +4,20 @@
       <div class="row ">
         <div class="col-3 ">
             <div class="radio justify-content-xl-between">
-              <div class="col-12">
-                <input id="male" type="radio" name="gender" formControlName="gender"
-                       value="male">
-                <label for="male">Male</label>
+              <div class="row">
+                <div class="col-8">
+                  <input id="male" type="radio"  name="gender" formControlName="gender"
+                         value="male">
+                  <label  for="male" style="margin-right: 44px !important;">Male</label>
+                  <input id="female" type="radio" name="gender" formControlName="gender"
+                         value="female">
+                  <label for="female" style="margin-right: 25px !important;">Female</label>
+                  <input id="other" type="radio" name="gender" formControlName="gender"
+                         value="other">
+                  <label for="other" style="margin-right: 38px !important;">Other</label>
+                </div>
               </div>
 
-              <input id="female" type="radio" name="gender" formControlName="gender"
-                     value="female">
-              <label for="female">Female</label>
-              <input id="other" type="radio" name="gender" formControlName="gender"
-                     value="other">
-              <label for="other">Other</label>
             </div>
         </div>
         <div class="col-3">
@@ -96,7 +98,7 @@
                   <p><i class="fas fa-heart service"></i></p>
                 </div>
               </div>
-              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3 " style="color: #f1606e">{{user?.price}}.000/Hour </h5>
+              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3 " style="color: #f1606e">{{user?.price | number : '0.0-0'}}/Hour </h5>
               <div class="d-flex justify-content-center pt-1">
                 <a (click)="showDetail(user?.id)" class="btn btn-sm btn-secondary">Order Now</a>
               </div>

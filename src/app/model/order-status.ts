@@ -1,4 +1,4 @@
 export interface OrderStatus {
-  id?: string;
+  id?: any;
   name?: string
 }

@@ -6,8 +6,8 @@ export interface Order {
   bookingTime?: string;
   startTime?: string;
   endTime?: string;
-  timeRent?: string;
+  timeRent?: any;
   status?: OrderStatus;
   provider?: User;
-  renter?: User
+  renter?: User;
 }

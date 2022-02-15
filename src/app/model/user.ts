@@ -3,7 +3,7 @@ import {StatusUser} from "./status-user";
 import {ServiceProvided} from "./service-provided";
 
 export interface User {
-  id?: string,
+  id?: any,
   avatar?: string,
   birthday?: string,
   city?: string,
@@ -17,7 +17,7 @@ export interface User {
   nationality?: string,
   password?: string,
   phoneNumber?: string,
-  price?: string,
+  price?: any,
   rentCount?: string,
   request?: string,
   startTime?: string,
