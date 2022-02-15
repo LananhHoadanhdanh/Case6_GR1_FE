@@ -214,22 +214,25 @@
                   <div class="col-12"><textarea name="" id="" cols="70" rows="5"></textarea>
                   </div>
                   <div class="col-12"><h4 style="color: #8904c7">Start using the service ????</h4></div>
+                  <div class="col-12"><h5 style="color: #0c74df">Enter the service usage duration</h5>
+                    <p style="color: red">*Minimum import is 0.5 or 1 (depending on the service provider)</p>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-6"><input name="timeRent" type="number" [(ngModel)]="timeRent"
+                                                placeholder="Duration of use"></div>
+                      <div class="col-6"><p>Total payment: {{(timeRent * user?.price) | number :  '.0' }}</p></div>
+                    </div>
+                  </div>
                   <div class="col-12"><h5 style="color: #0c74df">Enter the time you want to start using the
                     service</h5></div>
                   <form [formGroup]="timeForm" (submit)="save()">
                     <div class="col-12">
                       <input type="datetime-local" formControlName="staTime">
-                    </div><input type="submit">
-                  </form>
-                  <div class="col-12"><h5 style="color: #0c74df">Enter the service usage duration</h5>
-                    <p style="color: red">*Minimum import is 0.5 or 1 (depending on the service provider)</p></div>
-                  <div class="col-12">
-                    <div class="row">
-                      <div class="col-6"><input name="timeRent" type="number" [(ngModel)]="timeRent"
-                                                placeholder="Duration of use"></div>
-                      <div class="col-6"><p>Total payment: {{(timeRent * user?.price) | number  :  '.0' }}</p></div>
                     </div>
-                  </div>
+                    <input type="submit">
+                  </form>
+
                 </div>
                 <!--                <app-image [userId]="user?.id"></app-image>-->
               </div>
@@ -241,7 +244,6 @@
 
         </div>
         <div class="modal-footer">
-
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
