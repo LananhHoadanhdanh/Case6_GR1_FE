@@ -6,8 +6,8 @@ import {UpdateServiceComponent} from "./update-service/update-service.component"
 import {HighestViews6Component} from "./highest-views6/highest-views6.component";
 import {UpdatePriceUserComponent} from "./update-price-user/update-price-user.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
-import {FindByNameComponent} from "./find-by-name/find-by-name.component";
 import {MyListOrdersComponent} from "./my-list-orders/my-list-orders.component";
+import {SearchComponent} from "./search/search.component";
 
 const routes: Routes = [
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component: UpdatePriceUserComponent
   }, {
     path: 'search',
-    component: FindByNameComponent
+    component: SearchComponent
   }, {
     path: 'myListOrders',
     component: MyListOrdersComponent
