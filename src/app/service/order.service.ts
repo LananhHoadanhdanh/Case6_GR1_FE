@@ -13,6 +13,10 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
+  getAll(): Observable<Order[]>{
+    return this.http.get<Order[]>(API_URL + '/orders')
+  }
+
   findAllOrderByRenter(id: any) :Observable<Order[]>{
     return this.http.get<Order[]>(API_URL+`/renter/${id}/orders`)
   }

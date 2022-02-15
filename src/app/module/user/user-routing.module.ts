@@ -6,6 +6,7 @@ import {UpdateServiceComponent} from "./update-service/update-service.component"
 import {HighestViews6Component} from "./highest-views6/highest-views6.component";
 import {UpdatePriceUserComponent} from "./update-price-user/update-price-user.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
+import {ServiceProvider12Component} from "./service-provider12/service-provider12.component";
 import {MyListOrdersComponent} from "./my-list-orders/my-list-orders.component";
 import {SearchComponent} from "./search/search.component";
 
@@ -34,6 +35,9 @@ const routes: Routes = [
   }, {
     path: 'myListOrders',
     component: MyListOrdersComponent
+  }, {
+    path:'profile',
+    component:ServiceProvider12Component
   }
 ];
 

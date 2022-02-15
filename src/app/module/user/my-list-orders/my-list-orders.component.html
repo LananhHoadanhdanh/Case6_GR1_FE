@@ -22,9 +22,11 @@
       <div class="col-2">{{re?.startTime | date : 'MM/dd/yy, h:mm a'}}</div>
       <div class="col-2">{{re?.endTime | date : 'MM/dd/yy, h:mm a'}}</div>
       <div class="col-1">{{re?.timeRent}}h</div>
-      <div class="col-1">{{(re?.provider?.price) * (re?.timeRent)}}</div>
+      <div class="col-1">{{(re?.provider?.price) * (re?.timeRent) | number : '0.0-0'}}</div>
       <div class="col-1">{{re?.status?.name}}</div>
-      <div class="col-2 text-center"><a (click)="deleteOrder(re?.id)" class="ml-4"><i class="fas fa-trash-alt"></i></a></div>
+      <div class="col-2 text-center" *ngIf="re?.status?.id == '2'">
+        <a (click)="changeStatusToCompleted(re?.id)" class="mr-1"><i class="fas fa-calendar-check mr-2"></i>Complete</a>
+      </div>
     </div>
   </div>
 </div>
@@ -56,15 +58,7 @@
       <div class="col-1">{{((re?.provider?.price) * (re?.timeRent)) | number : '0.0-0' }}</div>
       <div class="col-1">{{re?.status?.name}}</div>
       <div class="col-2 text-center" *ngIf="re?.status?.id == '1'">
-        <a (click)="changeStatusToReceived(re?.id)" class="ml-4"><i class="fas fa-check-circle"></i></a>
-        <a (click)="deleteOrder(re?.id)" class="ml-4"><i class="fas fa-trash-alt"></i></a>
-      </div>
-      <div class="col-2 text-center" *ngIf="re?.status?.id == '2'">
-        <a (click)="changeStatusToCompleted(re?.id)" class="ml-4"><i class="fas fa-calendar-check"></i></a>
-        <a (click)="deleteOrder(re?.id)" class="ml-4"><i class="fas fa-trash-alt"></i></a>
-      </div>
-      <div class="col-2 text-center" *ngIf="re?.status?.id == '3'">
-        <a (click)="deleteOrder(re?.id)" class="ml-4"><i class="fas fa-trash-alt"></i></a>
+        <a (click)="changeStatusToReceived(re?.id)" class="mr-1"><i class="fas fa-check-circle mr-2"></i>Receive</a>
       </div>
     </div>
   </div>
