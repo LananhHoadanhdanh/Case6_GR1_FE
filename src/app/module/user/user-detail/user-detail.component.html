@@ -165,8 +165,8 @@
       <br>
       <app-image [userId]="user?.id"></app-image>
     </div>
-    <div class="col-2">
-      <div class="col-12">
+    <div class="col-2"  *ngIf="user?.status?.id!='5'">
+      <div class="col-12" >
         <h5 style="color: #f83131">{{user?.price|number:'.0'}}/h
         </h5>
       </div>
