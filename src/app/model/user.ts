@@ -17,7 +17,7 @@ export interface User {
   nationality?: string,
   password?: string,
   phoneNumber?: string,
-  price?: string,
+  price?: any,
   rentCount?: string,
   request?: string,
   startTime?: string,

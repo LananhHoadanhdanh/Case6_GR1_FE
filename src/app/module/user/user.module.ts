@@ -14,6 +14,10 @@ import { List6UserVipComponent } from './list6-user-vip/list6-user-vip.component
 import { List8FemaleAnd4MaleComponent } from './list8-female-and4-male/list8-female-and4-male.component';
 import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for-gender/list12-user-suitable-for-gender.component';
 import { ImageComponent } from './image/image.component';
+import { FindByNameComponent } from './find-by-name/find-by-name.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -28,13 +32,17 @@ import { ImageComponent } from './image/image.component';
     List6UserVipComponent,
     ImageComponent,
     List12UserSuitableForGenderComponent,
-    List8FemaleAnd4MaleComponent
+    List8FemaleAnd4MaleComponent,
+    MyListOrdersComponent,
+    FindByNameComponent,
+    OrderComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class UserModule { }

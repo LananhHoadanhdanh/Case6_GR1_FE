@@ -48,32 +48,55 @@
       </button>
       <div class="collapse navbar-collapse justify-content-between text-center" id="navbarCollapse">
         <div class="navbar-nav ml-auto py-0">
-          <div *ngIf="currentUser">
-            <a routerLink="notification" class="nav-item nav-link">Notification</a>
+          <div *ngIf="currentUser && roles!.length > 2">
+            <div class="dropdown">
+              <a class="dropdown-toggle nav-item nav-link" role="button" id="dropdownMenuLink"
+                 data-toggle="dropdown" aria-expanded="false">General</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a routerLink="notification" class="dropdown-item">Notification</a>
+                <a routerLink="notification" class="dropdown-item">All orders</a>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="currentUser && roles!.length < 3">
+            <div class="dropdown">
+              <a class="dropdown-toggle nav-item nav-link" role="button" id="dropdownMenuButton1"
+                 data-toggle="dropdown" aria-expanded="false">Account</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <a routerLink="update" class="dropdown-item">Update Profile</a>
+                <a routerLink="service" class="dropdown-item">Update Service</a>
+              </div>
+            </div>
           </div>
           <div *ngIf="currentUser">
             <a routerLink="users" class="nav-item nav-link">Members</a>
           </div>
-          <div *ngIf="currentUser">
-            <a routerLink="update" class="nav-item nav-link">Update</a>
-          </div>
         </div>
         <div *ngIf="currentUser">
           <a routerLink="homepage" class="navbar-brand mx-5 d-none d-lg-block">
-            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER</h1>
+            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER
+            </h1>
           </a>
         </div>
         <div *ngIf="!currentUser">
           <a routerLink="" class="navbar-brand mx-5 d-none d-lg-block">
-            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER</h1>
+            <h1 class="m-0 display-4 text-primary"><span class="text-secondary"><i class="fas fa-heart"></i></span>LOVER
+            </h1>
           </a>
         </div>
         <div class="navbar-nav mr-auto py-0">
-          <div *ngIf="currentUser">
-            <a routerLink="service" class="nav-item nav-link">Update Service</a>
+          <div *ngIf="currentUser && roles!.length > 2">
+            <div class="dropdown">
+              <a class="dropdown-toggle nav-item nav-link" role="button" id="dropdownMenuButton"
+                 data-toggle="dropdown" aria-expanded="false">Account</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a routerLink="update" class="dropdown-item">Update Profile</a>
+                <a routerLink="service" class="dropdown-item">Update Service</a>
+              </div>
+            </div>
           </div>
           <div *ngIf="currentUser">
-            <a (click)="detail()" class="nav-item nav-link" >{{username}}</a>
+            <a (click)="detail()" class="nav-item nav-link">{{username}}</a>
           </div>
           <div *ngIf="currentUser">
             <a (click)="logout()" class="nav-item nav-link">Logout</a>

@@ -104,4 +104,7 @@ export class UserService {
   increaseViews(id: number | null): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}/increaseViews`, id);
   }
+  findUserAllByFullName(params: any,queryName :string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL+'/findUserAllByFullName?queryName='+queryName, { params });
+  }
 }

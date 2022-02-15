@@ -1,3 +1,6 @@
+
+<app-order></app-order>
+
 <div class="container">
   <div class="row mt-5">
     <div class="col-3 text-center">
@@ -22,40 +25,56 @@
         <div *ngIf="(user?.status?.id != '5')">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)">
             <i class="fas fa-pause"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length < 3)">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)">
             <i class="fas fa-play"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length > 2)">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)">
             <i class="fas fa-play"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
       <div *ngIf="(currentUser?.roles!.length > 2) && (user?.roles!.length < 3)">
         <div *ngIf="user?.status?.id == '1'">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
             class="fas fa-user-plus"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="user?.status?.id == '2'">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
             class="fas fa-lock"></i></a>
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)"><i
             class="fas fa-star"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="user?.status?.id == '3'">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
             class="fas fa-unlock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="user?.status?.id == '4'">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
             class="fas fa-lock"></i></a>
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
             class="fas fa-star-half-alt"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
         <div *ngIf="user?.status?.id == '5'">
           <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
             class="fas fa-lock"></i></a>
+          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+            <i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
     </div>
@@ -102,9 +121,6 @@
           <td class="infor" colspan="2">{{user?.request}}</td>
         </tr>
         <tr>
-          <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}"><i class="fab fa-facebook-f"></i></a>
-        </tr>
-        <tr>
           <td class="infor"><span><strong>Start Time:</strong></span></td>
           <td class="infor" colspan="2">{{user?.startTime | date : 'dd/MM/yyyy'}}</td>
         </tr>
@@ -142,6 +158,8 @@
                   </div>
                 </div>
               </div>
+
+
             </div>
             <!--            <button type="button" class="btn btn-primary btn-block" (click)="updatePrice()">save</button>-->
           </td>
