@@ -8,6 +8,8 @@ import {SerProvidedService} from "../../../service/ser-provided.service";
 import swal from "sweetalert";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {OrderStatus} from "../../../model/order-status";
+import {OrderService} from "../../../service/order.service";
+import {Order} from "../../../model/order";
 
 @Component({
   selector: 'app-order',
@@ -18,7 +20,7 @@ export class OrderComponent implements OnInit {
 
   iUser = localStorage.getItem("USERID");
   currentUser?: User;
-
+  newOrder?: Order;
   user?: User;
   price?: string;
   actSerData: ActiveService[] = []
@@ -31,7 +33,7 @@ export class OrderComponent implements OnInit {
   timeRent: number
 
   constructor(private activatedRoute: ActivatedRoute,
-              private userService: UserService, private service: SerProvidedService) {
+              private userService: UserService, private service: SerProvidedService, private orderService: OrderService) {
   }
 
   timeForm = new FormGroup({
@@ -44,18 +46,22 @@ export class OrderComponent implements OnInit {
 
   save() {
     const order = {
-      startTime: this.timeForm.value.startTime ,
+      startTime: this.timeForm.value.staTime,
       timeRent: this.timeRent,
       status: {
-        id:1
+        id: 1
       },
-      provider:{
-        id:this.iUser
+      provider: {
+        id: this.iUser
       },
-      renter:{
-        id:this.user?.id
+      renter: {
+        id: this.user?.id
       }
     }
+    this.newOrder = order;
+    this.orderService.saveOrder(this.newOrder).subscribe(res => {
+      console.log(res)
+    })
   }
 
 

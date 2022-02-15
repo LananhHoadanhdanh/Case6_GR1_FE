@@ -20,4 +20,7 @@ export class OrderService {
   findAllOrderByProvider(id: any) :Observable<Order[]>{
     return this.http.get<Order[]>(API_URL+`/provider/${id}/orders`)
   }
+  saveOrder(order :Order):Observable<any>{
+    return this.http.post<any>(API_URL+`/order`,order)
+  }
 }
