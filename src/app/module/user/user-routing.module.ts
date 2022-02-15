@@ -36,7 +36,7 @@ const routes: Routes = [
     path: 'myListOrders',
     component: MyListOrdersComponent
   }, {
-    path:'profile',
+    path:'members',
     component:ServiceProvider12Component
   }
 ];
