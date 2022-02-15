@@ -20,6 +20,15 @@ export class OrderService {
   findAllOrderByProvider(id: any) :Observable<Order[]>{
     return this.http.get<Order[]>(API_URL+`/provider/${id}/orders`)
   }
+
+  changeStatus(id: any, statusId: any): Observable<Order> {
+    return this.http.put<Order>(API_URL + `/orders/${id}/changeStatus?statusId=${statusId}`, statusId)
+  }
+
+  deleteOrder(id: any): Observable<Order> {
+    return this.http.delete(API_URL + `/orders/${id}`)
+  }
+
   saveOrder(order :Order):Observable<any>{
     return this.http.post<any>(API_URL+`/order`,order)
   }
