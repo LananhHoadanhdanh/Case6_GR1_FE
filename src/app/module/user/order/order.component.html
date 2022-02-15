@@ -1,0 +1,251 @@
+<form [formGroup]="timeForm" >
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 900px ">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+
+            <!--          - -->
+            <div class="container">
+              <div class="row mt-5">
+                <div class="col-3 text-center">
+                  <img src="{{user?.avatar}}" style="width: 100%; border-radius: 50%; margin-bottom: 30px">
+                  <div *ngIf="user?.status?.id == '1'">
+                    <button type="button" class="btn btn-warning">Register member</button>
+                  </div>
+                  <div *ngIf="user?.status?.id == '2'">
+                    <button type="button" class="btn btn-secondary">Active member</button>
+                  </div>
+                  <div *ngIf="user?.status?.id == '3'">
+                    <button type="button" class="btn btn-danger">Lock member</button>
+                  </div>
+                  <div *ngIf="user?.status?.id == '4'">
+                    <button type="button" class="btn btn-success">Vip member</button>
+                  </div>
+                  <div *ngIf="user?.status?.id == '5'">
+                    <button type="button" class="btn btn-dark">Pause member</button>
+                  </div>
+                  <br>
+                  <div *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">
+                    <div *ngIf="(user?.status?.id != '5')">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="pauseAccount(user?.id)">
+                        <i class="fas fa-pause"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length < 3)">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)">
+                        <i class="fas fa-play"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="(user?.status?.id == '5') && (user?.roles!.length > 2)">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)">
+                        <i class="fas fa-play"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                  </div>
+                  <div *ngIf="(currentUser?.roles!.length > 2) && (user?.roles!.length < 3)">
+                    <div *ngIf="user?.status?.id == '1'">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+                        class="fas fa-user-plus"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="user?.status?.id == '2'">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+                        class="fas fa-lock"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="updateVipAccount(user?.id)"><i
+                        class="fas fa-star"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="user?.status?.id == '3'">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+                        class="fas fa-unlock"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="user?.status?.id == '4'">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+                        class="fas fa-lock"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="browseAccount(user?.id)"><i
+                        class="fas fa-star-half-alt"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div *ngIf="user?.status?.id == '5'">
+                      <a class="btn btn-outline-secondary btn-social mr-2" (click)="lockAccount(user?.id)"><i
+                        class="fas fa-lock"></i></a>
+                      <a class="btn btn-outline-secondary btn-social mr-2" href="{{user?.facebook}}">
+                        <i class="fab fa-facebook-f"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-7">
+                  <table cellpadding="10">
+                    <tr>
+                      <td class="infor"><span><strong>Full name:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.fullName}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Birthday :</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.birthday | date : 'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Gender :</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.gender}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>City:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.city}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Nationality:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.nationality}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Height:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.height}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Weight:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.weight}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Hobby:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.hobby}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Description:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.description}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Request:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.request}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Start Time:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.startTime | date : 'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor"><span><strong>Rent Count:</strong></span></td>
+                      <td class="infor" colspan="2">{{user?.rentCount}}</td>
+                    </tr>
+                    <tr>
+                      <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)"><strong>Price
+                        :</strong>
+                      </td>
+                      <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">{{user?.price}}.000
+                      </td>
+                      <td>
+                        <div *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fas fa-cog"></i></button>
+
+                          <!-- Modal -->
+
+
+                        </div>
+                        <!--            <button type="button" class="btn btn-primary btn-block" (click)="updatePrice()">save</button>-->
+                      </td>
+                    </tr>
+                  </table>
+                  <br>
+                  <div class="row ">
+                    <div class="col-12">
+                      <h3>Service provided</h3>
+                    </div>
+                    <div class="col-12">
+                      Basic services (*) include:
+                      <ul>
+                        <li>- Launch of house people</li>
+                        <li> - Launching friends
+                        </li>
+                        <li>- Travel with your team
+                        </li>
+                        <li> - Shared out
+                        </li>
+                        <li>- Attend birthday
+                        </li>
+                        <li> - Chat offline
+                        </li>
+                        <li>- Online chat
+                        </li>
+                        <li> - Go in Tet holiday.
+                        </li>
+                        <li> - Going out holidays</li>
+                      </ul>
+                      <p style="color: #aa04c7">Note: Mounting items "*" are required</p>
+                    </div>
+                    <div class="col-12">
+                      <h5>Additional service options</h5>
+                    </div>
+                    <div class="col-12">
+                      <h6>Free additional service</h6>
+                    </div>
+                    <ul *ngFor="let ser of servicesFree,index as i">
+                      <li><p>{{ser.name}}</p>
+                      </li>
+                    </ul>
+                    <div class="col-12">
+                      <h6>Extended service (charged)</h6>
+                    </div>
+                    <ul *ngFor="let ser of servicesEx,index as i">
+                      <li><p>{{ser.name}}</p>
+                      </li>
+                    </ul>
+                    <div class="col-12">
+                      <h6>Rental period</h6>
+                    </div>
+                    <div class="col-12"><p>{{servicesTime.name}}</p>
+                    </div>
+                    <div class="col-12"><h5>Message</h5></div>
+                    <div class="col-12"><textarea name="" id="" cols="70" rows="5"></textarea>
+                    </div>
+                    <div class="col-12"><h4 style="color: #8904c7">Start using the service ????</h4></div>
+                    <div class="col-12"><h5 style="color: #0c74df">Enter the time you want to start using the
+                      service</h5></div>
+                    <div class="col-12">
+                      <input type="datetime-local" formControlName="staTime">
+                    </div>
+                    <div class="col-12"><h5 style="color: #0c74df">Enter the service usage duration</h5><p style="color: red">*Minimum import is 0.5 or 1 (depending on the service provider)</p></div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-6"><input name="timeRent" type="number" [(ngModel)]="timeRent"
+                                                  placeholder="Duration of use"></div>
+                        <div class="col-6"><p>Total payment: {{(timeRent * user?.price) | number  :  '.0' }}</p></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--                <app-image [userId]="user?.id"></app-image>-->
+                </div>
+                <div class="col-2"></div>
+              </div>
+            </div>
+            <!--&#45;&#45;-->
+
+
+          </div>
+          <div class="modal-footer"><input type="submit">
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</form>
