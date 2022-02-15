@@ -123,8 +123,7 @@ export class UserService {
   }
 
   findAllByAgeAndNameAndGenderAnd2City(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string, city2: string): Observable<User[]> {
-    let str = API_URL + `/findAllByAgeAndNameAndGenderAnd2City/${fromAge}/${toAge}/${gender}/${city}/${city2}?name=` + name;
-    console.log(str)
+
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAnd2City/${fromAge}/${toAge}/${gender}/${city}/${city2}?name=` + name, {params})
   }
 
