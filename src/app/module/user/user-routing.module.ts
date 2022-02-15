@@ -7,6 +7,7 @@ import {HighestViews6Component} from "./highest-views6/highest-views6.component"
 import {UpdatePriceUserComponent} from "./update-price-user/update-price-user.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {FindByNameComponent} from "./find-by-name/find-by-name.component";
+import {ServiceProvider12Component} from "./service-provider12/service-provider12.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path:'searchProfile',
     component:FindByNameComponent
+  },
+  {
+    path:'profile',
+    component:ServiceProvider12Component
   }
 
 ];

@@ -1,0 +1,67 @@
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+
+          <div class="col-md-12">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              [responsive]="true"
+              (pageChange)="handlePageChange($event)"
+            ></pagination-controls>
+          </div>
+
+          <div class="col-md-12">
+
+            <div class="list-group">
+              <div
+                class="list-group-item"
+                *ngFor="
+          let tutorial of users | paginate : {itemsPerPage: pageSize,currentPage: page,totalItems: count};
+          let i = index
+        "
+                [class.active]="i == currentIndex"
+                (click)="setActiveTutorial(tutorial, i)"
+              >
+                <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3"
+                     style="width: 150px; height: 150px;">
+                  <img class="rounded-circle w-100 h-100" src="{{tutorial.avatar}}" style="object-fit: cover;">
+                </div>
+                <h3 class="font-weight-bold mb-4"
+                    style="height: 59px ;max-width: 170px;overflow: hidden;">{{tutorial.fullName}}</h3>
+                <h6 class="text-uppercase text-muted mb-4"
+                    style="height: 46px ;text-overflow: ellipsis;max-width: 170px;white-space: nowrap;overflow: hidden;">
+                  <i class="fas fa-pen"></i>{{tutorial?.description}}</h6>
+                <h3 class="font-weight-bold mb-4"
+                    style="height: 59px ;max-width: 170px;overflow: hidden;">{{tutorial.price}}</h3>
+<!--                        <div>-->
+<!--                          <div class="position-relative text-center bg-light rounded"-->
+<!--                               *ngFor="let s of tutorial?.myService; let i = index">-->
+<!--                            <p>{{s.name}} &ensp; &ensp; <i class="fas fa-heart service"></i></p>-->
+<!--                          </div>-->
+<!--                          <div *ngIf=" tutorial?.myService!.length > 1 && tutorial?.myService!.length <3 ">-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                          </div>-->
+<!--                          <div *ngIf=" tutorial?.myService!.length > 0 && tutorial?.myService!.length <2">-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                          </div>-->
+<!--                          <div *ngIf="  tutorial?.myService!.length <1">-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                            <p><i class="fas fa-heart service"></i></p>-->
+<!--                          </div>-->
+<!--                        </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
