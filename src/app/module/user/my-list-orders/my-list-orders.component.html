@@ -1,1 +1,61 @@
-<p>my-list-orders works!</p>
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="section-title position-relative mb-5">All your orders (as renter)</h1>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
+    </div>
+    <div class="row title">
+      <div class="col-1 order-title"></div>
+      <div class="col-2 order-title">Lover's name</div>
+      <div class="col-2 order-title">Start</div>
+      <div class="col-2 order-title">Finish</div>
+      <div class="col-1 order-title">Time</div>
+      <div class="col-1 order-title">Price</div>
+      <div class="col-2 order-title">Status</div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row mt-3" *ngFor="let re of renterOrders">
+      <div class="col-1"><img src="{{re?.provider?.avatar}}" alt="" width="100%"></div>
+      <div class="col-2">{{re?.provider?.fullName}}</div>
+      <div class="col-2">{{re?.startTime | date : 'MM/dd/yy, h:mm a'}}</div>
+      <div class="col-2">{{re?.endTime | date : 'MM/dd/yy, h:mm a'}}</div>
+      <div class="col-1">{{re?.timeRent}}h</div>
+      <div class="col-1">{{(re?.provider?.price) * (re?.timeRent)}}</div>
+      <div class="col-2">{{re?.status?.name}}</div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="section-title position-relative mb-5">All your orders (as provider)</h1>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
+    </div>
+    <div class="row title">
+      <div class="col-1 order-title"></div>
+      <div class="col-2 order-title">Customer's name</div>
+      <div class="col-2 order-title">Start</div>
+      <div class="col-2 order-title">Finish</div>
+      <div class="col-1 order-title">Time</div>
+      <div class="col-1 order-title">Price</div>
+      <div class="col-2 order-title">Status</div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row mt-3" *ngFor="let re of providerOrders">
+      <div class="col-1"><img src="{{re?.renter?.avatar}}" alt="" width="100%"></div>
+      <div class="col-2">{{re?.renter?.fullName}}</div>
+      <div class="col-2">{{re?.startTime | date : 'MM/dd/yy, h:mm a'}}</div>
+      <div class="col-2">{{re?.endTime | date : 'MM/dd/yy, h:mm a'}}</div>
+      <div class="col-1">{{re?.timeRent}}h</div>
+      <div class="col-1">{{(re?.provider?.price) * (re?.timeRent)}}</div>
+      <div class="col-2">{{re?.status?.name}}</div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+</div>

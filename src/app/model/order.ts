@@ -9,5 +9,5 @@ export interface Order {
   timeRent?: any;
   status?: OrderStatus;
   provider?: User;
-  renter?: User
+  renter?: User;
 }
