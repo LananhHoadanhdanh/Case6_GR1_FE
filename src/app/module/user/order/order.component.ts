@@ -52,10 +52,10 @@ export class OrderComponent implements OnInit {
         id: 1
       },
       provider: {
-        id: this.iUser
+        id: this.user?.id
       },
       renter: {
-        id: this.user?.id
+        id: this.iUser
       }
     }
     this.newOrder = order;

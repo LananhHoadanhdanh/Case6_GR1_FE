@@ -11,7 +11,7 @@
       <div class="col-12">
         <div class="row" >
           <div class="service-item col-4 mt-5" *ngFor="let user of users" >
-            <div class="service-img mx-auto">
+            <div class="service-img mx-auto" (click)="showDetail(user?.id)">
               <img class="rounded-circle w-100 h-100 bg-light p-3" src="{{user?.avatar}}"
                    style="object-fit: cover;">
             </div>
