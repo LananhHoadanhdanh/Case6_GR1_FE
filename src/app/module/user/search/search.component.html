@@ -4,18 +4,20 @@
       <div class="row ">
         <div class="col-3 ">
             <div class="radio justify-content-xl-between">
-              <div class="col-12">
-                <input id="male" type="radio" name="gender" formControlName="gender"
-                       value="male">
-                <label for="male">Male</label>
+              <div class="row">
+                <div class="col-8">
+                  <input id="male" type="radio"  name="gender" formControlName="gender"
+                         value="male">
+                  <label  for="male" style="margin-right: 44px !important;">Male</label>
+                  <input id="female" type="radio" name="gender" formControlName="gender"
+                         value="female">
+                  <label for="female" style="margin-right: 25px !important;">Female</label>
+                  <input id="other" type="radio" name="gender" formControlName="gender"
+                         value="other">
+                  <label for="other" style="margin-right: 38px !important;">Other</label>
+                </div>
               </div>
 
-              <input id="female" type="radio" name="gender" formControlName="gender"
-                     value="female">
-              <label for="female">Female</label>
-              <input id="other" type="radio" name="gender" formControlName="gender"
-                     value="other">
-              <label for="other">Other</label>
             </div>
         </div>
         <div class="col-3">
