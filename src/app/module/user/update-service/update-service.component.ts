@@ -140,7 +140,7 @@ export class UpdateServiceComponent implements OnInit {
       }
       // @ts-ignore
       this.activeServices.push(this.activeSer)
-    }else {
+    } else {
       this.activeSer = {
         // @ts-ignore
         idUser: this.idU,
@@ -186,9 +186,10 @@ export class UpdateServiceComponent implements OnInit {
           if (j == 0) {
             this.activeServices.splice(0, 1)
             console.log(0)
-          }else {
+          } else {
             this.activeServices.splice(j, 1)
-            console.log(j)}
+            console.log(j)
+          }
         }
       }
     }

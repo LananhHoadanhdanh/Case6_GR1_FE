@@ -16,6 +16,7 @@ import { List12UserSuitableForGenderComponent } from './list12-user-suitable-for
 import { ImageComponent } from './image/image.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { MyListOrdersComponent } from './my-list-orders/my-list-orders.component';
+import { OrderComponent } from './order/order.component';
 import { SearchComponent } from './search/search.component';
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
@@ -34,7 +35,8 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     List12UserSuitableForGenderComponent,
     List8FemaleAnd4MaleComponent,
     MyListOrdersComponent,
-    SearchComponent
+    SearchComponent,
+    OrderComponent,
   ],
   imports: [
     CommonModule,

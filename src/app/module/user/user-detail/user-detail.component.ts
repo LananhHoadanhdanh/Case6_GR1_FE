@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../model/user";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../service/user.service";
 import swal from "sweetalert";
+import {SerProvidedService} from "../../../service/ser-provided.service";
+import {ActiveService} from "../../../model/active-service";
+import {ServiceProvided} from "../../../model/service-provided";
 
 @Component({
   selector: 'app-user-detai',
@@ -18,10 +21,11 @@ export class UserDetailComponent implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute,
-              private userService: UserService,) {
+              private userService: UserService, private service: SerProvidedService) {
   }
 
   ngOnInit(): void {
+
     this.loadAll()
   }
 

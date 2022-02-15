@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import firebase from "firebase/compat";
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
 import {Router} from "@angular/router";
@@ -17,7 +16,10 @@ export class List8FemaleAnd4MaleComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router) {
   }
-
+s(id:any){
+  // @ts-ignore
+  document.getElementById(id).style.display = 'block';
+}
   ngOnInit(): void {
     this.userService.rent8Female().subscribe(female => {
 // @ts-ignore

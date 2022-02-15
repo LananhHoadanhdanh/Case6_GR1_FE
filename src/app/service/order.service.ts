@@ -28,4 +28,8 @@ export class OrderService {
   deleteOrder(id: any): Observable<Order> {
     return this.http.delete(API_URL + `/orders/${id}`)
   }
+
+  saveOrder(order :Order):Observable<any>{
+    return this.http.post<any>(API_URL+`/order`,order)
+  }
 }
