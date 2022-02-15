@@ -3,22 +3,21 @@
     <div class="container">
       <div class="row ">
         <div class="col-3 ">
-            <div class="radio justify-content-xl-between">
-              <div class="row">
-                <div class="col-8">
-                  <input id="male" type="radio"  name="gender" formControlName="gender"
-                         value="male">
-                  <label  for="male" style="margin-right: 44px !important;">Male</label>
-                  <input id="female" type="radio" name="gender" formControlName="gender"
-                         value="female">
-                  <label for="female" style="margin-right: 25px !important;">Female</label>
-                  <input id="other" type="radio" name="gender" formControlName="gender"
-                         value="other">
-                  <label for="other" style="margin-right: 38px !important;">Other</label>
-                </div>
+          <div class="radio justify-content-xl-between">
+            <div class="row">
+              <div class="col-8">
+                <input id="male" type="radio" name="gender" formControlName="gender"
+                       value="male">
+                <label for="male" style="margin-right: 44px !important;">Male</label>
+                <input id="female" type="radio" name="gender" formControlName="gender"
+                       value="female">
+                <label for="female" style="margin-right: 25px !important;">Female</label>
+                <input id="other" type="radio" name="gender" formControlName="gender"
+                       value="other">
+                <label for="other" style="margin-right: 38px !important;">Other</label>
               </div>
-
             </div>
+          </div>
         </div>
         <div class="col-3">
           <div class="custom-slider text-center">
@@ -35,8 +34,25 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="col-12">
+          <input (change)="getAddress($event)" value="Hà Nội" type="checkbox" id="1">
+          <label for="1"><p>Hà Nội</p></label>
+          <input (change)="getAddress($event)" value="Đà Nẵng" type="checkbox"
+                 id="2">
+          <label for="2"><p>Đà Nẵng</p></label>
+          <input (change)="getAddress($event)" value="HCM" type="checkbox"
+                 id="3">
+          <label for="3"><p>HCM</p></label>
+        </div>
+      </div>
+
+    </div>
   </div>
 </form>
+
+
 <div class="container-fluid ">
   <div class="container py-5">
     <div class="row">
@@ -98,7 +114,8 @@
                   <p><i class="fas fa-heart service"></i></p>
                 </div>
               </div>
-              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3 " style="color: #f1606e">{{user?.price | number : '0.0-0'}}/Hour </h5>
+              <h5 class="font-weight-semi-bold mt-3 mb-3 pt-3 "
+                  style="color: #f1606e">{{user?.price | number : '0.0-0'}}/Hour </h5>
               <div class="d-flex justify-content-center pt-1">
                 <a (click)="showDetail(user?.id)" class="btn btn-sm btn-secondary">Order Now</a>
               </div>
