@@ -117,7 +117,12 @@ export class UserService {
   findAllByAgeAndNameAndGender(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGender/${fromAge}/${toAge}/${gender}?name=` + name, {params})
   }
-  serviceProvider12():Observable<User[]>{
-    return this.http.get<User[]>(API_URL+`/12serviceProvider`)
+
+  findAllByAgeAndNameAndGenderAndCity(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCity/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
+  }
+
+  serviceProvider12(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/12serviceProvider`)
   }
 }
