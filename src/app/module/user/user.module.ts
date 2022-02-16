@@ -46,7 +46,8 @@ import { ServiceProvider12Component } from './service-provider12/service-provide
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    NgxSliderModule
+    NgxSliderModule,
+
   ]
 })
 export class UserModule { }
