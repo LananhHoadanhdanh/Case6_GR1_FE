@@ -9,6 +9,7 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {ServiceProvider12Component} from "./service-provider12/service-provider12.component";
 import {MyListOrdersComponent} from "./my-list-orders/my-list-orders.component";
 import {SearchComponent} from "./search/search.component";
+import {StatusComponent} from "./status/status.component";
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
   }, {
     path:'members',
     component:ServiceProvider12Component
+  }, {
+    path:'completed',
+    component:StatusComponent
   }
 ];
 
