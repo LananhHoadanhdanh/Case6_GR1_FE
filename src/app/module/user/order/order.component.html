@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  <button type="button" class="b" data-toggle="modal" data-target="#myModal"><strong style="color: #ffffff">Order</strong></button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -91,7 +91,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-7">
+              <div class="col-8">
                 <table cellpadding="10">
                   <tr>
                     <td class="infor"><span><strong>Full name:</strong></span></td>
@@ -211,32 +211,38 @@
                   <div class="col-12"><p>{{servicesTime.name}}</p>
                   </div>
                   <div class="col-12"><h5>Message</h5></div>
-                  <div class="col-12"><textarea name="" id="" cols="70" rows="5"></textarea>
+                  <div class="col-12"><textarea style="border-radius: 6px" name="" id="" cols="60" rows="4"></textarea>
                   </div>
                   <div class="col-12"><h4 style="color: #8904c7">Start using the service ????</h4></div>
                   <div class="col-12"><h5 style="color: #0c74df">Enter the service usage duration</h5>
-                    <p style="color: red">*Minimum import is 0.5 or 1 (depending on the service provider)</p>
+                    <p style="color: #ff5c5c">*{{servicesTime.name}}</p>
                   </div>
                   <div class="col-12">
                     <div class="row">
-                      <div class="col-6"><input name="timeRent" type="number" [(ngModel)]="timeRent"
+                      <div class="col-5"><input style="border-radius: 6px" name="timeRent"  type="number" [(ngModel)]="timeRent"
                                                 placeholder="Duration of use"></div>
-                      <div class="col-6"><p>Total payment: {{(timeRent * user?.price) | number :  '.0' }}</p></div>
+                      <div class="col-4"><strong class="ml-5">Total payment: </strong></div>
+                      <p style="color: #ff0000">{{(timeRent * user?.price) | number :  '.0' }}</p>
                     </div>
                   </div>
                   <div class="col-12"><h5 style="color: #0c74df">Enter the time you want to start using the
                     service</h5></div>
-                  <form [formGroup]="timeForm" (submit)="save()">
-                    <div class="col-12">
-                      <input type="datetime-local" formControlName="staTime">
+                  <form [formGroup]="timeForm" (submit)="save()" class="col-12">
+                    <input style="border-radius: 6px"  type="datetime-local" formControlName="staTime">
+                    <div class="row col-12 mt-3">
+                      <div class="col-5"></div>
+                      <button class="btn btn-secondary " type="submit">Rent confirmation</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-                    <input type="submit">
+
                   </form>
 
                 </div>
+
                 <!--                <app-image [userId]="user?.id"></app-image>-->
               </div>
-              <div class="col-2"></div>
+
+
             </div>
           </div>
           <!--&#45;&#45;-->
@@ -244,7 +250,6 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../../model/user";
 import {ActiveService} from "../../../model/active-service";
 import {ServiceProvided} from "../../../model/service-provided";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../service/user.service";
 import {SerProvidedService} from "../../../service/ser-provided.service";
 import swal from "sweetalert";
@@ -32,7 +32,7 @@ export class OrderComponent implements OnInit {
   // @ts-ignore
   timeRent: number
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private service: SerProvidedService, private orderService: OrderService) {
   }
 
@@ -60,7 +60,18 @@ export class OrderComponent implements OnInit {
     }
     this.newOrder = order;
     this.orderService.saveOrder(this.newOrder).subscribe(res => {
-      console.log(res)
+      if (res==1) {
+        swal("Successful rental rental (please wait for order confirmation)", "", "success", {timer: 2000})
+          .then(() => {
+            window.location.href = 'http://localhost:4200/detail/' + this.user?.id
+          });
+      } else {
+        if (res==2){
+          swal("Leasing time is less than the minimum lease time or small start time current time","","warning")
+        }else {
+          swal("Your rental time has been coincided with the service provider's schedule","","warning")
+        }
+      }
     })
   }
 
