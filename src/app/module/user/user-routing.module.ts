@@ -9,6 +9,7 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {ServiceProvider12Component} from "./service-provider12/service-provider12.component";
 import {MyListOrdersComponent} from "./my-list-orders/my-list-orders.component";
 import {SearchComponent} from "./search/search.component";
+import {OrderDetailComponent} from "./order-detail/order-detail.component";
 
 const routes: Routes = [
   {
@@ -36,8 +37,11 @@ const routes: Routes = [
     path: 'myListOrders',
     component: MyListOrdersComponent
   }, {
-    path:'members',
-    component:ServiceProvider12Component
+    path: 'members',
+    component: ServiceProvider12Component
+  }, {
+    path: 'orderDetail/:id',
+    component: OrderDetailComponent
   }
 ];
 

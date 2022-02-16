@@ -17,6 +17,10 @@ export class OrderService {
     return this.http.get<Order[]>(API_URL + '/orders')
   }
 
+  getOne(id: any): Observable<Order>{
+    return this.http.get<Order>(API_URL + `/orders/${id}`)
+  }
+
   findAllOrderByRenter(id: any) :Observable<Order[]>{
     return this.http.get<Order[]>(API_URL+`/renter/${id}/orders`)
   }

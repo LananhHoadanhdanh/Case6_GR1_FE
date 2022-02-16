@@ -14,10 +14,9 @@ export class ImageComponent implements OnInit {
 
   @Input() userId?: string;
 
-
-
   constructor(private router: Router,
-              private imageService: ImageService) { }
+              private imageService: ImageService) {
+  }
 
   ngOnInit(): void {
     this.imageService.findAllImageByUser(this.userId).subscribe(res => {

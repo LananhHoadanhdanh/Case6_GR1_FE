@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="col-7">
+    <div class="col-6">
       <table cellpadding="10">
         <tr>
           <td class="infor"><span><strong>Full name:</strong></span></td>
@@ -130,7 +130,7 @@
         </tr>
         <tr>
           <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)"><strong>Price :</strong></td>
-          <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">{{user?.price}}.000</td>
+          <td class="infor" *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">{{user?.price | number : '0.0-0'}}</td>
           <td>
             <div *ngIf="(user?.id == iUser) && (user?.roles!.length > 1)">
               <!-- Button trigger modal -->
@@ -149,7 +149,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <input type="text" class="form-control p-4" value={{user?.price}} [(ngModel)]="price"/>
+                      <input type="text" class="form-control p-4" [(ngModel)]="price"/>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -158,16 +158,13 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
-            <!--            <button type="button" class="btn btn-primary btn-block" (click)="updatePrice()">save</button>-->
           </td>
         </tr>
       </table>
       <br>
       <app-image [userId]="user?.id"></app-image>
     </div>
-    <div class="col-2"></div>
+    <div class="col-3"></div>
   </div>
 </div>
