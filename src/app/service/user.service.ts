@@ -117,11 +117,34 @@ export class UserService {
   findAllByAgeAndNameAndGender(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGender/${fromAge}/${toAge}/${gender}?name=` + name, {params})
   }
+  findAllByAgeAndNameAndGenderViewDesc(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderViewDesc/${fromAge}/${toAge}/${gender}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderViewAsc(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderViewAsc/${fromAge}/${toAge}/${gender}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderRentDesc(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderRentDesc/${fromAge}/${toAge}/${gender}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderRentAsc(params: any, fromAge: string, toAge: string, name: string, gender: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderRentAsc/${fromAge}/${toAge}/${gender}?name=` + name, {params})
+  }
 
   findAllByAgeAndNameAndGenderAndCity(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCity/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
   }
-
+  findAllByAgeAndNameAndGenderAndCityViewDesc(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCityViewDesc/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderAndCityViewAsc(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCityViewAsc/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderAndCityRentAsc(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCityRentAsc/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
+  }
+  findAllByAgeAndNameAndGenderAndCityRentDesc(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAndCityRentDesc/${fromAge}/${toAge}/${gender}/${city}?name=` + name, {params})
+  }
   findAllByAgeAndNameAndGenderAnd2City(params: any, fromAge: string, toAge: string, name: string, gender: string, city: string, city2: string): Observable<User[]> {
 
     return this.http.get<User[]>(API_URL + `/findAllByAgeAndNameAndGenderAnd2City/${fromAge}/${toAge}/${gender}/${city}/${city2}?name=` + name, {params})

@@ -122,6 +122,14 @@ export class SearchComponent implements OnInit {
           }
           break;
         case 1:
+          if (view == 1 && rent == "") {
+          }
+          if (view == 2 && rent == "") {
+          }
+          if (view == "" && rent == 1) {
+          }
+          if (view == "" && rent == 2) {
+          }
           break;
         case 2:
           if (view == 1 && rent == "") {
@@ -139,22 +147,174 @@ export class SearchComponent implements OnInit {
         case 0:
         case 3:
           if (view == 1 && rent == "") {
+            this.userService.findAllByAgeAndNameAndGenderViewDesc(params, "" + this.minValue, "" + this.maxValue, name, gender)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == 2 && rent == "") {
+            this.userService.findAllByAgeAndNameAndGenderViewAsc(params, "" + this.minValue, "" + this.maxValue, name, gender)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == "" && rent == 1) {
+            this.userService.findAllByAgeAndNameAndGenderRentDesc(params, "" + this.minValue, "" + this.maxValue, name, gender)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == "" && rent == 2) {
+            this.userService.findAllByAgeAndNameAndGenderRentAsc(params, "" + this.minValue, "" + this.maxValue, name, gender)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           break;
         case 1:
           if (view == 1 && rent == "") {
+            this.userService.findAllByAgeAndNameAndGenderAndCityViewDesc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == 2 && rent == "") {
+            this.userService.findAllByAgeAndNameAndGenderAndCityViewAsc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == "" && rent == 1) {
+            this.userService.findAllByAgeAndNameAndGenderAndCityRentDesc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           if (view == "" && rent == 2) {
+            this.userService.findAllByAgeAndNameAndGenderAndCityRentAsc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
           }
           break
         case 2:
