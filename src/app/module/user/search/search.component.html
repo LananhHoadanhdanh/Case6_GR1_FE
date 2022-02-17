@@ -1,12 +1,13 @@
 <div class="container-fluid py-5 ">
+
   <form class="form-inline " [formGroup]="formSearch" (submit)=searchAll()
-        style="width: 1139px ; margin-left: 120px">
+        style="margin-left: 120px">
     <div class="container">
       <div class="row ">
         <div class="col-3 ">
           <div class="radio justify-content-xl-between">
             <div class="row">
-              <div class="col-8">
+              <div class="col-12">
                 <input id="male" type="radio" name="gender" formControlName="gender"
                        value="male">
                 <label for="male" style="margin-right: 44px !important;">Male</label>
@@ -35,37 +36,39 @@
                  id="3"><span class="help-block  text-center" style="color: #343434"> HCM </span>
         </div>
       </div>
-    </div>
-    <div class="container-fluid py-2">
-      <div class="container">
-        <div class="row mt-md-5">
-          <div class="col-3 mt-1">
-            <select class="custom-select custom-select-lg mb-3" style="border-radius: 50px" formControlName="view">
-              <option disabled style="border:none!important;"> Search By View</option>
-              <option [value]="1"  style="border:none!important;">Highest view turns</option>
-              <option [value]="2" style="border:none!important;">Lowest view turns</option>
-            </select>
-          </div>
-          <div class="col-3">
-            <select class="custom-select custom-select-lg mb-3" style="border-radius: 50px" formControlName="rent">
-              <option disabled>Search By Rent</option>
-              <option [value]="1">Highest rent turns</option>
-              <option [value]="2">Lowest rent turns</option>
-            </select>
-          </div>
-
-          <div class="col-lg-6 ">
-            <nav class="navbar navbar-light ">
-              <input class="form-control mr-sm-2" type="search"
-                     placeholder="Search" aria-label="Search" formControlName="name" style="width: 350px">
-              <button class="btn btn-outline-primary my-1 my-sm-0" type="submit"> Search</button>
-            </nav>
+      <div class="row mt-3 py-2">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-3 mt-3">
+              <select class="custom-select custom-select-lg mb-3" style="border-radius: 50px" formControlName="view">
+                <option [value]="null" > Search By View</option>
+                <option [value]="1" >Highest view turns</option>
+                <option [value]="2">Lowest view turns</option>
+              </select>
+            </div>
+            <div class="col-3 mt-3">
+              <select class="custom-select custom-select-lg mb-3" style="border-radius: 50px" formControlName="rent">
+                <option [value]="null">Search By Rent</option>
+                <option [value]="1">Highest rent turns</option>
+                <option [value]="2">Lowest rent turns</option>
+              </select>
+            </div>
+            <div class="col-6 py-2 ">
+              <nav class="navbar navbar-light " style="width: 400px!important;">
+                <input class="form-control mr-sm-2" type="search"
+                       placeholder="Search" aria-label="Search" formControlName="name" style="width: 225px;height: 50px">
+                <button class="btn btn-outline-primary my-1 my-sm-0" type="submit" style="width: 125px"> Search</button>
+              </nav>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </form>
+
+
+
 </div>
 
 
@@ -156,4 +159,3 @@
     </div>
   </div>
 </div>
-

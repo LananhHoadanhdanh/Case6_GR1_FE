@@ -9762,6 +9762,13 @@ h6,
   bottom: 30px;
   z-index: 11;
 }
+.back-to-top1 {
+  position: fixed;
+  /*display: none;*/
+  right: 30px;
+  bottom: 30px;
+  z-index: 11;
+}
 
 .nav-bar::before {
   position: absolute;
