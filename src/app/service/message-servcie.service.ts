@@ -18,5 +18,14 @@ export class MessageServcieService {
     return this.http.post<any>(API_URL + `/mess`, message)
   }
 
+  getAllByIdRent(id: any): Observable<any> {
+    return this.http.get<any>(API_URL + `/messRent/${id}`)
+  }
+  getOneByIdRent(id: any): Observable<any> {
+    return this.http.get<any>(API_URL + `/messOneRent/${id}`)
+  }
+  getMess(idPro: any,idRe: any): Observable<any> {
+    return this.http.get<any>(API_URL + `/mess/${idPro}/${idRe}`)
+  }
 
 }

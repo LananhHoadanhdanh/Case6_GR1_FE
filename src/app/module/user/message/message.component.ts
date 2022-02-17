@@ -18,7 +18,12 @@ export class MessageComponent implements OnInit {
   idU = localStorage.getItem("USERID");
   // @Input() idUs: any = '';
   // @Input() renterOrders: any;
-  providerOrders:Order[]=[]
+  providerOrders: Order[] = []
+  idR: any;
+  messages: Message[] = []
+  messPro: Message[] = []
+  messRe: Message[] = []
+
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private service: SerProvidedService, private orderService: OrderService, private messSer: MessageServcieService) {
   }
@@ -28,14 +33,35 @@ export class MessageComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.orderService.findAllOrderByProvider(this.idU).subscribe(res=>{
-      this.providerOrders=res;
-      console.log("sdasd")
-      console.log(res)
+    this.orderService.findAllOrderByProvider(this.idU).subscribe(res => {
+      this.providerOrders = res;
+    })
+    this.getOne()
+    this.getAll()
+  }
+
+  getMess(idPro: any) {
+    this.messSer.getMess(idPro,this.idU).subscribe(res=>{
+      this.messRe=res;
     })
   }
 
+  id(id: any) {
+    this.idR = id;
+    this.getMess(id);
+  }
 
+  getAll() {
+    this.messSer.getAllByIdRent(this.idU).subscribe(res => {
+      this.messages = res;
+    })
+  }
+
+  getOne() {
+    this.messSer.getOneByIdRent(this.idU).subscribe(res => {
+      this.messPro = res;
+    })
+  }
 
   sent() {
     const mes = {
@@ -43,7 +69,7 @@ export class MessageComponent implements OnInit {
         id: this.idU
       },
       idUs: {
-        id: this?.providerOrders[0]?.renter?.id
+        id: this.idR
       },
       content: this.messForm.value?.content
     }
