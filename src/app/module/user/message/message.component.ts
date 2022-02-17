@@ -23,6 +23,7 @@ export class MessageComponent implements OnInit {
   messages: Message[] = []
   messPro: Message[] = []
   messRe: Message[] = []
+  messPull: Message[] = []
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private service: SerProvidedService, private orderService: OrderService, private messSer: MessageServcieService) {
@@ -41,8 +42,11 @@ export class MessageComponent implements OnInit {
   }
 
   getMess(idPro: any) {
-    this.messSer.getMess(idPro,this.idU).subscribe(res=>{
+    this.messSer.getMess(this.idU,idPro).subscribe(res=>{
       this.messRe=res;
+    })
+    this.messSer.getMess(idPro,this.idU).subscribe(res=>{
+      this.messPull=res;
     })
   }
 
