@@ -18,16 +18,20 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-4">
-              <!--              <div class="row" *ngFor="let re of providerOrders">-->
-              <!--                <label (click)="id(re?.renter?.id)">-->
-              <!--                  <div class="row ml-2" style="border: 1px #00c4ff;border-bottom-style:  solid ">-->
-              <!--                    <div class="col-2"><img src="{{re?.renter?.avatar}}"-->
-              <!--                                            style="border-radius: 50% " width="100%">-->
-              <!--                    </div>-->
-              <!--                    <div class="col-6">{{re?.renter?.fullName}}</div>-->
-              <!--                  </div>-->
-              <!--                </label>-->
-              <!--              </div>-->
+
+              <div class="row" *ngFor="let re of providerOrders" >
+                <div *ngIf="providerOrders.length>0 else #m"></div>
+                <label (click)="id(re?.renter?.id)">
+                  <div class="row ml-2" style="border: 1px #00c4ff;border-bottom-style:  solid ">
+                    <div class="col-2"><img src="{{re?.renter?.avatar}}"
+                                            style="border-radius: 50% " width="100%">
+                    </div>
+                    <div class="col-6">{{re?.renter?.fullName}}</div>
+                  </div>
+                </label>
+              </div>
+
+              <ng-template #m>
               <div class="row" *ngFor="let m of messPro">
                 <label (click)="id(m?.idPro?.id)">
                   <div class="row ml-2" style="border: 1px #00c4ff;border-bottom-style:  solid ">
@@ -38,6 +42,8 @@
                   </div>
                 </label>
               </div>
+              </ng-template>
+
             </div>
             <div class="col-1"></div>
             <div class="col-7" style="border: 1px #00c4ff;border-left-style:  solid ">
@@ -46,7 +52,7 @@
                 <div class="row">
 
 
-                  <div class="col-12" *ngFor="let mess of messRe"  id="t">
+                  <div class="col-12" *ngFor="let mess of messRe" id="t">
                     <div class=" mt-1">
                       <span
                         style="border-radius: 10px ;background: #79cfff ;padding-right: 10px;padding-left: 10px;color: #ffffff">
