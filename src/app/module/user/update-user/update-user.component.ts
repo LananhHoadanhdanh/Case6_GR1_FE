@@ -156,7 +156,7 @@ export class UpdateUserComponent implements OnInit {
 
     this.userUpdate = user;
     // @ts-ignore
-    this.age =2022-moment(this.userUpdate?.birthday).year();
+    this.age = 2022-moment(this.userUpdate?.birthday).year();
     this.userUpdate.avatar = this.avatar
     this.userUpdate.age =""+this.age
     console.log(this.userUpdate)
@@ -165,7 +165,6 @@ export class UpdateUserComponent implements OnInit {
       console.log(this.userUpdate)
       swal("Update successful!", "You will be returned to the homepage", "success")
       this.router.navigate(['/homepage'])
-
     })
   }
 

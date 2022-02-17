@@ -3,6 +3,7 @@ import {Order} from "../../../model/order";
 import {OrderService} from "../../../service/order.service";
 import swal from "sweetalert";
 import {UserService} from "../../../service/user.service";
+import {ReportService} from "../../../service/report.service";
 
 @Component({
   selector: 'app-my-list-orders',
@@ -13,9 +14,11 @@ export class MyListOrdersComponent implements OnInit {
   idU = localStorage.getItem("USERID")
   renterOrders: Order[] = [];
   providerOrders: Order[] = [];
+  content?: string;
 
   constructor(private orderService: OrderService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private reportService: ReportService) { }
 
   ngOnInit(): void {
     this.loadAll()
@@ -70,5 +73,22 @@ export class MyListOrdersComponent implements OnInit {
       });
   }
 
+  sendReport(orderId: any) {
+
+    let report = {
+      content : this.content,
+      order: {
+        id: orderId
+      },
+      status: {
+        id: 1
+      }
+    }
+    console.log(report)
+    // @ts-ignore
+    this.reportService.sendReport(report).subscribe(() => {
+      swal("Completed!", "Your complaint has been submitted. Please wait for admin to confirm!", "success");
+    })
+  }
 
 }

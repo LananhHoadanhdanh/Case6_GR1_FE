@@ -25,7 +25,8 @@
       <div class="col-1">{{(re?.provider?.price) * (re?.timeRent) | number : '0.0-0'}}</div>
       <div class="col-1">{{re?.status?.name}}</div>
       <div class="col-2 text-center" *ngIf="re?.status?.id == '2'">
-        <a (click)="changeStatusToCompleted(re?.id, re?.provider?.id)" class="mr-1"><i class="fas fa-calendar-check mr-2"></i>Complete</a>
+        <a (click)="changeStatusToCompleted(re?.id, re?.provider?.id)" class="mr-1"><i
+          class="fas fa-calendar-check mr-2"></i>Complete</a>
       </div>
     </div>
   </div>
@@ -57,11 +58,13 @@
       <div class="col-1">{{re?.timeRent}}h</div>
       <div class="col-1">{{((re?.provider?.price) * (re?.timeRent)) | number : '0.0-0' }}</div>
       <div class="col-1">{{re?.status?.name}}</div>
-      <div class="col-2" >
+      <div class="col-2">
         <div>
-          <a class="mr-1" data-toggle="modal" data-target="#viewModal{{re?.id}}"><i class="fas fa-eye mr-2 ml-3"></i>View</a>
+          <a class="mr-1" data-toggle="modal" [attr.data-target]="'#viewModal'+ re?.id"><i
+            class="fas fa-eye mr-2 ml-3"></i>View</a>
           <!-- Modal -->
-          <div class="modal fade" id="viewModal{{re?.id}}" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+          <div class="modal fade" [id]="'viewModal'+ re?.id" tabindex="-1" aria-labelledby="viewModalLabel"
+               aria-hidden="true">
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
@@ -89,7 +92,7 @@
                     <div class="col-1">{{re?.timeRent}}h</div>
                     <div class="col-1">{{((re?.provider?.price) * (re?.timeRent)) | number : '0.0-0' }}</div>
                     <div class="col-1">{{re?.status?.name}}</div>
-                    <div class="col-2" ></div>
+                    <div class="col-2"></div>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -103,8 +106,9 @@
           <a (click)="changeStatusToReceived(re?.id)" class="mr-1"><i class="fas fa-check-circle mr-2 ml-3"></i>Receive</a>
         </div>
         <div *ngIf="re?.status?.id == '3'">
-          <a class="mr-1" data-toggle="modal" data-target="#reportModal" ><i class="fas fa-angry mr-2 ml-3"></i>Report</a>
-          <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel"
+          <a class="mr-1" data-toggle="modal" [attr.data-target]="'#reportModal' + re?.id"><i
+            class="fas fa-angry mr-2 ml-3"></i>Report</a>
+          <div class="modal fade" [id]="'reportModal' + re?.id" tabindex="-1" aria-labelledby="reportModalLabel"
                aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -115,11 +119,11 @@
                   </button>
                 </div>
                 <div class="modal-body text-center">
-                  <textarea style="border-radius: 6px" cols="90" rows="5" class="form-control"></textarea>
+                  <textarea style="border-radius: 6px" cols="90" rows="5" class="form-control" [(ngModel)]="content"></textarea>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Send Report</button>
+                  <button type="submit" class="btn btn-primary" (click)="sendReport(re?.id)">Send Report</button>
                 </div>
               </div>
             </div>
