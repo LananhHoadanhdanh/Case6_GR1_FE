@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AdminComponent} from "./admin/admin.component";
 import {ListUserComponent} from "./list-user/list-user.component";
 import {AllOrderListComponent} from "./all-order-list/all-order-list.component";
+import {CompleteOrderComponent} from "./complete-order/complete-order.component";
 
 const routes: Routes = [
   {
@@ -10,8 +11,8 @@ const routes: Routes = [
     component: AdminComponent
   },
   {
-    path: "users",
-    component: ListUserComponent
+    path: "completed-orders",
+    component: CompleteOrderComponent
   },
   {
     path: "orders",

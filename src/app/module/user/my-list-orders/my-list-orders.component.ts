@@ -27,11 +27,24 @@ export class MyListOrdersComponent implements OnInit {
   loadAll() {
     this.orderService.findAllOrderByRenter(this.idU).subscribe(res => {
       this.renterOrders = res
-      console.log(res)
+      for (let i = 0; i < this.renterOrders.length; i++) {
+        this.reportService.getAllByOrder(this.renterOrders[i].id).subscribe(reports => {
+          console.log(this.renterOrders[i].id)
+          console.log(reports)
+          this.renterOrders[i].reports = reports;
+        })
+      }
     })
+
     this.orderService.findAllOrderByProvider(this.idU).subscribe(res => {
       this.providerOrders = res
-      console.log(res)
+      for (let i = 0; i < this.providerOrders.length; i++) {
+        this.reportService.getAllByOrder(this.providerOrders[i].id).subscribe(reports => {
+          console.log(this.providerOrders[i].id)
+          console.log(reports)
+          this.providerOrders[i].reports = reports;
+        })
+      }
     })
   }
 

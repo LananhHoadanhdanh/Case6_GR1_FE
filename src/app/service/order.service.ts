@@ -41,7 +41,7 @@ export class OrderService {
   saveOrder(order :Order):Observable<any>{
     return this.http.post<any>(API_URL+`/order`,order)
   }
-  status():Observable<Order[]>{
+  getCompletedOrder():Observable<Order[]>{
     return this.http.get<Order[]>(API_URL+`/completedOrder`)
   }
 }

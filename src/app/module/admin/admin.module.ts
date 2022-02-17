@@ -6,14 +6,15 @@ import { AdminComponent } from './admin/admin.component';
 import {ListUserComponent} from "./list-user/list-user.component";
 import { AllOrderListComponent } from './all-order-list/all-order-list.component';
 import { ListReportComponent } from './list-report/list-report.component';
+import { CompleteOrderComponent } from './complete-order/complete-order.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    ListUserComponent,
     AllOrderListComponent,
-    ListReportComponent
+    ListReportComponent,
+    CompleteOrderComponent
   ],
   imports: [
     CommonModule,

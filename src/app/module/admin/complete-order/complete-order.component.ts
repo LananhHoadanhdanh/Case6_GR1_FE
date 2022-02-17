@@ -5,14 +5,14 @@ import swal from "sweetalert";
 import {ReportService} from "../../../service/report.service";
 
 @Component({
-  selector: 'app-all-order-list',
-  templateUrl: './all-order-list.component.html',
-  styleUrls: ['./all-order-list.component.css']
+  selector: 'app-complete-order',
+  templateUrl: './complete-order.component.html',
+  styleUrls: ['./complete-order.component.css']
 })
-export class AllOrderListComponent implements OnInit {
-  orders: Order[] = [];
+export class CompleteOrderComponent implements OnInit {
 
-  constructor(private orderService: OrderService,
+  orders : Order[] = []
+  constructor(private orderService : OrderService,
               private reportService: ReportService) { }
 
   ngOnInit(): void {
@@ -20,8 +20,8 @@ export class AllOrderListComponent implements OnInit {
   }
 
   loadAll() {
-    this.orderService.getAll().subscribe(res => {
-      this.orders = res
+    this.orderService.getCompletedOrder().subscribe(result => {
+      this.orders= result;
       for (let i = 0; i < this.orders.length; i++) {
         this.reportService.getAllByOrder(this.orders[i].id).subscribe(reports => {
           console.log(this.orders[i].id)
@@ -29,10 +29,7 @@ export class AllOrderListComponent implements OnInit {
           this.orders[i].reports = reports;
         })
       }
-      console.log("danh sách order")
-      console.log(this.orders)
     })
-
   }
 
   deleteOrder(id: any) {
@@ -56,4 +53,5 @@ export class AllOrderListComponent implements OnInit {
         }
       });
   }
+
 }
