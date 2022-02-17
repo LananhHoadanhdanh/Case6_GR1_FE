@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Image} from "../model/image";
 import {environment} from "../../environments/environment";
 import {Order} from "../model/order";
+import {User} from "../model/user";
 const API_URL = environment.apiUrl;
 
 @Injectable({
@@ -39,5 +40,8 @@ export class OrderService {
 
   saveOrder(order :Order):Observable<any>{
     return this.http.post<any>(API_URL+`/order`,order)
+  }
+  status():Observable<Order[]>{
+    return this.http.get<Order[]>(API_URL+`/completedOrder`)
   }
 }

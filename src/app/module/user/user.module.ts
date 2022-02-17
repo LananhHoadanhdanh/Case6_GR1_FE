@@ -20,6 +20,7 @@ import { OrderComponent } from './order/order.component';
 import { SearchComponent } from './search/search.component';
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import { ServiceProvider12Component } from './service-provider12/service-provider12.component';
+import { StatusComponent } from './status/status.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 
@@ -39,7 +40,9 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     MyListOrdersComponent,
     SearchComponent,
     OrderComponent,
+    SearchComponent,
     ServiceProvider12Component,
+    StatusComponent,
     OrderDetailComponent
   ],
   imports: [
@@ -48,8 +51,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    NgxSliderModule,
-
+    NgxSliderModule
   ]
 })
 export class UserModule { }
