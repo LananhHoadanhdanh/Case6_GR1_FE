@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderService} from "../../service/order.service";
+import {Order} from "../../model/order";
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private orderService :OrderService) { }
 
   ngOnInit(): void {
   }

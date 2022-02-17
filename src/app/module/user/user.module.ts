@@ -21,34 +21,39 @@ import { SearchComponent } from './search/search.component';
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import { ServiceProvider12Component } from './service-provider12/service-provider12.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
-  declarations: [
-    HomepageComponent,
-    List12NewServiceProviderComponent,
-    UpdatePriceUserComponent,
-    UpdateUserComponent,
-    UpdateServiceComponent,
-    HighestViews6Component,
-    UserDetailComponent,
-    List6UserVipComponent,
-    ImageComponent,
-    List12UserSuitableForGenderComponent,
-    List8FemaleAnd4MaleComponent,
-    MyListOrdersComponent,
-    SearchComponent,
-    OrderComponent,
-    ServiceProvider12Component,
-    OrderDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgxPaginationModule,
-    NgxSliderModule
-  ]
+    declarations: [
+        HomepageComponent,
+        List12NewServiceProviderComponent,
+        UpdatePriceUserComponent,
+        UpdateUserComponent,
+        UpdateServiceComponent,
+        HighestViews6Component,
+        UserDetailComponent,
+        List6UserVipComponent,
+        ImageComponent,
+        List12UserSuitableForGenderComponent,
+        List8FemaleAnd4MaleComponent,
+        MyListOrdersComponent,
+        SearchComponent,
+        OrderComponent,
+        ServiceProvider12Component,
+        OrderDetailComponent,
+        MessageComponent
+    ],
+    exports: [
+        MessageComponent
+    ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule,
+        NgxSliderModule
+    ]
 })
 export class UserModule { }

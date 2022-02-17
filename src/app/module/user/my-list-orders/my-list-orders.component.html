@@ -26,6 +26,7 @@
       <div class="col-1">{{re?.status?.name}}</div>
       <div class="col-2 text-center" *ngIf="re?.status?.id == '2'">
         <a (click)="changeStatusToCompleted(re?.id)" class="mr-1"><i class="fas fa-calendar-check mr-2"></i>Complete</a>
+<!--        <app-message [idUs]="re?.renter?.id"></app-message>-->
       </div>
     </div>
   </div>
