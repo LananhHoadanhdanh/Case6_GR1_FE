@@ -48,7 +48,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    NgxSliderModule
+    NgxSliderModule,
+
   ]
 })
 export class UserModule { }

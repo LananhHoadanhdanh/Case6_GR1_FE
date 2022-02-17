@@ -20,11 +20,14 @@ export class SearchComponent implements OnInit {
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
+
   activeSer?: ActiveService;
   activeServices: ActiveService[] = []
   formSearch = new FormGroup({
     name: new FormControl(""),
-    gender: new FormControl("")
+    gender: new FormControl(""),
+    view: new FormControl(),
+    rent: new FormControl(),
   })
 
   minValue: number = 16;
@@ -78,146 +81,290 @@ export class SearchComponent implements OnInit {
   searchAll() {
     let gender = this.formSearch?.value.gender
     let name = this.formSearch?.value.name
+    let rent = this.formSearch?.value.rent
+    let view = this.formSearch?.value.view
+    console.log(view + "view")
+    console.log(rent + "rent")
+    console.log(gender + "a")
     const params = this.getRequestParams(this.page, this.pageSize);
     console.log(this.activeServices.length)
-    switch (this.activeServices.length){
-      case 3 :
-      case 0 :
-        if (gender == "") {
-
-          this.userService.findAllByAgeAndName(params, "" + this.minValue, "" + this.maxValue, name)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+    if ((view == null && rent ==null) || (view==1 && rent ==null) ||
+      ( view==null && rent ==1) || (view == 1 && rent == 1)
+    ) {
+      console.log("cao")
+      switch (this.activeServices.length) {
+        case 0:
+        case 3:
+          if (gender == "") {
+            console.log("vào đây")
+            this.userService.searchAllByViewDescNotGender(params, "" + this.minValue, "" + this.maxValue, name, "", "HCM", "")
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
-                }
-                console.log(this.users);
-                console.log("ak88")
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
 
-              },
-              error: (err) => {
-                console.log(err);
-              }
-            });
-        } else {
-          this.userService.findAllByAgeAndNameAndGender(params, "" + this.minValue, "" + this.maxValue, name, gender)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByViewDesc(params, "" + this.minValue, "" + this.maxValue, name, gender, "", "")
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
                 }
-                console.log(this.users);
-                console.log("ak88")
-
-              },
-              error: (err) => {
-                console.log(err);
-              }
-            });
-        }
-        break
-      case 1:
-        if (gender == "") {
-
-          this.userService.findAllByAgeAndName(params, "" + this.minValue, "" + this.maxValue, name)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+              });
+          }
+          break
+        case 1:
+          if (gender == "") {
+            this.userService.searchAllByCityViewDescNotGender(params, "" + this.minValue, "" + this.maxValue, name, "", "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
-                }
-                console.log(this.users);
-                console.log("ak88")
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
 
-              },
-              error: (err) => {
-                console.log(err);
-              }
-            });
-        } else {
-          this.userService.findAllByAgeAndNameAndGenderAndCity(params, "" + this.minValue, "" + this.maxValue, name, gender,""+this.activeServices[0].idService)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByCityViewDesc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
                 }
-                console.log(this.users);
-                console.log("ak88")
+              });
+          }
 
-              },
-              error: (err) => {
-                console.log(err);
-              }
-            });
-        }
-        break
-      case 2:
-        console.log(this.activeServices[0].idService)
-        console.log(this.activeServices[1].idService)
-        if (gender == "") {
-
-          this.userService.findAllByAgeAndName(params, "" + this.minValue, "" + this.maxValue, name)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+          break
+        case 2:
+          if (gender == "") {
+            this.userService.searchAllByViewDescNotGender(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService, "" + this.activeServices[1].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
-                }
-                console.log(this.users);
-                console.log("ak88")
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
 
-              },
-              error: (err) => {
-                console.log(err);
-              }
-            });
-        } else {
-          this.userService.findAllByAgeAndNameAndGenderAnd2City(params, "" + this.minValue, "" + this.maxValue, name, gender,""+this.activeServices[0].idService,""+this.activeServices[1].idService)
-            .subscribe({
-              next: (data) => {
-                this.users = data;
-                for (let i = 0; i < this.users.length; i++) {
-                  // @ts-ignore
-                  this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByViewDesc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService, "" + this.activeServices[1].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
                     // @ts-ignore
-                    this.users[i].myService = r
-                  })
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
                 }
-                console.log(this.users);
-                console.log("ak88")
+              });
+          }
 
-              },
-              error: (err) => {
-              }
-            });
-        }
-        break
+          break
+      }
+    } else {
+      console.log("thấp")
+      switch (this.activeServices.length) {
+        case 0:
+        case 3:
+          if (gender == "") {
+            console.log("a")
+            this.userService.searchAllByViewAscNotGender(params, "" + this.minValue, "" + this.maxValue, name, "", "HCM", "")
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
 
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByViewAsc(params, "" + this.minValue, "" + this.maxValue, name, gender, "", "")
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          }
+          break
+        case 1:
+          if (gender == "") {
+            this.userService.searchAllByCityViewAscNotGender(params, "" + this.minValue, "" + this.maxValue, name, "", "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByCityViewAsc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          }
+
+          break
+        case 2:
+          if (gender == "") {
+            this.userService.searchAllByViewAscNotGender(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService, "" + this.activeServices[1].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          } else {
+            this.userService.searchAllByViewAsc(params, "" + this.minValue, "" + this.maxValue, name, gender, "" + this.activeServices[0].idService, "" + this.activeServices[1].idService)
+              .subscribe({
+                next: (data) => {
+                  this.users = data;
+                  for (let i = 0; i < this.users.length; i++) {
+                    // @ts-ignore
+                    this.userService.getAllUserBySerProvided(this.users[i].id).subscribe(r => {
+                      // @ts-ignore
+                      this.users[i].myService = r
+                    })
+                  }
+                  console.log(this.users);
+                  console.log("ak88")
+
+                },
+                error: (err) => {
+                  console.log(err);
+                }
+              });
+          }
+
+          break
+      }
     }
-
   }
 
   getAddress(event: any) {
