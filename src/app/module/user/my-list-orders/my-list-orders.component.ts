@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Order} from "../../../model/order";
 import {OrderService} from "../../../service/order.service";
 import swal from "sweetalert";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: 'app-my-list-orders',
@@ -13,7 +14,8 @@ export class MyListOrdersComponent implements OnInit {
   renterOrders: Order[] = [];
   providerOrders: Order[] = [];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadAll()
@@ -37,10 +39,12 @@ export class MyListOrdersComponent implements OnInit {
     })
   }
 
-  changeStatusToCompleted(id:any) {
+  changeStatusToCompleted(id:any, providerId: any) {
     this.orderService.changeStatus(id, 3).subscribe(() => {
-      swal("Completed!", "", "success");
-      this.loadAll()
+      this.userService.increaseRentCount(providerId).subscribe(() => {
+        swal("Completed!", "", "success");
+        this.loadAll()
+      })
     })
   }
 
