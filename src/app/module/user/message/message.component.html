@@ -19,15 +19,15 @@
           <div class="row">
             <div class="col-4">
               <div class="row" *ngFor="let re of providerOrders">
-                <div class="row ml-2" style="border: 1px solid black">
-                  <div class="col-3"><img (click)="id(re?.renter?.id)" src="{{re?.renter?.avatar}}" alt="" width="100%">
+                <div class="row ml-2" style="border: 1px #00c4ff;border-bottom-style:  solid ">
+                  <div class="col-2"><img (click)="id(re?.renter?.id)" src="{{re?.renter?.avatar}}" width="100%">
                   </div>
                   <div class="col-6">{{re?.renter?.fullName}}</div>
                 </div>
               </div>
               <div class="row" *ngFor="let m of messPro">
                 <div class="row ml-2" style="border: 1px #00c4ff;border-bottom-style:  solid ">
-                  <div class="col-2"><img (click)="id(m?.idPro?.id)" src="{{m?.idPro?.avatar}}" alt="" width="100%">
+                  <div class="col-2"><img (click)="id(m?.idPro?.id)" src="{{m?.idPro?.avatar}}"  width="100%">
                   </div>
                   <div class="col-6">{{m?.idPro?.fullName}}</div>
                 </div>
@@ -35,17 +35,20 @@
             </div>
             <div class="col-1"></div>
             <div class="col-7" style="border: 1px #00c4ff;border-left-style:  solid ">
-              <div class="col-12" style="height: 200px;  overflow: scroll;">
+              <div class="col-12 mb-1"
+                   style="height: 200px;  overflow: auto ; border: 1px #00c4ff;border-bottom-style:  solid ">
                 <div class="row">
                   <div class="col-12" *ngFor="let mess of messRe">
-                    <div class="col-6 mt-1" style="border-radius: 10px ;background: #ff4343 ;padding-right: 10px;padding-left: 10px;color: #ffffff"> <span
-                      >
+                    <div class="col-6 mt-1"
+                         style="border-radius: 10px ;background: #79cfff ;padding-right: 10px;padding-left: 10px;color: #ffffff"> <span
+                    >
                         {{mess.content}}</span></div>
                   </div>
                 </div>
               </div>
               <form [formGroup]="messForm" (submit)="sent()" class="col-12">
-               <textarea formControlName="content" style="border-radius: 6px" cols="60"rows="2"></textarea>
+                <textarea formControlName="content" placeholder="Enter message" style=" border-radius: 6px" cols="60"
+                          rows="2"></textarea>
                 <div class="row  mt-2">
                   <div class="col-7"></div>
                   <button class="btn btn-secondary " type="submit">Send</button>
@@ -54,10 +57,6 @@
               </form>
             </div>
           </div>
-          <!--          <div class="row">-->
-          <!--            <div class="col-6">-->
-          <!--            </div>-->
-          <!--          </div>-->
 
 
         </div>
