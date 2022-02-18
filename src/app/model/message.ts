@@ -5,4 +5,5 @@ export interface Message {
   content?:any;
   idPro?:User;
   idUs?:User;
+  sent?:string;
 }

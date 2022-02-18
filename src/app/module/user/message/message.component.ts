@@ -42,12 +42,12 @@ export class MessageComponent implements OnInit {
   }
 
   getMess(idPro: any) {
-    this.messSer.getMess(this.idU,idPro).subscribe(res=>{
-      this.messRe=res;
+    this.messSer.getMess(this.idU, idPro).subscribe(res => {
+      this.messRe = res;
     })
-    this.messSer.getMess(idPro,this.idU).subscribe(res=>{
-      this.messPull=res;
-    })
+    // this.messSer.getMess(idPro, this.idU).subscribe(res => {
+    //   this.messPull = res;
+    // })
   }
 
   id(id: any) {
@@ -80,7 +80,7 @@ export class MessageComponent implements OnInit {
     // @ts-ignore
     this.mess = mes;
     this.messSer.save(this.mess).subscribe(res => {
-      console.log(res)
+      this.id(this.idR)
     })
   }
 }
