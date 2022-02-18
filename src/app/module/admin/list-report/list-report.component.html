@@ -20,7 +20,7 @@
       <div class="col-2">{{rp?.content}}</div>
       <div class="col-2">{{rp?.date | date : 'MM/dd/yy, h:mm a'}}</div>
       <div class="col-3">{{rp?.status?.name}}</div>
-      <div class="col-1">
+      <div class="col-1" *ngIf="rp?.status?.id=='1'">
         <a class="ml-1" (click)="approve(rp?.id)">Approve</a>
       </div>
     </div>
