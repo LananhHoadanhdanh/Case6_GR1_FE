@@ -75,7 +75,7 @@
                 <p class="help-block text-danger text-center"></p>
               </div>
               <div class="col-sm-6 control-group">
-                <input type="text" class="form-control p-4" formControlName="phoneNumber" placeholder="Your Phone Number"/>
+                <input type="number" class="form-control p-4" formControlName="phoneNumber" placeholder="Your Phone Number"/>
                 <div *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">
                   <div *ngIf="phoneNumber.errors?.['required']">
                     <p class="help-block text-danger text-center">Please enter your phone number</p>
