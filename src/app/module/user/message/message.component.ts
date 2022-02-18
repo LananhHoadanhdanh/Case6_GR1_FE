@@ -24,6 +24,7 @@ export class MessageComponent implements OnInit {
   messPro: Message[] = []
   messRe: Message[] = []
   messPull: Message[] = []
+  time!: boolean
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
               private userService: UserService, private service: SerProvidedService, private orderService: OrderService, private messSer: MessageServcieService) {
@@ -80,7 +81,11 @@ export class MessageComponent implements OnInit {
     // @ts-ignore
     this.mess = mes;
     this.messSer.save(this.mess).subscribe(res => {
-      this.id(this.idR)
+      this.id(this.idR);
+      // @ts-ignore
+      // this.time = setInterval(() => {
+      //   this.id(this.idR);
+      // }, 650);
     })
   }
 }
