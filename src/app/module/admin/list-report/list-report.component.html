@@ -8,11 +8,11 @@
     </div>
     <div class="row title">
       <div class="col-2 order-title">Reporter</div>
-      <div class="col-2 order-title">Reported person </div>
+      <div class="col-2 order-title">Reported person</div>
       <div class="col-2 order-title">Content</div>
       <div class="col-2 order-title">Time</div>
       <div class="col-3 order-title">Status</div>
-      <div class="col-1"> </div>
+      <div class="col-1"></div>
     </div>
     <div class="row mt-3" *ngFor="let rp of report">
       <div class="col-2"> {{rp?.order?.provider?.fullName}}</div>
@@ -21,7 +21,9 @@
       <div class="col-2">{{rp?.date | date : 'MM/dd/yy, h:mm a'}}</div>
       <div class="col-3">{{rp?.status?.name}}</div>
       <div class="col-1">
-        <a class="ml-1" (click)="approve(rp?.id)">Approve</a>
+        <div *ngIf="rp?.status!.id=='1'">
+          <a class="ml-1" (click)="approve(rp?.id)">Approve</a>
+        </div>
       </div>
     </div>
   </div>

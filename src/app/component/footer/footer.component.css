@@ -1,4 +1,8 @@
-#btn btn-secondary px-2 back-to-top {
-  background: #cd1ae7;
-}
 
+.mess {
+  position: fixed;
+  /*display: none;*/
+  right: 30px;
+  bottom: 30px;
+  z-index: 11;
+}

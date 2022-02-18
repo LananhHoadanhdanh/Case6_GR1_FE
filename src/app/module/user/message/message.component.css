@@ -1,0 +1,27 @@
+.infor {
+  font-size: 20px;
+  color: #ff7f8d;
+}
+
+.b {
+  background-color: #fe5959;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  width: 100px;
+}
+
+.b:hover {
+  background-color: #ff0f0f;
+}
+
+#p {
+  background: red;
+}
+#t{
+  position: absolute;
+  right: 0px;
+}

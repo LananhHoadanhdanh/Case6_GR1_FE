@@ -100,7 +100,12 @@ export class MyListOrdersComponent implements OnInit {
     console.log(report)
     // @ts-ignore
     this.reportService.sendReport(report).subscribe(() => {
-      swal("Completed!", "Your complaint has been submitted. Please wait for admin to confirm!", "success");
+      swal("Completed!", "Your complaint has been submitted. Please wait for admin to confirm!", "success")
+        // , {timer: 2000})
+        // .then(() => {
+        //   window.location.href = 'http://localhost:4200/myListOrders'
+        // })
+
     })
   }
 

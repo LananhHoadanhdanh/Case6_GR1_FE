@@ -10,6 +10,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {OrderStatus} from "../../../model/order-status";
 import {OrderService} from "../../../service/order.service";
 import {Order} from "../../../model/order";
+import {MessageServcieService} from "../../../service/message-servcie.service";
+import {Message} from "../../../model/message";
 
 @Component({
   selector: 'app-order',
@@ -31,17 +33,34 @@ export class OrderComponent implements OnInit {
   servicesTime: ServiceProvided
   // @ts-ignore
   timeRent: number
+  mess!: Message
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
-              private userService: UserService, private service: SerProvidedService, private orderService: OrderService) {
+              private userService: UserService, private service: SerProvidedService, private orderService: OrderService,private messSer: MessageServcieService) {
   }
 
   timeForm = new FormGroup({
-    staTime: new FormControl("", Validators.required)
+    staTime: new FormControl("", Validators.required),
+    content: new FormControl("", Validators.required)
   })
 
   ngOnInit(): void {
     this.loadAll()
+  }
+  sent() {
+    const mes = {
+      idPro: {
+        id: this.iUser
+      },
+      idUs: {
+        id: this.user?.id
+      },
+      content: this.timeForm.value?.content
+    }
+    // @ts-ignore
+    this.mess = mes;
+    this.messSer.save(this.mess).subscribe(res => {
+    })
   }
 
   save() {
@@ -58,6 +77,7 @@ export class OrderComponent implements OnInit {
         id: this.iUser
       }
     }
+    this.sent()
     this.newOrder = order;
     this.orderService.saveOrder(this.newOrder).subscribe(res => {
       if (res==1) {
