@@ -68,6 +68,13 @@ export class MessageComponent implements OnInit {
     })
   }
 
+  killChat() {
+    if (this.time) {
+      // @ts-ignore
+      clearInterval(this.time);
+    }
+  }
+
   sent() {
     const mes = {
       idPro: {
@@ -83,9 +90,9 @@ export class MessageComponent implements OnInit {
     this.messSer.save(this.mess).subscribe(res => {
       this.id(this.idR);
       // @ts-ignore
-      // this.time = setInterval(() => {
-      //   this.id(this.idR);
-      // }, 650);
+      this.time = setInterval(() => {
+        this.id(this.idR);
+      }, 650);
     })
   }
 }

@@ -20,7 +20,7 @@
 <!--          <div id="success"></div>-->
           <form name="sentMessage" id="contactForm" novalidate="novalidate" [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="control-group">
-              <input type="password" class="form-control p-4" id="username" formControlName="username"
+              <input type="text" class="form-control p-4" id="username" formControlName="username"
                      placeholder="Username" required="required" data-validation-required-message="Please enter a username" />
               <p class="help-block text-danger"></p>
             </div>
