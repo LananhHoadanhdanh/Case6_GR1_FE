@@ -81,19 +81,41 @@
       </div>
       <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
     </div>
+
     <div class="row ">
-      <div class="col-12 mb-3">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12 mb-3">
+            <div class="row">
+              <div class="team-item text-center col-12">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  [responsive]="true"
+                  (pageChange)="handlePageChange($event)"
+                ></pagination-controls>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-2 ">
         <div class="row">
           <div class="team-item text-center col-12">
-            <pagination-controls
-              previousLabel="Prev"
-              nextLabel="Next"
-              [responsive]="true"
-              (pageChange)="handlePageChange($event)"
-            ></pagination-controls>
+            <div>
+              Items Page:
+              <select (change)="handlePageSizeChange($event)" style="border-radius: 10px">
+                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="col-12 mt-5">
         <div class="row">
           <div class="team-item col-4" *ngFor="
@@ -138,20 +160,6 @@
               <div class="d-flex justify-content-center pt-1">
                 <a (click)="showDetail(user?.id)" class="btn btn-sm btn-secondary">Order Now</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 mb-3">
-        <div class="row">
-          <div class="team-item text-center col-12">
-            <div class="mt-3">
-              Items per Page:
-              <select (change)="handlePageSizeChange($event)">
-                <option *ngFor="let size of pageSizes" [ngValue]="size">
-                  {{ size }}
-                </option>
-              </select>
             </div>
           </div>
         </div>
