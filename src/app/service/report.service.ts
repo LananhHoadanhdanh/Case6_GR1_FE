@@ -29,8 +29,8 @@ export class ReportService {
     return this.http.post(API_URL + '/reports', report)
   }
 
-  approveReport(orderId: any) : Observable<Report>{
-    return this.http.put<Report>(API_URL + `/reports/${orderId}/approve`, orderId)
+  approveReport(id: any) : Observable<Report>{
+    return this.http.put<Report>(API_URL + `/reports/${id}/approve`, id)
   }
 
   getAllReportByRenter(renterId: any) : Observable<Report[]> {

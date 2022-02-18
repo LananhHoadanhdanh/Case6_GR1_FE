@@ -4,6 +4,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {ListUserComponent} from "./list-user/list-user.component";
 import {AllOrderListComponent} from "./all-order-list/all-order-list.component";
 import {CompleteOrderComponent} from "./complete-order/complete-order.component";
+import {ListReportComponent} from "./list-report/list-report.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: "orders",
     component: AllOrderListComponent
+  },
+  {
+    path: "report",
+    component: ListReportComponent
   }
 ];
 

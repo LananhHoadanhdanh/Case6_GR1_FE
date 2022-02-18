@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
-    this.adminUrl = '/users'
+    this.adminUrl = '/members'
     this.currentUser = localStorage.getItem("currentUser");
   }
 
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
             swal("Logged in successfully!", "", "success");
             // this.router.navigate([this.returnUrl, "homepage"]);
             setTimeout(()=> {
-              window.location.href = 'http://localhost:4200/users';
+              window.location.href = 'http://localhost:4200/members';
             }, 1000)
           } else {
             // this.router.navigate([this.returnUrl, "homepage"]);
